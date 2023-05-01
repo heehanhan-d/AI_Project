@@ -99,18 +99,18 @@ def createMaindata():
     # EliceLAB = "http://183.96.52.165:3001/underdogs/upload"
 
     # payload = json.dumps({"data": underdog_data.to_json()})
-    # payload = json.dumps({"data": underdog_data.to_json(orient='records')})
-    sampleData = underdog_data.loc[0]
-    testPayload = json.dumps({"data": sampleData.to_dict()}, ensure_ascii=False).encode('utf-8')
-    print(testPayload)
+    payload = json.dumps(underdog_data.to_dict(), ensure_ascii=False).encode('utf-8')
+    # sampleData = underdog_data.loc[0]
+    # testPayload = json.dumps(sampleData.to_dict(), ensure_ascii=False).encode('utf-8')
+    # print(testPayload)
 
     headers = {"Content-Type" : "application/json"}
 
     # response = requests.get(localhost)
 
-    response = requests.post(localhost, data=testPayload, headers=headers)
+    # response = requests.post(localhost, testPayload, headers=headers)
 
-    # response = requests.post(BackEndServer, data=payload, headers=headers)
+    response = requests.post(localhost, data=payload, headers=headers)
 
     if response.status_code == 200:
         print("성공")
