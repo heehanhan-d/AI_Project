@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+.button {
+  position: absolute;
+}
+
+.button .ai {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: 'GmarketSansBold';
+  font-weight: bold;
+  font-size: 20px;
+  color: #FED159;
+  background-color: #ffffff;
+  border: solid #FED159;
+  border-radius: 30px;
+  top: 230px;
+  padding: 10px 40px;
+  cursor: pointer;
+  word-break: keep-all;
+}
+
+.button .picture {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-family: 'GmarketSansBold';
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #94B5EA;
+  border: solid #FED159;
+  border-radius: 30px;
+  top: 230px;
+  padding: 10px 40px;
+  cursor: pointer;
+  word-break: keep-all;
+}
