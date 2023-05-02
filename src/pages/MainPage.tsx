@@ -17,18 +17,17 @@ const BnImg = styled.img`
     width: 1700px;
     margin: 50px;
     border: 1rem solid #FED159; 
-
 `
 
 export const MainPage = () => {
     return (
         <MainDiv>
-                <BnImg src={ai_banner} />
-                <div className="button">
-                    <Link to="/search" style={{ textDecoration: "none"}}>
-                        <button className="ai">AI로 나에게 어울리는 UNDERDOG 찾기.</button>   
-                    </Link>
-                </div>        
+            <BnImg src={ai_banner} />
+            <div className="button">
+                <Link to="/search" style={{ textDecoration: "none"}}>
+                    <button className="ai">AI로 나에게 어울리는 UNDERDOG 찾기.</button>   
+                </Link>
+            </div>
         </MainDiv>
     );
 };

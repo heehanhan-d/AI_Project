@@ -48,8 +48,8 @@
   font-family: 'GmarketSansBold';
   font-weight: bold;
   font-size: 20px;
-  color: #FED159;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #FED159;
   border: solid #FED159;
   border-radius: 30px;
   top: 230px;
@@ -59,18 +59,18 @@
 }
 
 .button .picture {
-  position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
   font-family: 'GmarketSansBold';
   font-weight: bold;
   font-size: 20px;
   color: #ffffff;
   background-color: #94B5EA;
-  border: solid #FED159;
+  border: solid #94B5EA;
   border-radius: 30px;
-  top: 230px;
   padding: 10px 40px;
   cursor: pointer;
   word-break: keep-all;
+  margin: 300px;
 }
