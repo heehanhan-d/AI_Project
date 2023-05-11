@@ -1,72 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { colors } from "../../Styles/colors";
 import LogoImg from "../../Img/logo.png";
 
-const YouIf = "유기견을 입양해요, 유입(You, if)";
-
-const NavStyle = {color: "black", fontSize: "20px", textDecoration: "none"}
-
-const Slogan = styled.div`
-    { Text };
-    color: ${colors.white};
-`
-
-const Logo = styled.img`
-    width: 200px;
-    height: auto;
-`
-
-const Header = styled.header`
-    background-color: #FED519;
-    display: flex;
-    flex-direction: center;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 120px;
-`;
-
-const Nav = styled.nav`
-    background-color: #FEE59F;
-    color: ${colors.black};
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
-    flex-direction: center;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 60px;
-`
-const Body = styled.body`
-    font-family: 'Dovemayo_gothic';
-    background-color: #ffffff;
-    color: #000000;
-    text-align: center;
-`;
-
-const Footer = styled.footer`
-    background-color: #94B5EA;
-    color: #000000;
-    position: absolute;
-    display: flex;
-    flex-basis: auto;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 120px;
-    bottom: 0; 
-`;
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        // <div>
-        //     <Link rel="shortcut icon" href="img/favicon.ico" />
-        // </div>
-        <div>
+        <Div>
             <Header>
                 <Link to="/">
                     <Logo src={LogoImg} alt={ YouIf } />
@@ -90,6 +31,87 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </p>
                 </div>
             </Footer>
-        </div>
+        </Div>
     );
 };
+
+const YouIf = "유기견을 입양해요, 유입(You, if)";
+
+const NavStyle = {color: "black", fontSize: "20px", textDecoration: "none" }
+
+const Slogan = styled.div`
+    { Text };
+    color: ${colors.w};
+`
+
+const Logo = styled.img`
+    width: 12.5rem;
+    height: auto;
+`
+
+const Div = styled.div`
+    display: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 62.5rem;
+`
+
+
+const Header = styled.div`
+    background-color: ${colors.main};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // min-width: 62.5rem;
+    height: 7.5rem;
+`;
+
+
+const Nav = styled.div`
+    background-color: ${colors.sub};
+    color: ${colors.b};
+    display: grid;
+    place-items: center;
+    grid-template-columns: 10rem 10rem 10rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    // min-width: 62.5rem;
+    height: 5rem;
+    font-family: "Logo";
+    font-size: 1.5rem;
+`
+
+export const Body = styled.div`
+    background-color: ${colors.w};
+    color: ${colors.b};
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 0 2.5rem;
+    padding-bottom: 5rem; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`;
+
+const Footer = styled.div`
+    background-color: ${colors.footer};
+    color: ${colors.b};
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 7.5rem;
+    bottom: 0;
+    flex-basis: auto;
+`;
