@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,6 +12,18 @@ import underdog from "../../Img/underdog.png";
 
 
 export default function SwiperComponent () {
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetchImageUrls().then(data => setImageUrls(data));
+  }, []);
+
+  const fetchImageUrls = async () => {
+    const response = await fetch('http://localhost:3001/underdogs');
+    const data = await response.json();
+    return data;
+  };
+
   return (
     <SwiperSlider>
       <Link to="/list" style={{ textDecoration: "none", color: "inherit" }}>
@@ -31,12 +43,11 @@ export default function SwiperComponent () {
         onSwiper={(Swiper) => console.log(Swiper)}
         onSlideChange={() => console.log('slide change')}
       >
-        <SwiperSlide>1</SwiperSlide>
-        <SwiperSlide>2</SwiperSlide>
-        <SwiperSlide>3</SwiperSlide>
-        <SwiperSlide>4</SwiperSlide>
-        <SwiperSlide>5</SwiperSlide>
-        <SwiperSlide>6</SwiperSlide>
+        {imageUrls.map((imageUrl, index) => (
+          <SwiperSlide key={index}>
+            <img src={imageUrl} alt={`Slide ${index}`} />
+          </SwiperSlide>
+        ))}
       </CustomSwiper>
     </SwiperSlider>
   );

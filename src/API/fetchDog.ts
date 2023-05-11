@@ -1,15 +1,17 @@
-import axios from "axios";
-import { Dog } from "../interface";
+import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL
+export {}
 
+export const apiUrl = process.env.REACT_APP_API_URL
+
+// 함수명은 파일명과 동일하게 하는 것이 좋음. 함수명 중요!
 export const fetchDog = async (id: string) => {
-    try{ 
-        const result = await axios.get<Dog[]>(`${apiUrl}/underdogs/${id}`)
-        return result.data;
-    } catch(e) {
-        throw Error('데이터 패치에 실패했습니다.')
-        console.error(e);
+    try {
+        const result = await axios.get(`${apiUrl}/underdogs/${id}`);
+        result.data();
+        return result;
+    } catch(error) {
+        console.error(error);
     }
     // console.log(apiUrl, 'apiUrl')
 }

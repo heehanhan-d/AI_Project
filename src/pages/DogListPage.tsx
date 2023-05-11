@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react';
-import { fetchDogList } from "../API/fetchDogList";
+import { fetchDogList } from "../API/FetchDogList";
 import { Dog } from "../interface";
 
 export const DogListPage = () => {
