@@ -43,7 +43,7 @@ const AIButton = styled.button`
   border: solid ${colors.main};
   border-radius: 1.875rem;
   margin: 4.688rem auto;
-  top: 31rem;
+  top: 72rem;
   padding: 0.625rem 3.125rem;
   left: 70rem;
   transform: translateX(-50%);
