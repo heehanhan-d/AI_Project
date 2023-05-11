@@ -48,14 +48,13 @@ export default function SwiperComponent () {
    align-items: center;
    justify-content: center;
    border: 1rem solid ${colors.footer};
-   position: absolute;
+   position: relative;
    width: 100rem;
    height: 25rem;
-   top: 25rem;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   align-item: center;
-   margin: 10rem 0;
+   top: 45rem;
+   left: 3rem;
+   bottom: 50rem;
+   margin-bottom: 10rem;
 
    .swiper-button-prev, .swiper-button-next {
      transform: translateY(-50%);
@@ -99,10 +98,13 @@ const CustomSwiper = styled(Swiper)`
   height: 5rem;
   position: absolute;
   left: 20rem;
-  top: 4.5rem;
+  top: 5rem;
+  bottom: 5rem;
+  margin-bottom: 5rem;
   border: 0.5rem solid ${colors.main};
   padding: 5rem 10rem;
   text-align: center;
+  z-index: 10;
 `
 
 const UnderdogImage = styled.img`
@@ -114,5 +116,5 @@ const UnderdogImage = styled.img`
   left: 0rem;
   width: 20rem;
   height: auto;
-  // border: 1rem solid ${colors.main};
+  z-index: 10;
 `;

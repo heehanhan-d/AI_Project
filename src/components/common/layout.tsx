@@ -53,35 +53,41 @@ const Div = styled.div`
     display: absolute;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    min-width: 62.5rem;
+    width: 119.8rem;
 `
 
-
 const Header = styled.div`
-    background-color: ${colors.main};
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    // min-width: 62.5rem;
+    top: 0;
+    left: 0;
+    width: 119.8rem;
     height: 7.5rem;
+    background-color: ${colors.main};
+    z-index: 10;
 `;
 
 
 const Nav = styled.div`
-    background-color: ${colors.sub};
-    color: ${colors.b};
+    position: fixed;
     display: grid;
     place-items: center;
     grid-template-columns: 10rem 10rem 10rem;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    // min-width: 62.5rem;
-    height: 5rem;
+    top: 7.5rem;
+    left: 0;
+    width: 119.8rem;
+    height: 4rem;
     font-family: "Logo";
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    text-align: center;
+    background-color: ${colors.sub};
+    color: ${colors.b};
+    z-index: 10;
 `
 
 export const Body = styled.div`
@@ -93,10 +99,10 @@ export const Body = styled.div`
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    width: 100%;
-    height: auto;
+    width: 119.8rem;
+    height: 120rem;
     padding: 0 2.5rem;
-    padding-bottom: 5rem; 
+    padding-bottom: 7.5rem; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -110,8 +116,10 @@ const Footer = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 100%;
+    width: 119.8rem;
     height: 7.5rem;
     bottom: 0;
+    left: 0;
     flex-basis: auto;
+    z-index: 10;
 `;

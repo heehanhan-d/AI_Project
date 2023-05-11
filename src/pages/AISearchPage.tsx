@@ -22,6 +22,7 @@ export const AISearchPage = () => {
         // 사용자에게 알림 메시지
     }
     return (
+        <Body>
         <AISearchDiv>
             <DragDiv>
                     <UnderdogImage src={underdog} />
@@ -37,6 +38,7 @@ export const AISearchPage = () => {
             </DragDiv>
                     <SearchBtn>AI로 UNDERDOG 검색하기</SearchBtn>
         </AISearchDiv> 
+        </Body>    
     );
 };
 
@@ -48,6 +50,8 @@ const AISearchDiv = styled.div`
     flex-direction: column;
     position: relative;
     float: none;
+    margin: 0 auto;
+    top: 5rem;
 `
 
 const UnderdogImage = styled.img`
@@ -63,7 +67,7 @@ const DragDiv = styled.div`
     width: 50rem;
     height: 30rem;
     border: 0.3rem dashed ${colors.main};
-    margin: 6.25rem auto;
+    margin-top: 5rem;
 `
 
 const Text = `PLEASE FIND MY UNDERDOG`
@@ -87,7 +91,7 @@ const PictureBtn = styled.label`
     font-size: 1.25rem;
     color: ${colors.w};
     background-color: ${colors.footer};
-    margin: 6rem 18rem 0 18rem;
+    margin: 3rem 18rem 0 18rem;
     padding: 0.625rem 3.125rem;
     border-radius: 18.75rem;
     cursor: pointer;
@@ -110,5 +114,5 @@ const SearchBtn = styled.button`
     color: ${colors.w};
     font-family: "Logo";
     font-size: 1.25rem;
-    top: -3rem;
+    top: -1.5rem;
 `

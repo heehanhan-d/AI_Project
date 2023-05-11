@@ -26,7 +26,9 @@ const BannerImage = styled.img`
   border: 1rem solid ${colors.main};
   position: relative;
   width: 100rem;
-  top: 5rem;
+  margin-top: 10rem;
+  left: 3rem;
+  z-index: 10;
 `;
 
 const AIButton = styled.button`
@@ -41,10 +43,11 @@ const AIButton = styled.button`
   border: solid ${colors.main};
   border-radius: 1.875rem;
   margin: 4.688rem auto;
-  top: 26rem;
+  top: 31rem;
   padding: 0.625rem 3.125rem;
-  left: 50%;
+  left: 70rem;
   transform: translateX(-50%);
   cursor: pointer;
   word-break: keep-all;
+  z-index: 10;
 `;
