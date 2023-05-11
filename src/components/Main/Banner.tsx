@@ -45,7 +45,7 @@ const AIButton = styled.button`
   margin: 4.688rem auto;
   top: 72rem;
   padding: 0.625rem 3.125rem;
-  left: 70rem;
+  left: 66rem;
   transform: translateX(-50%);
   cursor: pointer;
   word-break: keep-all;
