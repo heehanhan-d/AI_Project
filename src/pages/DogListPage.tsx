@@ -20,9 +20,10 @@ export const DogListPage = () => {
         // componentDidMount
     }, []);
 
-    return <div>{dogList.map((dog) => <DogCard dog={dog} />)}</div>;
+    // return <div>{dogList.map((dog) => <DogCard dog={dog} />)}</div>;
+    return <div>{dogList.map((dog) => (dog.breeds))}</div>;
 };
 
-export const DogCard = ({ dog }) => {
-    return <div>{dog.name}</div>
-}
+// export const DogCard = ({ dog }) => {
+//     return <div>{dog.name}</div>
+// }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Body } from "../components/common/layout";
-import BannerComponent from "../components/Main/Banner";
-import SwiperComponent from "../components/Main/Swiper";
+import BannerComponent from "../components/Main/BannerComponent";
+import SwiperComponent from "../components/Main/SwiperComponent";
 
 
 export const MainPage = () => {
