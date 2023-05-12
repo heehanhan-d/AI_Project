@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
 import { Body } from "../common/layout";
-import { colors } from "../../Styles/colors";
-import underdog from "../../Img/underdog.png";
+import { colors } from "../common/colors";
+import underdog from "../../Img/Underdog.png";
 import { StyledPictureInputProps } from "../../interface";
 
 export default function FileUploadComponent() {

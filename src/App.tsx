@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "./components/common/layout";
-import { MainPage } from "./pages/MainPage";
-import { AboutPage } from "./pages/AboutPage";
-import { AISearchPage } from "./pages/AISearchPage";
-import { DogListPage } from "./pages/DogListPage";
-import { SignUpPage } from "./pages/SignUpPage";
+import { Layout } from "./Component/common/layout";
+import { MainPage } from "./Pages/MainPage";
+import { AboutPage } from "./Pages/AboutPage";
+import { AiSearchPage } from "./Pages/AiSearchPage";
+import { DogListPage } from "./Pages/DogListPage";
+import { SignUpPage } from "./Pages/SignUpPage";
     
 import './App.css';
 
@@ -16,7 +16,7 @@ function App() {
                 <Routes>
                     <Route element={<MainPage />} path="/" />
                     <Route element={<AboutPage />} path="/about" />
-                    <Route element={<AISearchPage />} path="/search" />
+                    <Route element={<AiSearchPage />} path="/search" />
                     <Route element={<DogListPage />} path="/list" />
                     <Route element={<SignUpPage />} path="/sign-up" />
                 </Routes>

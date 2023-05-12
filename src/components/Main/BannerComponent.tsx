@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import banner from "../../Img/banner.png";
+import Banner from "../../Img/Banner.png";
 import { Body } from "../common/layout";
-import { colors } from "../../Styles/colors";
+import { colors } from "../common/colors";
 
 
 export default function BannerComponent() {
   return (
     <Body>
-      <BannerImage src={banner} alt="배너" />
+      <BannerImage src={Banner} alt="배너" />
       <Link to="/search" style={{ textDecoration: "none", color: "inherit" }}>
         <AIButton>
               AI로 나에게 어울리는 UNDERDOG 찾기

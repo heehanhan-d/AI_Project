@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import { colors } from "../../Styles/colors";
-import LogoImg from "../../Img/logo.png";
+import { colors } from "./colors";
+import LogoImg from "../../Img/Logo.png";
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {

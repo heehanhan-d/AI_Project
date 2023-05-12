@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Body } from '../components/common/layout';
-import FileUploadComponent from "../components/AISearch/FileUploadComponent";
-import AIResultComponent from "../components/AISearch/AIResultComponent";
+import { Body } from '../Components/common/layout';
+import FileUploadComponent from "../Components/AiSearch/FileUploadComponent";
+import AiResultComponent from "../Components/AiSearch/AiResultComponent";
 
 
 
-export const AISearchPage = () => {
+export const AiSearchPage = () => {
     return (
         <Body>
             <FileUploadComponent />
-            <AIResultComponent />
+            <AiResultComponent />
         </Body>
     );
 };

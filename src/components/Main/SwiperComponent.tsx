@@ -7,8 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { colors } from "../../Styles/colors";
-import underdog from "../../Img/underdog.png";
+import { colors } from "../common/colors";
+import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../../interface';
 
 
@@ -28,7 +28,7 @@ export default function SwiperComponent () {
   return (
     <SwiperSlider>
       <Link to="/list" style={{ textDecoration: "none", color: "inherit" }}>
-        <UnderdogImage src={underdog} />
+        <UnderdogImage src={Underdog} />
       </Link>
       <CustomSwiper
         modules={[ Navigation, Pagination, Autoplay ]}

@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
-import { colors } from "../../Styles/colors";
+import { colors } from "../common/colors";
 
 
-
-const API_URL = "http://127.0.0.1:5000/breedsAI/user";
-
-export default function AIResultComponent() {
+export default function AiResultComponent() {
     
     // AI 검색 결과
     const [showResults, setShowResults] = useState(false);
-
     const [imageUrls, setImageUrls] = useState<string[]>([]);
-
     const [breeds, setBreeds] = useState<string[]>([]);
 
     const handleSearch = () => {
         
         // API 호출
-        fetch(API_URL)
+        fetch("http://127.0.0.1:5000/breedsAI/user")
             .then(response => response.json())
             .then(data => {
                 setImageUrls(imageUrls)
