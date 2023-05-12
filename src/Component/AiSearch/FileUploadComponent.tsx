@@ -3,8 +3,8 @@ import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
 import { Body } from "../common/layout";
 import { colors } from "../common/colors";
-import underdog from "../../Img/Underdog.png";
-import { StyledPictureInputProps } from "../../interface";
+import Underdog from "../../Img/Underdog.png";
+import { StyledPictureInputProps } from "../common/interface";
 
 export default function FileUploadComponent() {
     
@@ -46,7 +46,7 @@ export default function FileUploadComponent() {
     return (
         <Body>
             <DragDiv>
-                <UnderdogImage src={underdog} />
+                <UnderdogImage src={Underdog} />
                 <TextDiv>{ Text }</TextDiv>
                 <PictureBtn>사진 추가하기
                 <PictureInput

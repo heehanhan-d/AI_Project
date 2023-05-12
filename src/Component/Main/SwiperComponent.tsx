@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { colors } from "../common/colors";
 import Underdog from "../../Img/Underdog.png";
-import { Dog } from '../../interface';
+import { Dog } from '../common/interface';
 
 
 export default function SwiperComponent () {

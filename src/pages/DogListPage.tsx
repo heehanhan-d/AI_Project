@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { colors } from '../Components/common/colors';
-import { fetchDogList } from '../Api/FetchDogList';
-import { Dog } from '../interface';
-import DogList from '../Components/common/dogList';
-import { DogApiResponse } from '../interface';
+import { colors } from '../Component/common/colors';
+import { FetchDogList } from '../Api/FetchDogList';
+import { Dog } from '../Component/common/interface';
+import DogList from '../Component/common/dogList';
+import { DogApiResponse } from '../Component/common/interface';
 
 
 export const DogListPage = () => {
@@ -15,7 +15,7 @@ export const DogListPage = () => {
     useEffect(() => {
         const fetch = async () => {
             try {
-                const results = await fetchDogList();
+                const results = await FetchDogList();
                 const message = results.message
                 const data = results.data
                 console.log("message : ", message)
@@ -46,7 +46,7 @@ export const DogListPage = () => {
                         <img src={dog.img_url} alt={`Dog ${dog.id}`} />
                         <h2>{dog.breeds?.join(', ')}</h2>
                         <p>{dog.color}</p>
-                        <p>{dog.weight}</p>
+                        <p>{String(dog.weight)}</p>
                         <p>{dog.found.place}</p>
                         <p>{dog.carecenter?.name}</p>
                     </div>

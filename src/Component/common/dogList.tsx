@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dog } from '../../interface';
+import { Dog } from '../common/interface';
 
 type Props = {
   dogList: Dog[];
