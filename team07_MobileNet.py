@@ -62,9 +62,4 @@ def extract(input_image):
 
         # 인덱스 넘버 품종명으로 변환
         breeds = list(map(lambda idx: enum_breeds.breeds[idx], breeds_idx))
-
-        # result = {}
-        # for i in range(len(breeds)):
-        #     result[breeds[i]] = float(score[i])
-        # return json.dumps(result)
         return breeds
