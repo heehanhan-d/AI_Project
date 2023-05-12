@@ -1,26 +1,46 @@
 import React, { useState, useEffect } from 'react';
+import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
 import { Body } from "../common/layout";
 import { colors } from "../../Styles/colors";
 import underdog from "../../Img/underdog.png";
-
+import { StyledPictureInputProps } from "../../interface";
 
 export default function FileUploadComponent() {
     
     // 파일명
     const [filename, setFilename] = useState("");
     
-    const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             console.log(file);
-            // 파일명 저장
             setFilename(file.name);
-            // 파일 업로드 로직 구현
+
+            // 파일 업로드
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                //파일을 AI 서버로 전송하는 POST 요청
+                const response = await axios.post('https://localhost:5000/breedsAI/user', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+
+                // 응답 처리
+                console.log(response.data);
+
+            } catch (e) {
+                // 오류 처리
+                const error = e as AxiosError;
+                console.error(error.response?.data || error.message);
+            }
         } else {
             console.log("파일이 선택되지 않았습니다.");
         }
-        // 사용자에게 알림 메시지
+        // 사용자에게 알림 메시지(toast나 alert 사용)
     };
 
     return (
@@ -73,7 +93,7 @@ const TextDiv = styled.div`
 
 const PictureBtn = styled.label`
     display: flex;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
     font-family: "Logo";
     font-size: 1.25rem;
@@ -86,6 +106,10 @@ const PictureBtn = styled.label`
     word-break: keep-all;
 `
 
-const PictureInput = styled.input`
+const PictureInput = styled.input.attrs<StyledPictureInputProps>((props) => ({
+    type: "file",
+    accept: ".jpg, .jpeg, .png",
+    onChange: props.onChange
+}))`
     display: none;
 `

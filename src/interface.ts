@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Dog {
     id: String, // 유기번호(desertionNo)
     state: String, // 상태(protectState)
@@ -18,9 +20,13 @@ export interface Dog {
         date_start: Date, // 공고시작일(noticeSdt) (YYYYMMDD)
         date_end: Date, // 공고종료일(noticeEdt) (YYYYMMDD)
     }
-    carecenter: {
-        name: String, // 보호소 이름(careNm)
+    carecenter?: {
+        name?: String, // 보호소 이름(careNm)
         phone: String, // 보호소 전화번호(careTel)
         address: String, // 보호소 주소(careAddr)
     }
 }
+
+export interface StyledPictureInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  }
