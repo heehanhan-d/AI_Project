@@ -23,7 +23,7 @@ export default function FileUploadComponent() {
 
             try {
                 //파일을 AI 서버로 전송하는 POST 요청
-                const response = await axios.post('https://localhost:5000/breedsAI/user', formData, {
+                const response = await axios.post('http://127.0.0.1:5000/breedsAI/user', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

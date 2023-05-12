@@ -4,11 +4,12 @@ import { colors } from '../Styles/colors';
 import { fetchDogList } from '../API/fetchDogList';
 import { Dog } from '../interface';
 import DogList from '../components/common/DogList';
+import { DogApiResponse } from '../interface';
 
 
 export const DogListPage = () => {
     const [dogList, setDogList] = useState<Dog[]>([]);
-    // const [dogList, setDogList] = useState();
+    
     console.log(dogList, 'dogList')
 
     useEffect(() => {
