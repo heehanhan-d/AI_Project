@@ -52,7 +52,6 @@ def extract(input_image):
 
     # 추론
     with torch.no_grad():
-        model.eval()
         output = model(image)
         tensor_score, tensor_breeds_idx= torch.topk(output.data, k=5)
 

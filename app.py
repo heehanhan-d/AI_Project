@@ -14,7 +14,7 @@ def test():
 
 @app.route("/createMaindata", methods = ['GET','POST'])
 def create_mainData():
-    createcreatemaindata.createMainData()
+    createmaindata.createMainData()
     return "server generating maindata"
 
 # 사용자가 이미지 검색하는 용도
