@@ -32,10 +32,10 @@ export default function SwiperComponent() {
       <CustomSwiper
         modules={[Navigation, Autoplay]}
         slidesPerView={3}
-        spaceBetween={5}
+        spaceBetween={10}
         navigation
         autoplay={{
-          delay: 2000,
+          delay: 5000,
           disableOnInteraction: false
         }}
         loop={true}
@@ -134,3 +134,4 @@ const UnderdogImage = styled.img`
   height: auto;
   z-index: 10;
 `;
+

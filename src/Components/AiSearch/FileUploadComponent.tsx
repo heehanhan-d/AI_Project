@@ -1,62 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import axios, { AxiosError } from 'axios';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { Body } from "../common/layout";
 import { colors } from "../common/colors";
 import Underdog from "../../Img/Underdog.png";
-import { StyledPictureInputProps } from "../common/interface";
+import { ButtonHTMLAttributes } from "react";
 
 export default function FileUploadComponent() {
     
-    // 파일명
     const [filename, setFilename] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
     
     const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             console.log(file);
             setFilename(file.name);
-
-            // 파일 업로드
-            const formData = new FormData();
-            formData.append('file', file);
-
-            try {
-                //파일을 AI 서버로 전송하는 POST 요청
-                const response = await axios.post('http://127.0.0.1:5000/breedsAI/user', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                });
-
-                // 응답 처리
-                console.log(response.data);
-
-            } catch (e) {
-                // 오류 처리
-                const error = e as AxiosError;
-                console.error(error.response?.data || error.message);
-            }
         } else {
             console.log("파일이 선택되지 않았습니다.");
         }
-        // 사용자에게 알림 메시지(toast나 alert 사용)
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    const [searchResults, setSearchResults] = useState([]);
+
+    const handleSearch = () => {
+        if (filename) {
+            setModalMessage("");
+            setShowModal(false);
+        } else {
+            setModalMessage("파일을 먼저 선택해주세요!");
+            setShowModal(true);
+        }
     };
 
     return (
         <Body>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
-                <TextDiv>{ Text }</TextDiv>
-                <PictureBtn>사진 추가하기
-                    <PictureInput
+                <TextDiv>{Text}</TextDiv>
+                <UploadButton>사진 추가하기
+                    <input
                         type="file"
                         accept=".jpg, .jpeg, .png"
                         onChange={handleFileInputChange}
                     />
-                </PictureBtn>
+                </UploadButton>
                 {filename && <p>파일명: {filename}</p>}
-            </DragDiv>    
+            </DragDiv>
+            <AISearchDiv>
+                <SearchButton onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
+            </AISearchDiv>
+            {showModal && (
+                <Modal>
+                    <ModalContent>
+                        <h3>{modalMessage}</h3>
+                        <Button onClick={closeModal}>닫기</Button>
+                    </ModalContent>
+                </Modal>
+            )}
         </Body>
     );
 }
@@ -66,50 +71,114 @@ const UnderdogImage = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 18.75rem;
-  margin: 0 15rem 3rem 15rem;
-
+  width: 35%;
+  margin: 30px 240px 30px 240px;
+  left: 30px;
 `;
 
 const DragDiv = styled.div`
-    width: 50rem;
-    height: 30rem;
-    border: 0.3rem dashed ${colors.main};
-    margin-top: 10rem;
+    width: 40%;
+    height: 480px;
+    border: 5px dashed ${colors.main};
+    margin-top: 220px;
 `
 
 const Text = `PLEASE FIND MY UNDERDOG`
 
 const TextDiv = styled.div`
-    width: 30rem;
+    width: 100%;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin: -5rem 0 0 10rem;
-    font-size: 2rem;
+    margin: -60px 0 0 10px;
+    font-size: 32px;
     font-weight: bold;
     color: ${colors.main};
 `
 
-const PictureBtn = styled.label`
+const UploadButton = styled.label`
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Logo";
-    font-size: 1.25rem;
+    font-size: 20px;
     color: ${colors.w};
     background-color: ${colors.footer};
-    margin: 3rem 18rem 0 18rem;
-    padding: 0.625rem 3.125rem;
-    border-radius: 18.75rem;
+    margin: 40px 275px 0 275px;
+    padding: 10px 50px;
+    border-radius: 300px;
     cursor: pointer;
     word-break: keep-all;
+
+    input {
+        display: none;
+    }
 `
 
-const PictureInput = styled.input.attrs<StyledPictureInputProps>((props) => ({
-    type: "file",
-    accept: ".jpg, .jpeg, .png",
-    onChange: props.onChange
-}))`
+const input = styled.input`
     display: none;
 `
+
+
+const AISearchDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    float: none;
+    margin: 0 auto;
+    top: 80px;
+`
+
+const Button = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: ${colors.main};
+    color: ${colors.w};
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Logo";
+`
+
+
+const SearchButton = styled(Button)<SearchButtonProps>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px 50px;
+    border: 1px solid ${colors.main};
+    border-radius: 300px;
+    background-color: ${colors.main};
+    color: ${colors.w};
+    font-family: "Logo";
+    font-size: 20px;
+    top: -115px;
+    cursor: pointer;
+`
+
+type SearchButtonProps = {
+    onClick: () => void;
+};
+
+const Modal = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: "Text";
+`
+
+const ModalContent = styled.div`
+    background-color: ${colors.w};
+    padding: 20px;
+    border-radius: 5px;
+`
+
