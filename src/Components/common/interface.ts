@@ -27,12 +27,21 @@ export interface Dog {
     }
 }
 
-export interface StyledPictureInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+// export interface StyledPictureInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+//     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+// }
   
 
 export interface DogApiResponse {
     message: string;
     data: Dog[];
+}
+
+export interface ResponseData {
+    data: string[];
+    message: string;
+}
+
+export interface AiResultComponentProps {
+    items: string[];
 }

@@ -1,38 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { colors } from "../common/colors";
+import { AiResultComponentProps } from '../common/interface';
 
 
-export default function AiResultComponent() {
-
-    // AI 검색 결과
-    const [showResults, setShowResults] = useState(false);
-    const [imageUrls, setImageUrls] = useState<string[]>([]);
-    const [breeds, setBreeds] = useState<string[]>([]);
-
-    const handleSearch = () => {
-        
-        // API 호출
-        fetch("http://127.0.0.1:5000/breedsAI/user")
-            .then(response => response.json())
-            .then(data => {
-                setBreeds(data.breeds);
-                setShowResults(true);
-            }).catch(error => {
-                console.error(error);
-        });
-    };
-
+export default function AiResultComponent () {
     return (
-    <AIResultDiv>
-        {imageUrls.map((url, index) => (
-            <div key={index}>
-                <img src={url} alt={`Result ${index +1}`} />
-            </div>
-        ))}
-    </AIResultDiv>
+        <AIResultDiv>
+        </AIResultDiv>
     );
-}
+};
   
 
 const AISearchDiv = styled.div`
@@ -85,12 +62,6 @@ const AIResultDiv = styled.div`
         overflow: hidden;
         background-color: ${colors.g};
         margin: 5rem;
-    }
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
 `;
 
