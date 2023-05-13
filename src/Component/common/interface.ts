@@ -11,7 +11,7 @@ export interface Dog {
     breeds?: string[], // 품종(kindCd)
     color: string, // 색상(colorCd)
     birth: Date, // 탄생 년도(age)
-    weight: Number, // 체중(weight) (0(미상))
+    weight: number, // 체중(weight) (0(미상))
     sex: string, // 성별(sexCd) (F,M,Q(미상))
     neuter: string, // 중성화 여부(neuterYn) (Y,N,U(미상))
     memo?: string, // 특징(specialMark)

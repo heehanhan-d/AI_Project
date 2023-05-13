@@ -49,11 +49,11 @@ export default function FileUploadComponent() {
                 <UnderdogImage src={Underdog} />
                 <TextDiv>{ Text }</TextDiv>
                 <PictureBtn>사진 추가하기
-                <PictureInput
-                    type="file"
-                    accept=".jpg, .jpeg, .png"
-                    onChange={handleFileInputChange}
-                />
+                    <PictureInput
+                        type="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={handleFileInputChange}
+                    />
                 </PictureBtn>
                 {filename && <p>파일명: {filename}</p>}
             </DragDiv>    

@@ -9,6 +9,7 @@ import { SignUpPage } from "./Pages/SignUpPage";
     
 import './App.css';
 
+
 function App() {
     return (
         <BrowserRouter>
