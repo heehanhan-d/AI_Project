@@ -87,7 +87,9 @@ const CustomSwiper = styled(Swiper)`
     color: ${colors.main};
     padding: 20px 20px;
     border-radius: 50px;
+    font-family: "Logo";
     font-size: 80px;
+    text-align: center;
     margin-top: 0;
     position: absolute;
     top: 50%;

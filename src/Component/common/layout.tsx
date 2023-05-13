@@ -14,9 +14,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
             </Header>
             <Nav>
-                <Link to="/about" style={ NavStyle }>About</Link>
-                <Link to="/search" style={ NavStyle }>AI Search</Link>
-                <Link to="/list" style={ NavStyle }>Underdogs</Link>
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/search">Ai Search</NavLink>
+                <NavLink to="/list">Underdogs</NavLink>
             </Nav>
             <Body>
                 {children}
@@ -26,23 +26,15 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     <Slogan>
                         { YouIf }
                     </Slogan>
-                    <p>
-                        엘리스 AI 6기 3차 프로젝트 - 7팀(Underdog)
-                    </p>
+                    <Copyright>
+                        { Underdog }
+                    </Copyright>
                 </div>
             </Footer>
         </Div>
     );
 };
 
-const YouIf = "유기견을 입양해요, 유입(You, if)";
-
-const NavStyle = {color: "black", fontSize: "20px", textDecoration: "none" }
-
-const Slogan = styled.div`
-    { Text };
-    color: ${colors.w};
-`
 
 const Logo = styled.img`
     width: 12.5rem;
@@ -90,6 +82,12 @@ const Nav = styled.div`
     z-index: 10;
 `
 
+const NavLink = styled(Link)`
+    color: ${colors.b};
+    font-size: 20px;
+    text-decoration: none;
+`
+
 export const Body = styled.div`
     background-color: ${colors.w};
     color: ${colors.b};
@@ -122,4 +120,19 @@ const Footer = styled.div`
     left: 0;
     flex-basis: auto;
     z-index: 10;
+    font-family: "Text";
 `;
+
+const Slogan = styled.div`
+    color: ${colors.w};
+    font-family: "Logo";
+    font-size: 15pt;    
+`
+const YouIf = "유기견을 입양해요, 유입(You, if)";
+
+const Copyright = styled.div`
+    color: ${colors.b};
+    font-family: "Text";
+    margin-top: 10px;
+`
+const Underdog = "ⓒ 7팀(Underdog) - 엘리스 AI 6기 3차 프로젝트"
