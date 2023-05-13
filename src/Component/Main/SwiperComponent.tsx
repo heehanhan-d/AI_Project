@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { colors } from "../common/colors";
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../common/interface';
 
 
-export default function SwiperComponent () {
+export default function SwiperComponent() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);
 
   useEffect(() => {
@@ -27,96 +26,102 @@ export default function SwiperComponent () {
 
   return (
     <SwiperSlider>
-      <Link to="/list" style={{ textDecoration: "none", color: "inherit" }}>
+      <UnderdogImageLink to="/list">
         <UnderdogImage src={Underdog} />
-      </Link>
+      </UnderdogImageLink>
       <CustomSwiper
-        modules={[ Navigation, Pagination, Autoplay ]}
+        modules={[Navigation, Autoplay]}
         slidesPerView={3}
-        spaceBetween={50}
+        spaceBetween={5}
         navigation
-        pagination={{ clickable: true }}
         autoplay={{
-          delay: 5000,
+          delay: 2000,
           disableOnInteraction: false
         }}
-        loop= {true}
+        loop={true}
         onSwiper={(Swiper) => console.log(Swiper)}
         onSlideChange={() => console.log('slide change')}
       >
         {underdogs.map((dog, index) => (
-          <SwiperSlide key={index}>
+          <CustomerSwiperSlide key={index}>
             <img src={dog.img_url} alt={`Slide ${index}`} />
-          </SwiperSlide>
-        ))}
+          </CustomerSwiperSlide>
+          ))}
       </CustomSwiper>
     </SwiperSlider>
   );
 }
 
-
  const SwiperSlider = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
-   border: 1rem solid ${colors.footer};
+   border: 15px solid ${colors.main};
    position: relative;
-   width: 100rem;
-   height: 25rem;
-   top: 45rem;
-   left: 3rem;
-   bottom: 50rem;
-   margin-bottom: 10rem;
-
-   .swiper-button-prev, .swiper-button-next {
-     transform: translateY(-50%);
-     width: 1rem;
-     height: 1rem;
-     background-color: ${colors.footer};
-     color: ${colors.w};
-     padding: 1.5rem 1.5rem;
-     border-radius: 3rem;
-     font-size: 5rem;
-     margin-top: 0;
-   }
-
-   .swiper-button-prev {
-     top: 7.5rem;
-     left: 1rem;
-  }
-
-   .swiper-button-next {
-     right: 1rem;
-      top: 7.5rem;
-    }
-
-    .swiper-button-prev::after, .swiper-button-next::after {
-      font-size: 1.1rem !important;
-      font-weight: 600 !important;
-    }
-
-    .swiper-pagination-bullet {
-      width: 1rem;
-      height: 1rem;
-      display: inline-block;
-      border-radius: 100%;
-      background: ${colors.main} !important;
-    }
+   width: 90%;
+   height: 400px;
+   top: 720px;
+   bottom: 800px;
+   margin-bottom: 160px;
+   background-color: ${colors.sub};
    `;
 
 
 const CustomSwiper = styled(Swiper)`
-  width: 55rem;
-  height: 5rem;
+  width: 75%;
+  height: 300px;
   position: absolute;
-  left: 20rem;
-  top: 5rem;
-  bottom: 5rem;
-  margin-bottom: 5rem;
-  border: 0.5rem solid ${colors.main};
-  padding: 5rem 10rem;
+  left: 300px;
+  margin-left: 30px;
+  padding: 0 20px 0 20px;
+  background-color: ${colors.sub};
   text-align: center;
-  z-index: 10;
+  // z-index: 10;
+
+
+  .swiper-button-prev, .swiper-button-next {
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    background-color: ${colors.w};
+    color: ${colors.main};
+    padding: 20px 20px;
+    border-radius: 50px;
+    font-family: "Logo";
+    font-size: 80px;
+    text-align: center;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+  }
+
+  .swiper-button-prev {
+    left: 2px;
+ }
+
+  .swiper-button-next {
+    right: 2px;
+   }
+
+   .swiper-button-prev::after, .swiper-button-next::after {
+     font-size: 32px !important;
+     font-weight: 600 !important;
+   }
+  }
+`
+
+const CustomerSwiperSlide = styled(SwiperSlide)`
+  img{
+    width: 280px;
+    height: 280px;
+    border: 10px solid ${colors.w};
+  }
+`
+
+
+const UnderdogImageLink = styled(Link)`
+  text-decoraton: none;
+  color: inherit;
 `
 
 const UnderdogImage = styled.img`
@@ -124,131 +129,9 @@ const UnderdogImage = styled.img`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 3rem;
+  top: 48px;
   left: 0rem;
-  width: 20rem;
+  width: 20%;
   height: auto;
   z-index: 10;
 `;
-
-
-// import React from 'react';
-// import styled from "styled-components";
-// import { Link } from "react-router-dom";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Pagination, Autoplay } from "swiper";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// import "swiper/css/autoplay";
-// import { colors } from "../../Styles/colors";
-// import underdog from "../../Img/underdog.png";
-
-
-// export default function SwiperComponent () {
-//   return (
-//     <SwiperSlider>
-//       <Link to="/list" style={{ textDecoration: "none", color: "inherit" }}>
-//         <UnderdogImage src={underdog} />
-//       </Link>
-//       <CustomSwiper
-//         modules={[ Navigation, Pagination, Autoplay ]}
-//         slidesPerView={3}
-//         spaceBetween={50}
-//         navigation
-//         pagination={{ clickable: true }}
-//         autoplay={{
-//           delay: 5000,
-//           disableOnInteraction: false
-//         }}
-//         loop= {true}
-//         onSwiper={(Swiper) => console.log(Swiper)}
-//         onSlideChange={() => console.log('slide change')}
-//       >
-//         <SwiperSlide>1</SwiperSlide>
-//         <SwiperSlide>2</SwiperSlide>
-//         <SwiperSlide>3</SwiperSlide>
-//         <SwiperSlide>4</SwiperSlide>
-//         <SwiperSlide>5</SwiperSlide>
-//         <SwiperSlide>6</SwiperSlide>
-//       </CustomSwiper>
-//     </SwiperSlider>
-//   );
-// }
-
-
-//  const SwiperSlider = styled.div`
-//    display: flex;
-//    align-items: center;
-//    justify-content: center;
-//    border: 1rem solid ${colors.footer};
-//    position: relative;
-//    width: 100rem;
-//    height: 25rem;
-//    top: 45rem;
-//    left: 3rem;
-//    bottom: 50rem;
-//    margin-bottom: 10rem;
-
-//    .swiper-button-prev, .swiper-button-next {
-//      transform: translateY(-50%);
-//      width: 1rem;
-//      height: 1rem;
-//      background-color: ${colors.footer};
-//      color: ${colors.w};
-//      padding: 1.5rem 1.5rem;
-//      border-radius: 3rem;
-//      font-size: 5rem;
-//      margin-top: 0;
-//    }
-
-//    .swiper-button-prev {
-//      top: 7.5rem;
-//      left: 1rem;
-//   }
-
-//    .swiper-button-next {
-//      right: 1rem;
-//       top: 7.5rem;
-//     }
-
-//     .swiper-button-prev::after, .swiper-button-next::after {
-//       font-size: 1.1rem !important;
-//       font-weight: 600 !important;
-//     }
-
-//     .swiper-pagination-bullet {
-//       width: 1rem;
-//       height: 1rem;
-//       display: inline-block;
-//       border-radius: 100%;
-//       background: ${colors.main} !important;
-//     }
-//    `;
-
-
-// const CustomSwiper = styled(Swiper)`
-//   width: 55rem;
-//   height: 5rem;
-//   position: absolute;
-//   left: 20rem;
-//   top: 5rem;
-//   bottom: 5rem;
-//   margin-bottom: 5rem;
-//   border: 0.5rem solid ${colors.main};
-//   padding: 5rem 10rem;
-//   text-align: center;
-//   z-index: 10;
-// `
-
-// const UnderdogImage = styled.img`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   position: absolute;
-//   top: 3rem;
-//   left: 0rem;
-//   width: 20rem;
-//   height: auto;
-//   z-index: 10;
-// `;

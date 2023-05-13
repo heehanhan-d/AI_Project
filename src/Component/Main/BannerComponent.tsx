@@ -23,11 +23,11 @@ export default function BannerComponent() {
 const BannerImage = styled.img`
   display: flex;
   justify-content: center;
-  border: 1rem solid ${colors.main};
+  border: 15px solid ${colors.main};
   position: relative;
-  width: 100rem;
-  margin-top: 10rem;
-  left: 3rem;
+  width: 90%;
+  margin-top: 160px;
+  left: 5px;
   z-index: 10;
 `;
 
@@ -41,11 +41,11 @@ const AIButton = styled.button`
   color: ${colors.w};
   background-color: ${colors.main};
   border: solid ${colors.main};
-  border-radius: 1.875rem;
-  margin: 4.688rem auto;
-  top: 72rem;
-  padding: 0.625rem 3.125rem;
-  left: 66rem;
+  border-radius: 30px;
+  margin: 75px auto;
+  top: 1165px;
+  padding: 10px 50px;
+  left: 1010px;
   transform: translateX(-50%);
   cursor: pointer;
   word-break: keep-all;
