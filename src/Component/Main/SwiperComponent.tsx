@@ -85,28 +85,28 @@ const CustomSwiper = styled(Swiper)`
     height: 15px;
     background-color: ${colors.w};
     color: ${colors.main};
-    padding: 20px 20px;
+    padding: 15px 15px;
     border-radius: 50px;
-    font-family: "Logo";
-    font-size: 80px;
     text-align: center;
-    margin-top: 0;
+    margin-top: 5px;
     position: absolute;
     top: 50%;
   }
 
-  .swiper-button-prev {
+  .swiper-button-prev::after {
+    content: "←";
     left: 2px;
+    font-family: "Logo";
+    font-size: 30px;
+    font-weight: 700;
  }
 
-  .swiper-button-next {
-    right: 2px;
-   }
-
-   .swiper-button-prev::after, .swiper-button-next::after {
-     font-size: 32px !important;
-     font-weight: 600 !important;
-   }
+  .swiper-button-next::after {
+    content: "→";
+    left: 2px;
+    font-family: "Logo";
+    font-size: 30px;
+    font-weight: 700;
   }
 `
 
@@ -117,7 +117,6 @@ const CustomerSwiperSlide = styled(SwiperSlide)`
     border: 10px solid ${colors.w};
   }
 `
-
 
 const UnderdogImageLink = styled(Link)`
   text-decoraton: none;
