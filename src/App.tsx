@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "./Component/common/layout";
+import { Layout } from "./Components/common/layout";
 import { MainPage } from "./Pages/MainPage";
 import { AboutPage } from "./Pages/AboutPage";
 import { AiSearchPage } from "./Pages/AiSearchPage";
