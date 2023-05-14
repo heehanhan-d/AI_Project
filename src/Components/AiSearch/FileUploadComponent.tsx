@@ -6,13 +6,14 @@ import { colors } from "../common/colors";
 import Underdog from "../../Img/Underdog.png";
 import { ButtonHTMLAttributes } from "react";
 import { ResponseData } from '../common/interface';
+import AiResultComponent from './AiResultComponent';
 
 export default function FileUploadComponent() {
     
     const [filename, setFilename] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
-    const [items, setItems] = useState<String[]>([]);
+    const [responseData, setResponseData] = useState<string[]>([]);
     
     const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -49,10 +50,11 @@ export default function FileUploadComponent() {
 
                 // 응답 처리
                 console.log(response.data);
-                const reponseData = response.data.data;
-                reponseData.map((item: string) => {
+                const responseData = response.data.data;
+                responseData.map((item: string) => {
                     console.log(item);
                 });
+                setResponseData(responseData);
 
             } catch (e) {
                 // 오류 처리
@@ -93,9 +95,7 @@ export default function FileUploadComponent() {
                         </ModalContent>
                     </Modal>
                 )}
-                {items.map((item, index) => (
-                    <p key={index}>{item}</p>
-                ))}
+                <AiResultComponent responseData={responseData} items={[]} />
             </Body>
         );
     }

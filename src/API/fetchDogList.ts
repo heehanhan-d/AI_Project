@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Dog, DogApiResponse } from '../Component/common/interface';
+import { Dog, DogApiResponse } from '../Components/common/interface';
 
 export const apiUrl = process.env.REACT_APP_API_URL
 

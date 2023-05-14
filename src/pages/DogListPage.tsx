@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { colors } from '../Component/common/colors';
+import { colors } from '../Components/common/colors';
 import { FetchDogList } from '../Api/FetchDogList';
-import { Dog } from '../Component/common/interface';
-import DogList from '../Component/common/dogList';
-import { DogApiResponse } from '../Component/common/interface';
+import { Dog } from '../Components/common/interface';
+import DogList from '../Components/common/dogList';
+import { DogApiResponse } from '../Components/common/interface';
 
 
 export const DogListPage = () => {

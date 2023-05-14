@@ -44,4 +44,11 @@ export interface ResponseData {
 
 export interface AiResultComponentProps {
     items: string[];
+    responseData: string[];
 }
+
+export interface Dropdownprops {
+    options: string[];
+    selectedItem: string | null;
+    onSelect: (item: string | null) => void;
+};
