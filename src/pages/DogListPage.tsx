@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { colors } from '../Components/common/colors';
 import { FetchDogList } from '../Api/FetchDogList';
@@ -12,6 +12,14 @@ export const DogListPage = () => {
     // console.log(dogList, 'dogList')
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);  
+
+    const resultRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (resultRef.current) {
+            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, []);
 
     useEffect(() => {
         const fetch = async () => {
@@ -51,7 +59,7 @@ export const DogListPage = () => {
     
     return(
         <div>
-            <h1>Dog List</h1>
+            <h1 ref={resultRef}>Dog List</h1>
             <ListDiv>
                 {dogList.map((dog) => (
                 <ListCircle key = {dog.id}>

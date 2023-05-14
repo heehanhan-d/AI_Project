@@ -49,6 +49,6 @@ export interface AiResultComponentProps {
 
 export interface Dropdownprops {
     options: string[];
-    selectedItem: string | null;
-    onSelect: (item: string | null) => void;
+    selectedItem: string;
+    onSelect: (selectedItem: string) => void;
 };

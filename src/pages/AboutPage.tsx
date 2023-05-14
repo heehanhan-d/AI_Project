@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
+import ServiceComponent from "../Components/About/ServiceComponent";
 
 export const AboutPage = () => {
     return(
     <AboutDiv>
-        <div>소개 페이지</div>
+        <ServiceComponent />
     </AboutDiv>
     );
 };

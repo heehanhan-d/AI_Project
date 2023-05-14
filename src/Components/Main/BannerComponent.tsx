@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Banner from "../../Img/Banner.png";
@@ -7,9 +7,18 @@ import { colors } from "../common/colors";
 
 
 export default function BannerComponent() {
+
+  const resultRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (resultRef.current) {
+            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, []);
+  
   return (
     <Body>
-      <BannerImage src={Banner} alt="배너" />
+      <BannerImage ref={resultRef} src={Banner} alt="배너" />
       <Link to="/search" style={{ textDecoration: "none", color: "inherit" }}>
         <AIButton>
               AI로 나에게 어울리는 UNDERDOG 찾기

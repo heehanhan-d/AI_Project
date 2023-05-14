@@ -1,19 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from "styled-components";
 import { colors } from "../common/colors";
 import { Body } from '../common/layout';
 import { AiResultComponentProps } from '../common/interface';
 
+
 export default function AiResultComponent({ responseData }: AiResultComponentProps) {
+    const resultRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (resultRef.current) {
+            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, []);
 
     return (
     <div>
-        {responseData.map((item, index) => (
+        <div ref={resultRef}>
+            {responseData.map((item, index) => (
                 <p key={index}>{item}</p>
-        ))}
+            ))}
+        </div>
     </div>
     );
 }
+
+const ResultComponent = styled(AiResultComponent)`
+    display: none;
+`
 
 
     // const SearchResultDiv = styled.div`
