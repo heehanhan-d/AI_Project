@@ -1,107 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from "styled-components";
-import { colors } from "../common/colors";
+import { Colors } from "../Common/Colors";
+import { Body } from '../Common/Layout';
+import { AiResultProps } from '../Common/Interface';
 
 
-export default function AiResultComponent() {
-    
-    // AI 검색 결과
-    const [showResults, setShowResults] = useState(false);
-    const [imageUrls, setImageUrls] = useState<string[]>([]);
-    const [breeds, setBreeds] = useState<string[]>([]);
+export default function AiResult({ responseData }: AiResultProps) {
+    const resultRef = useRef<HTMLDivElement>(null);
 
-    const handleSearch = () => {
-        
-        // API 호출
-        fetch("http://127.0.0.1:5000/breedsAI/user")
-            .then(response => response.json())
-            .then(data => {
-                setImageUrls(imageUrls)
-                setBreeds(data.breeds);
-                setShowResults(true);
-            }).catch(error => {
-                console.error(error);
-        });
-    };
+    useEffect(() => {
+        if (resultRef.current) {
+            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, []);
 
     return (
-      <AISearchDiv>
-        <SearchButton onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
-            {showResults && (
-                <SearchResultDiv>
-                    <AIResultDiv>
-                        {imageUrls.map((url, index) => (
-                            <div key={index}>
-                                <img src={url} alt={`Result ${index +1}`} />
-                            </div>
-                        ))}
-                    </AIResultDiv>
-                    <p>{breeds}</p>
-                </SearchResultDiv>
-            )}
-      </AISearchDiv>
+    <div>
+        <div ref={resultRef}>
+            {responseData.map((item, index) => (
+                <p key={index}>{item}</p>
+            ))}
+        </div>
+    </div>
     );
 }
-  
 
-const AISearchDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    float: none;
-    margin: 0 auto;
-    top: 5rem;
+const ResultComponent = styled(AiResult)`
+    display: none;
 `
 
-const SearchButton = styled.button<React.ButtonHTMLAttributes<HTMLButtonElement>>`
-    display: flex;
-    justify-contents: center;
-    align-items: center;
-    position: relative;
-    padding: 0.625rem 3.125rem;
-    border: 0.063rem solid ${colors.main};
-    border-radius: 18.75rem;
-    background-color: ${colors.main};
-    color: ${colors.w};
-    font-family: "Logo";
-    font-size: 1.25rem;
-    top: 15rem;
-    cursor: pointer;
-`
 
-const SearchResultDiv = styled.div`
-    position: absolute;
-    top: 20rem;
-    left: -28rem;
-    width: 75rem;
-    height: 35rem;
-    background-color: ${colors.w};
-    border: 1px dashed ${colors.g};
-`
+    // const SearchResultDiv = styled.div`
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     border: 1px dashed ${colors.g};
+    //     position: relative;
+    //     width: 80%;
+    //     top: 400px;
+    //     background-color: ${colors.w};
+    // `;
 
-const AIResultDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5rem;
+// const AIResultDiv = styled.div`
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 5rem;
 
-    div {
-        width: 12.5rem;
-        height: 12.5rem;
-        border-radius: 70%;
-        overflow: hidden;
-        background-color: ${colors.g};
-        margin: 5rem;
-    }
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-`;
+//     div {
+//         width: 12.5rem;
+//         height: 12.5rem;
+//         border-radius: 70%;
+//         overflow: hidden;
+//         background-color: ${colors.g};
+//         margin: 5rem;
+//     }
+// `;
 
 
 

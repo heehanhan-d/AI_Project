@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { colors } from '../Component/common/colors';
+import { Colors } from '../Components/Common/Colors';
 import { FetchDogList } from '../Api/FetchDogList';
-import { Dog } from '../Component/common/interface';
-import DogList from '../Component/common/dogList';
-import { DogApiResponse } from '../Component/common/interface';
+import { Dog } from '../Components/Common/Interface';
+import DogList from '../Components/Common/DogList';
+import { DogApiResponse } from '../Components/Common/Interface';
 
 
 export const DogListPage = () => {
@@ -12,6 +12,14 @@ export const DogListPage = () => {
     // console.log(dogList, 'dogList')
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);  
+
+    const resultRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        if (resultRef.current) {
+            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, []);
 
     useEffect(() => {
         const fetch = async () => {
@@ -51,7 +59,7 @@ export const DogListPage = () => {
     
     return(
         <div>
-            <h1>Dog List</h1>
+            <h1 ref={resultRef}>Dog List</h1>
             <ListDiv>
                 {dogList.map((dog) => (
                 <ListCircle key = {dog.id}>
@@ -86,7 +94,7 @@ const ListCircle = styled.div`
     width: 22rem;
     height: 22rem;
     border-radius: 50%;
-    background-color: ${colors.g};
+    background-color: ${Colors.g};
     margin: 1rem;
     flex: 1 0 22%;
 
