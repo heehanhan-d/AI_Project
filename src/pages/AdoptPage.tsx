@@ -1,5 +1,10 @@
 import React from 'react';
+import { Body } from '../Components/Common/Layout';
 
 export const AdoptPage = () => {
-    return <div>입양 페이지</div>;
+    return (
+        <Body>
+            입양 페이지
+        </Body>
+    );
 }

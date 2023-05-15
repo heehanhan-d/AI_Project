@@ -70,35 +70,35 @@ export default function FileUpload() {
         }
     };
 
-        return (
-            <Body>
-                <DragDiv>
-                    <UnderdogImage src={Underdog} />
-                    <TextDiv>{Text}</TextDiv>
-                    <UploadButton>사진 추가하기
-                        <input
-                            type="file"
-                            accept=".jpg, .jpeg, .png"
-                            onChange={handleFileInputChange}
-                        />
-                    </UploadButton>
-                    {filename && <p>파일명: {filename}</p>}
-                </DragDiv>
-                <AISearchDiv>
-                    <SearchButton onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
-                </AISearchDiv>
-                {showModal && (
-                    <Modal>
-                        <ModalContent>
-                            <h3>{modalMessage}</h3>
-                            <Button onClick={closeModal}>닫기</Button>
-                        </ModalContent>
-                    </Modal>
-                )}
-                <AiResult responseData={responseData} items={[]} />
-            </Body>
-        );
-    }
+    return (
+        <Body>
+            <DragDiv>
+                <UnderdogImage src={Underdog} />
+                <TextDiv>{Text}</TextDiv>
+                <UploadButton>사진 추가하기
+                    <input
+                        type="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={handleFileInputChange}
+                    />
+                </UploadButton>
+                {filename && <p>파일명: {filename}</p>}
+            </DragDiv>
+            <AISearchDiv>
+                <SearchButton onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
+            </AISearchDiv>
+            {showModal && (
+                <Modal>
+                    <ModalContent>
+                        <h3>{modalMessage}</h3>
+                        <Button onClick={closeModal}>닫기</Button>
+                    </ModalContent>
+                </Modal>
+            )}
+            <AiResult responseData={responseData} items={[]} />
+        </Body>
+    );
+}
   
 
     const UnderdogImage = styled.img`

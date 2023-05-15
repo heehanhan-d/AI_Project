@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
+import '../Common/Font.css';
 import { Link } from "react-router-dom";
 import BannerImg from "../../Img/Banner.png";
 import { Body } from "../Common/Layout";
@@ -52,8 +53,7 @@ const AIButton = styled.button`
   background-color: ${Colors.main};
   border: solid ${Colors.main};
   border-radius: 30px;
-  margin: 75px auto;
-  top: 1165px;
+  margin-top: -35px;
   padding: 10px 50px;
   left: 1010px;
   transform: translateX(-50%);

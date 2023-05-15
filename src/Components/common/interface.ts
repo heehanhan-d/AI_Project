@@ -27,23 +27,19 @@ export interface Dog {
     }
 }
 
-// export interface StyledPictureInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-//     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-// }
+export interface StyledPictureInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
   
-
 export interface DogApiResponse {
     message: string;
     data: Dog[];
 }
 
-
-
 export interface DogListProps {
     dogList: Dog[];
 };
   
-
 export interface ResponseData {
     data: string[];
     message: string;
@@ -59,3 +55,9 @@ export interface Dropdownprops {
     selectedItem: string;
     onSelect: (selectedItem: string) => void;
 };
+
+// swiper
+export interface SliderProps {
+    dogList: string[];
+    slidesPerView: number;
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dog } from '../Common/Interface';
 import { DogListProps } from '../Common/Interface';
 
 const DogList: React.FC<DogListProps> = ({ dogList }) => {

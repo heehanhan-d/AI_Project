@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
 import { Colors } from "../Common/Colors";
-import { Body } from '../Common/Layout';
 import { AiResultProps } from '../Common/Interface';
 
 

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { Colors } from '../Components/Common/Colors';
 import { FetchDogList } from '../Api/FetchDogList';
 import { Dog } from '../Components/Common/Interface';
-import DogList from '../Components/Common/DogList';
+import DogList from '../Components/DogList/DogList';
 import { DogApiResponse } from '../Components/Common/Interface';
+import { Body } from '../Components/Common/Layout';
 
 
 export const DogListPage = () => {
     const [dogList, setDogList] = useState<Dog[]>([]);
-    // console.log(dogList, 'dogList')
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);  
 
@@ -31,7 +31,6 @@ export const DogListPage = () => {
                 setLoading(false);
                 console.log("message : ", message);
                 console.log("data : ", data);
-                // setDogList(data);
             } catch(e) {
                 console.error(e);
             }
@@ -58,7 +57,7 @@ export const DogListPage = () => {
     }, [loading]);
     
     return(
-        <div>
+        <Body>
             <h1 ref={resultRef}>Dog List</h1>
             <ListDiv>
                 {dogList.map((dog) => (
@@ -73,9 +72,8 @@ export const DogListPage = () => {
                 ))}
             </ListDiv>
             {loading && <div>Loading...</div>}
-        </div>
+        </Body>
     );
-    // <div>{dogList.map((dog) => (dog.breeds))}</div>
 };
 
 
@@ -94,7 +92,7 @@ const ListCircle = styled.div`
     width: 22rem;
     height: 22rem;
     border-radius: 50%;
-    background-color: ${Colors.g};
+    background-color: ${Colors.s};
     margin: 1rem;
     flex: 1 0 22%;
 

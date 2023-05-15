@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
 import { Body } from "../Common/Layout";
 
-
-export default function Service() {
+export default function SignUp() {
 
     const resultRef = useRef<HTMLDivElement>(null);
 
@@ -16,7 +15,7 @@ export default function Service() {
   return (
     <Body>
         <div ref={resultRef}>
-            <p>유기견을 입양하세요, 유입(You, if) 서비스 소개</p>
+            <p>회원가입</p>
         </div>
     </Body>
   );

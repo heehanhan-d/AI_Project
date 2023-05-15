@@ -3,24 +3,27 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { Colors } from "./Colors";
 import LogoImg from "../../Img/Logo.png";
+import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH } from "./Path";
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <Div>
-            <Header>
-                <Link to="/">
-                    <Logo src={LogoImg} alt={ YouIf } />
-                </Link>
-            </Header>
-            <Nav>
-                <NavLink to="/about">About</NavLink>
-                <NavLink to="/search">Ai Search</NavLink>
-                <NavLink to="/list">Underdogs</NavLink>
-            </Nav>
-            <Body>
-                {children}
-            </Body>
+        <div>
+            <Wrapper>
+                <Header>
+                    <Link to={MAIN_PATH}>
+                        <Logo src={LogoImg} alt={ YouIf } />
+                    </Link>
+                </Header>
+                <Nav>
+                    <NavLink to={ABOUT_PATH}>About</NavLink>
+                    <NavLink to={SEARCH_PATH}>Ai Search</NavLink>
+                    <NavLink to={LIST_PATH}>Underdogs</NavLink>
+                </Nav>
+                <Body>
+                    {children}
+                </Body>
+            </Wrapper>
             <Footer>
                 <div>
                     <Slogan>
@@ -31,7 +34,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </Copyright>
                 </div>
             </Footer>
-        </Div>
+        </div>
     );
 };
 
@@ -41,11 +44,13 @@ const Logo = styled.img`
     height: auto;
 `
 
-const Div = styled.div`
+const Wrapper = styled.div`
     display: absolute;
     align-items: center;
     justify-content: center;
-    width: 119.8rem;
+    width: 100%;
+    min-width: 1000px;
+    padding-bottom: 120px;
 `
 
 const Header = styled.div`
@@ -55,8 +60,9 @@ const Header = styled.div`
     justify-content: center;
     top: 0;
     left: 0;
-    width: 119.8rem;
-    height: 7.5rem;
+    width: 100%;
+    min-width: 1000px;
+    height: 120px;
     background-color: ${Colors.main};
     z-index: 10;
 `;
@@ -69,12 +75,13 @@ const Nav = styled.div`
     grid-template-columns: 10rem 10rem 10rem;
     align-items: center;
     justify-content: center;
-    top: 7.5rem;
+    margin-top: 120px;
     left: 0;
-    width: 119.8rem;
-    height: 4rem;
+    width: 100%;
+    min-width: 1000px;
+    height: 50px;
     font-family: "Logo";
-    font-size: 1.25rem;
+    font-size: 20px;
     text-decoration: none;
     text-align: center;
     background-color: ${Colors.sub};
@@ -114,8 +121,9 @@ const Footer = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 119.8rem;
-    height: 7.5rem;
+    width: 100%;
+    min-width: 1000px;
+    height: 120px;
     bottom: 0;
     left: 0;
     flex-basis: auto;
