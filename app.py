@@ -5,9 +5,10 @@ from io import BytesIO
 from services import createmaindata
 from services import extractbreeds
 from flask_cors import CORS
+
 app = Flask(__name__)
 
-// cors 방지
+# cors 방지
 CORS(app)
 
 @app.route("/") # 파이썬 기본 서버 포트 5000

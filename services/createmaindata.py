@@ -1,10 +1,12 @@
-
+from dotenv import load_dotenv
+# .env 파일 로드하기
+load_dotenv()
 
 # 동물 데이터 받아오기
 def createMainData():
     # 서울 공공데이터 포털(data.seoul.go.kr)에서 받은 인증키를 입력
-    mykey = 'yeA3GSFe5sPrnMfhn94nOLFNAzL4DlXwXSGwOxT5nHCgv257mFZ8ijf5BUFuuMEcjSXjal5hmo/tnXRXyGk6SA=='
-    url = 'http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic'
+    mykey = os.getenv("API_KEY")
+    url = os.getenv("API_URL")
     today = datetime.date.today()
     beginDay = (today - datetime.timedelta(days=365)).strftime('%Y%m%d')
     endDay = today.strftime('%Y%m%d')
