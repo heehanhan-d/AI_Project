@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
-import { Body } from "../common/layout";
-import { colors } from "../common/colors";
+import { Body } from "../Common/Layout";
+import { Colors } from "../Common/Colors";
 
 
-export default function ServiceComponent() {
+export default function Service() {
 
     const resultRef = useRef<HTMLDivElement>(null);
 

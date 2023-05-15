@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Body } from '../Components/common/layout';
-import FileUploadComponent from "../Components/AiSearch/FileUploadComponent";
-import AiResultComponent from "../Components/AiSearch/AiResultComponent";
+import { Body } from '../Components/Common/Layout';
+import FileUploadComponent from "../Components/AiSearch/FileUpload";
+import AiResultComponent from "../Components/AiSearch/AiResult";
 
 
 

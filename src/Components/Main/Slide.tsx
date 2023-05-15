@@ -6,27 +6,30 @@ import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { colors } from "../common/colors";
+import { Colors } from "../Common/Colors";
 import Underdog from "../../Img/Underdog.png";
-import { Dog } from '../common/interface';
+import { Dog } from '../Common/Interface';
+// import { fetchImageUrls } from '../../Api/FetchImageUrl';
+import { LIST_PATH } from '../Common/Path';
 
 
-export default function SwiperComponent() {
+export default function Slide() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);
 
   useEffect(() => {
+
+    const fetchImageUrls = async () => {
+      const response = await fetch('http://localhost:3001/underdogs');
+      const data = await response.json();
+      return data;
+    };
+
     fetchImageUrls().then(data => setUnderdogs(data.data));
   }, []);
 
-  const fetchImageUrls = async () => {
-    const response = await fetch('http://localhost:3001/underdogs');
-    const data = await response.json();
-    return data;
-  };
-
   return (
     <SwiperSlider>
-      <UnderdogImageLink to="/list">
+      <UnderdogImageLink to={LIST_PATH}>
         <UnderdogImage src={Underdog} />
       </UnderdogImageLink>
       <CustomSwiper
@@ -56,14 +59,14 @@ export default function SwiperComponent() {
    display: flex;
    align-items: center;
    justify-content: center;
-   border: 15px solid ${colors.main};
+   border: 15px solid ${Colors.main};
    position: relative;
    width: 90%;
    height: 400px;
    top: 720px;
    bottom: 800px;
    margin-bottom: 160px;
-   background-color: ${colors.sub};
+   background-color: ${Colors.sub};
    `;
 
 
@@ -74,7 +77,7 @@ const CustomSwiper = styled(Swiper)`
   left: 300px;
   margin-left: 30px;
   padding: 0 20px 0 20px;
-  background-color: ${colors.sub};
+  background-color: ${Colors.sub};
   text-align: center;
   // z-index: 10;
 
@@ -83,8 +86,8 @@ const CustomSwiper = styled(Swiper)`
     transform: translateY(-50%);
     width: 15px;
     height: 15px;
-    background-color: ${colors.w};
-    color: ${colors.main};
+    background-color: ${Colors.w};
+    color: ${Colors.main};
     padding: 15px 15px;
     border-radius: 50px;
     text-align: center;
@@ -114,7 +117,7 @@ const CustomerSwiperSlide = styled(SwiperSlide)`
   img{
     width: 280px;
     height: 280px;
-    border: 10px solid ${colors.w};
+    border: 10px solid ${Colors.w};
   }
 `
 

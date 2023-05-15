@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import { colors } from "./colors";
+import { Colors } from "./Colors";
 import LogoImg from "../../Img/Logo.png";
 
 
@@ -57,7 +57,7 @@ const Header = styled.div`
     left: 0;
     width: 119.8rem;
     height: 7.5rem;
-    background-color: ${colors.main};
+    background-color: ${Colors.main};
     z-index: 10;
 `;
 
@@ -77,20 +77,20 @@ const Nav = styled.div`
     font-size: 1.25rem;
     text-decoration: none;
     text-align: center;
-    background-color: ${colors.sub};
-    color: ${colors.b};
+    background-color: ${Colors.sub};
+    color: ${Colors.b};
     z-index: 10;
 `
 
 const NavLink = styled(Link)`
-    color: ${colors.b};
+    color: ${Colors.b};
     font-size: 20px;
     text-decoration: none;
 `
 
 export const Body = styled.div`
-    background-color: ${colors.w};
-    color: ${colors.b};
+    background-color: ${Colors.w};
+    color: ${Colors.b};
     position: absolute;
     display: flex;
     align-items: center;
@@ -107,8 +107,8 @@ export const Body = styled.div`
 `;
 
 const Footer = styled.div`
-    background-color: ${colors.footer};
-    color: ${colors.b};
+    background-color: ${Colors.footer};
+    color: ${Colors.b};
     position: fixed;
     display: flex;
     align-items: center;
@@ -124,14 +124,14 @@ const Footer = styled.div`
 `;
 
 const Slogan = styled.div`
-    color: ${colors.w};
+    color: ${Colors.w};
     font-family: "Logo";
     font-size: 15pt;    
 `
 const YouIf = "유기견을 입양해요, 유입(You, if)";
 
 const Copyright = styled.div`
-    color: ${colors.b};
+    color: ${Colors.b};
     font-family: "Text";
     margin-top: 10px;
 `

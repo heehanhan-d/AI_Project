@@ -37,12 +37,19 @@ export interface DogApiResponse {
     data: Dog[];
 }
 
+
+
+export interface DogListProps {
+    dogList: Dog[];
+};
+  
+
 export interface ResponseData {
     data: string[];
     message: string;
 }
 
-export interface AiResultComponentProps {
+export interface AiResultProps {
     items: string[];
     responseData: string[];
 }

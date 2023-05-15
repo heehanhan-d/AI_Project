@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Banner from "../../Img/Banner.png";
-import { Body } from "../common/layout";
-import { colors } from "../common/colors";
+import BannerImg from "../../Img/Banner.png";
+import { Body } from "../Common/Layout";
+import { Colors } from "../Common/Colors";
+import { SEARCH_PATH } from '../Common/Path';
 
 
-export default function BannerComponent() {
+export default function Banner() {
 
   const resultRef = useRef<HTMLImageElement>(null);
 
@@ -18,8 +19,8 @@ export default function BannerComponent() {
   
   return (
     <Body>
-      <BannerImage ref={resultRef} src={Banner} alt="배너" />
-      <Link to="/search" style={{ textDecoration: "none", color: "inherit" }}>
+      <BannerImage ref={resultRef} src={BannerImg} alt="배너" />
+      <Link to={SEARCH_PATH} style={{ textDecoration: "none", color: "inherit" }}>
         <AIButton>
               AI로 나에게 어울리는 UNDERDOG 찾기
         </AIButton>
@@ -32,7 +33,7 @@ export default function BannerComponent() {
 const BannerImage = styled.img`
   display: flex;
   justify-content: center;
-  border: 15px solid ${colors.main};
+  border: 15px solid ${Colors.main};
   position: relative;
   width: 90%;
   margin-top: 160px;
@@ -47,9 +48,9 @@ const AIButton = styled.button`
   justify-content: center;
   font-family: "Logo";
   font-size: 20px;
-  color: ${colors.w};
-  background-color: ${colors.main};
-  border: solid ${colors.main};
+  color: ${Colors.w};
+  background-color: ${Colors.main};
+  border: solid ${Colors.main};
   border-radius: 30px;
   margin: 75px auto;
   top: 1165px;

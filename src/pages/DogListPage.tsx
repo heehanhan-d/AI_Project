@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { colors } from '../Components/common/colors';
+import { Colors } from '../Components/Common/Colors';
 import { FetchDogList } from '../Api/FetchDogList';
-import { Dog } from '../Components/common/interface';
-import DogList from '../Components/common/dogList';
-import { DogApiResponse } from '../Components/common/interface';
+import { Dog } from '../Components/Common/Interface';
+import DogList from '../Components/Common/DogList';
+import { DogApiResponse } from '../Components/Common/Interface';
 
 
 export const DogListPage = () => {
@@ -94,7 +94,7 @@ const ListCircle = styled.div`
     width: 22rem;
     height: 22rem;
     border-radius: 50%;
-    background-color: ${colors.g};
+    background-color: ${Colors.g};
     margin: 1rem;
     flex: 1 0 22%;
 

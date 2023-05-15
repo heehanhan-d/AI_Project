@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
-import { Body } from "../common/layout";
-import { colors } from "../common/colors";
+import { Body } from "../Common/Layout";
+import { Colors } from "../Common/Colors";
 import Underdog from "../../Img/Underdog.png";
 import { ButtonHTMLAttributes } from "react";
-import { ResponseData } from '../common/interface';
-import AiResultComponent from './AiResultComponent';
+import { ResponseData } from '../Common/Interface';
+import AiResult from './AiResult';
 
-export default function FileUploadComponent() {
+export default function FileUpload() {
     
     const [filename, setFilename] = useState("");
     const [showModal, setShowModal] = useState(false);
@@ -95,7 +95,7 @@ export default function FileUploadComponent() {
                         </ModalContent>
                     </Modal>
                 )}
-                <AiResultComponent responseData={responseData} items={[]} />
+                <AiResult responseData={responseData} items={[]} />
             </Body>
         );
     }
@@ -113,7 +113,7 @@ export default function FileUploadComponent() {
     const DragDiv = styled.div`
         width: 40%;
         height: 480px;
-        border: 5px dashed ${colors.main};
+        border: 5px dashed ${Colors.main};
         margin-top: 220px;
 `;
 
@@ -127,7 +127,7 @@ export default function FileUploadComponent() {
         margin: -60px 0 0 10px;
         font-size: 32px;
         font-weight: bold;
-        color: ${colors.main};
+        color: ${Colors.main};
 `;
 
     const UploadButton = styled.label`
@@ -136,8 +136,8 @@ export default function FileUploadComponent() {
         align-items: center;
         font-family: "Logo";
         font-size: 20px;
-        color: ${colors.w};
-        background-color: ${colors.footer};
+        color: ${Colors.w};
+        background-color: ${Colors.footer};
         margin: 40px 275px 0 275px;
         padding: 10px 50px;
         border-radius: 300px;
@@ -163,8 +163,8 @@ export default function FileUploadComponent() {
     const Button = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
         margin-top: 10px;
         padding: 8px 16px;
-        background-color: ${colors.main};
-        color: ${colors.w};
+        background-color: ${Colors.main};
+        color: ${Colors.w};
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -178,10 +178,10 @@ export default function FileUploadComponent() {
         align-items: center;
         position: relative;
         padding: 10px 50px;
-        border: 1px solid ${colors.main};
+        border: 1px solid ${Colors.main};
         border-radius: 300px;
-        background-color: ${colors.main};
-        color: ${colors.w};
+        background-color: ${Colors.main};
+        color: ${Colors.w};
         font-family: "Logo";
         font-size: 20px;
         top: -115px;
@@ -197,12 +197,12 @@ export default function FileUploadComponent() {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: ${Colors.w};
         font-family: "Text";
 `;
 
     const ModalContent = styled.div`
-        background-color: ${colors.w};
+        background-color: ${Colors.w};
         padding: 20px;
         border-radius: 5px;
 `;

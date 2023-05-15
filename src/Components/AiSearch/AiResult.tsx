@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from "styled-components";
-import { colors } from "../common/colors";
-import { Body } from '../common/layout';
-import { AiResultComponentProps } from '../common/interface';
+import { Colors } from "../Common/Colors";
+import { Body } from '../Common/Layout';
+import { AiResultProps } from '../Common/Interface';
 
 
-export default function AiResultComponent({ responseData }: AiResultComponentProps) {
+export default function AiResult({ responseData }: AiResultProps) {
     const resultRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function AiResultComponent({ responseData }: AiResultComponentPro
     );
 }
 
-const ResultComponent = styled(AiResultComponent)`
+const ResultComponent = styled(AiResult)`
     display: none;
 `
 

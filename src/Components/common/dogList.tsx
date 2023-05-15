@@ -1,15 +1,12 @@
 import React from 'react';
-import { Dog } from '../common/interface';
+import { Dog } from '../Common/Interface';
+import { DogListProps } from '../Common/Interface';
 
-type Props = {
-  dogList: Dog[];
-};
-
-const DogList: React.FC<Props> = ({ dogList }) => {
+const DogList: React.FC<DogListProps> = ({ dogList }) => {
   return (
     <div>
       {dogList.map((dog, index) => (
-        <div key={String(dog.id) || String(index)} >
+        <div key={dog.id || String(index)} >
           <h2>{dog.breeds}</h2>
         </div>
       ))}
