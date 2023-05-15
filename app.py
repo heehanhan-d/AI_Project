@@ -2,19 +2,21 @@ from flask import Flask, jsonify, request
 import requests
 from PIL import Image
 from io import BytesIO
-import createmaindata
-import team07_MobileNet
+from services import createmaindata
+from services import extractbreeds
 from flask_cors import CORS
 app = Flask(__name__)
 
+// cors 방지
 CORS(app)
+
 @app.route("/") # 파이썬 기본 서버 포트 5000
 def test():
     return jsonify("server open")
 
 @app.route("/createMaindata", methods = ['GET','POST'])
 def create_mainData():
-    createmaindata.createMainData()
+    createmainData().createMainData()
     return "server generating maindata"
 
 # 사용자가 이미지 검색하는 용도
@@ -25,7 +27,7 @@ def extract_breeds(who):
     elif request.method == 'POST':
         if who == "user":
             input_img = request.files['file']
-            extractedBreeds = team07_MobileNet.extract(input_img)
+            extractedBreeds = extractbreeds.extract(input_img)
             return jsonify({
                 "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
                 "data": extractedBreeds

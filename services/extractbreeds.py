@@ -1,22 +1,26 @@
+import os
+current_dir = os.getcwd()
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
-import os
 import json
 import numpy as np
-import enum_breeds
+from constants import breeds
 from PIL import Image
 
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
+breedsKr = breeds.breedsKr
+
 def extract(input_image):
     if input_image == None:
         return "there's no image"
 
-    ## 인풋 이미지가 이미지 그자체인지, (사용자 입력)
-    ## 이미지 링크인지 확인 후  분기하여 링크면 불러와야함. (메인 데이터 전처리용)
-
+    ### 모델 로드
     # Define device
     device = torch.device("cpu")
 
@@ -37,14 +41,12 @@ def extract(input_image):
         transforms.ToTensor(),
     ])
 
-    # 모델 로드 (pt or ckpt)
+    # 모델파일 입력 (pt or ckpt)
+    pt_path = os.path.join(current_dir, 'aimodels/mobilenet_64_0.01_20.pt')
+    # ckpt_path = os.path.join(current_dir, 'aimodels/mobilenet_32_0.001_30.ckpt')
 
-    ## 로컬패쓰 -> 배포주소 패쓰로 변경
-    ckpt_path = '/Users/jeongjong10/Desktop/Computer Science.nosync/Alice_AI_note/project/7team/pythonServer/mobilenet_32_0.001_30.ckpt'
-    pt_path = '/Users/jeongjong10/Desktop/Computer Science.nosync/Alice_AI_note/project/7team/pythonServer/mobilenet_64_0.01_20.pt'
-
-    # model = torch.load(pt_path,map_location=torch.device('cpu'))
-    model.load_state_dict(torch.load(ckpt_path, map_location=torch.device('cpu')))
+    model = torch.load(pt_path,map_location=torch.device('cpu'))
+    # model.load_state_dict(torch.load(ckpt_path, map_location=torch.device('cpu')))
 
     # 이미지 불러오기 및 전처리 (수정)
     image = Image.open(input_image)
@@ -60,5 +62,5 @@ def extract(input_image):
         score = np.array(tensor_score)[0]
 
         # 인덱스 넘버 품종명으로 변환
-        breeds = list(map(lambda idx: enum_breeds.breeds[idx], breeds_idx))
+        breeds = list(map(lambda idx: breedsKr[idx], breeds_idx))
         return breeds
