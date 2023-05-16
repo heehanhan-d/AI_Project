@@ -9,30 +9,26 @@ import "swiper/css/autoplay";
 import { Colors } from "../Common/Colors";
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
+import { fetchImageUrls } from '../../Api/FetchImageUrl';
+import { LIST_PATH } from '../Common/Path';
 
 
-export default function SwiperComponent() {
+export default function Slider() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);
 
   useEffect(() => {
     fetchImageUrls().then(data => setUnderdogs(data.data));
   }, []);
 
-  const fetchImageUrls = async () => {
-    const response = await fetch('http://localhost:3001/underdogs');
-    const data = await response.json();
-    return data;
-  };
-
   return (
     <SwiperSlider>
-      <UnderdogImageLink to="/list">
+      <UnderdogImageLink to={LIST_PATH}>
         <UnderdogImage src={Underdog} />
       </UnderdogImageLink>
       <CustomSwiper
         modules={[Navigation, Autoplay]}
         slidesPerView={3}
-        spaceBetween={10}
+        spaceBetween={-45}
         navigation
         autoplay={{
           delay: 5000,
@@ -46,7 +42,7 @@ export default function SwiperComponent() {
           <CustomerSwiperSlide key={index}>
             <img src={dog.img_url} alt={`Slide ${index}`} />
           </CustomerSwiperSlide>
-          ))}
+        ))}
       </CustomSwiper>
     </SwiperSlider>
   );
@@ -71,31 +67,31 @@ const CustomSwiper = styled(Swiper)`
   width: 70%;
   height: 300px;
   position: absolute;
-  left: 160px;
+  left: 360px;
   margin-left: 30px;
   padding: 0 20px 0 20px;
-  background-color: ${Colors.w};
+  background-color: ${Colors.sub};
   text-align: center;
-  z-index: 10;
+  // z-index: 10;
 
 
   .swiper-button-prev, .swiper-button-next {
     transform: translateY(-50%);
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     background-color: ${Colors.main};
     color: ${Colors.w};
     padding: 15px 15px;
     border-radius: 50px;
     text-align: center;
-    margin-top: 5px;
+    margin: 5px -10px 0 -10px;
     position: absolute;
     top: 50%;
   }
 
   .swiper-button-prev::after {
     content: "←";
-    left: 2px;
+    left: -10px;
     font-family: "Logo";
     font-size: 30px;
     font-weight: 700;
@@ -103,7 +99,7 @@ const CustomSwiper = styled(Swiper)`
 
   .swiper-button-next::after {
     content: "→";
-    left: 2px;
+    right: -10px;
     font-family: "Logo";
     font-size: 30px;
     font-weight: 700;
@@ -115,6 +111,7 @@ const CustomerSwiperSlide = styled(SwiperSlide)`
     width: 280px;
     height: 280px;
     border: 10px solid ${Colors.w};
+    margin: 0 30px 0 30px;
   }
 `
 
@@ -128,8 +125,8 @@ const UnderdogImage = styled.img`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 48px;
-  left: 0rem;
+  top: 40px;
+  left: 10px;
   width: 20%;
   height: auto;
   z-index: 10;
