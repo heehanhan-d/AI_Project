@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ButtonHTMLAttributes } from 'react';
 import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
 import { Body } from "../Common/Layout";
-import { Colors, Button, FindUnderdog } from "../Common/Styles";
+import { Colors, Button, FindUnderdog, AiServer } from "../Common/Styles";
 import Underdog from "../../Img/Underdog.png";
 import { ResponseData } from '../Common/Interface';
 import AiResult from './AiResult';
@@ -35,14 +35,14 @@ export default function FileUpload() {
             setShowModal(false);
 
             // 파일 업로드
-            const formData = new FormData();
+            const fileData = new FormData();
             const fileInput = document.querySelector('input[type=file]') as HTMLInputElement | null;
             if (fileInput && fileInput.files && fileInput.files[0]) {
-                formData.append('file', fileInput.files[0]);
+                fileData.append('file', fileInput.files[0]);
 
                 try {
                     //파일을 AI 서버로 전송하는 POST 요청
-                    const response = await axios.post<ResponseData>('http://127.0.0.1:5000/breedsAI/user', formData, {
+                    const response = await axios.post<ResponseData>(`${AiServer}`, fileData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -192,6 +192,7 @@ const Modal = styled.div`
     height: 100%;
     background-color: ${Colors.w};
     font-family: "Text";
+    font-size: 20px;
 `;
 
 const ModalContent = styled.div`
@@ -200,20 +201,17 @@ const ModalContent = styled.div`
     border-radius: 5px;
 `;
 
+
 const ModalButton = styled(Button)`
     margin-top: 10px;
-    padding: 10px 18px;
+    padding: 12px 24px;
     background-color: ${Colors.main};
     color: ${Colors.w};
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Logo';
+    font-family: "Logo";
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
 `;
-
-
-    const Div = styled.div`
-        margin-bottom: 40px;
-        width: 80%;
-        height: 500px;
-    `
