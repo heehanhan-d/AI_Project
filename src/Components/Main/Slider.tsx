@@ -6,7 +6,7 @@ import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { Colors } from "../Common/Colors";
+import { Colors } from '../Common/Styles';
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
 // import { fetchImageUrls } from '../../Api/FetchImageUrl';
@@ -37,7 +37,7 @@ export default function Slide() {
       <CustomSwiper
         modules={[Navigation, Autoplay]}
         slidesPerView={3}
-        spaceBetween={10}
+        spaceBetween={-60}
         navigation
         autoplay={{
           delay: 5000,
@@ -65,7 +65,7 @@ export default function Slide() {
    position: relative;
    width: 90%;
    height: 400px;
-   top: 800px;
+   top: 750px;
    bottom: 800px;
    margin-bottom: 160px;
    background-color: ${Colors.sub};

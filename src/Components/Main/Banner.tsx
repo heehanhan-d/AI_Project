@@ -4,7 +4,7 @@ import '../Common/Font.css';
 import { Link } from "react-router-dom";
 import BannerImg from "../../Img/Banner.png";
 import { Body } from "../Common/Layout";
-import { Colors } from "../Common/Colors";
+import { Colors } from '../Common/Styles';
 import { SEARCH_PATH } from '../Common/Path';
 
 

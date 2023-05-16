@@ -2,18 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
 import { Body } from "../Common/Layout";
-import { Colors } from "../Common/Colors";
+import { Colors, Button, FindUnderdog } from "../Common/Styles";
 import Underdog from "../../Img/Underdog.png";
-import { ButtonHTMLAttributes } from "react";
 import { ResponseData } from '../Common/Interface';
 import AiResult from './AiResult';
 
 export default function FileUpload() {
     
     // 파일 업로드
-    const [filename, setFilename] = useState("");
+    const [filename, setFilename] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [modalMessage, setModalMessage] = useState("");
+    const [modalMessage, setModalMessage] = useState('');
     const [responseData, setResponseData] = useState<string[]>([]);
     
     const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +21,7 @@ export default function FileUpload() {
             console.log(file);
             setFilename(file.name);
         } else {
-            console.log("파일이 선택되지 않았습니다.");
+            console.log('파일이 선택되지 않았습니다.');
         }
     };
 
@@ -32,12 +31,12 @@ export default function FileUpload() {
 
     const handleSearch = async () => {
         if (filename) {
-            setModalMessage("");
+            setModalMessage('');
             setShowModal(false);
 
             // 파일 업로드
             const formData = new FormData();
-            const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement | null;
+            const fileInput = document.querySelector('input[type=file]') as HTMLInputElement | null;
             if (fileInput && fileInput.files && fileInput.files[0]) {
                 formData.append('file', fileInput.files[0]);
 
@@ -63,30 +62,29 @@ export default function FileUpload() {
                     console.error(error.response?.data || error.message);
                 }
             } else {
-                console.log("파일을 찾을수 없습니다.");
+                console.log('파일을 찾을수 없습니다.');
             }
         } else {
-            setModalMessage("파일을 먼저 선택해주세요!");
+            setModalMessage('파일을 먼저 선택해주세요!');
             setShowModal(true);
         }
     };
 
     
     // 자동 화면 스크롤링
-    const responseRef = useRef<HTMLDivElement>(null);
     const resultRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (responseRef.current) {
-            responseRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (resultRef.current) {
+            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, []);
+    }, [responseData]);
 
     return (
-        <Body ref={responseRef}>
+        <Body>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
-                <TextDiv>{Text}</TextDiv>
+                <TextDiv>{FindUnderdog}</TextDiv>
                 <UploadButton>사진 추가하기
                     <input
                         type="file"
@@ -96,22 +94,21 @@ export default function FileUpload() {
                 </UploadButton>
                 {filename && <p>파일명: {filename}</p>}
             </DragDiv>
-            <AISearchDiv>
                 <SearchButton onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
-            </AISearchDiv>
+                <div ref={resultRef}></div>
+                <AiResult responseData={responseData} items={[]} />
             {showModal && (
                 <Modal>
                     <ModalContent>
                         <h3>{modalMessage}</h3>
-                        <Button onClick={closeModal}>닫기</Button>
+                        <ModalButton onClick={closeModal}>닫기</ModalButton>
                     </ModalContent>
                 </Modal>
             )}
-            <AiResult responseData={responseData} items={[]} />
-        </Body>
-)};
+    </Body>
+)}
 
-    const UnderdogImage = styled.img`
+const UnderdogImage = styled.img`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,104 +117,100 @@ export default function FileUpload() {
     left: 30px;
 `;
 
-    const DragDiv = styled.div`
-        width: 40%;
-        height: 480px;
-        border: 5px dashed ${Colors.main};
-        margin-top: 150px;
-        margin-bottom: 150px;
+const DragDiv = styled.div`
+    width: 40%;
+    height: 480px;
+    border: 5px dashed ${Colors.main};
+    margin-bottom: 250px;
 `;
 
-    const Text = `PLEASE FIND MY UNDERDOG`
-
-    const TextDiv = styled.div`
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        margin: -60px 0 0 10px;
-        font-size: 32px;
-        font-weight: bold;
-        color: ${Colors.main};
+const TextDiv = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: -60px 0 0 10px;
+    font-size: 32px;
+    font-weight: bold;
+    color: ${Colors.main};
 `;
 
-    const UploadButton = styled.label`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Logo";
-        font-size: 20px;
-        color: ${Colors.w};
-        background-color: ${Colors.footer};
-        margin: 40px 275px 0 275px;
-        padding: 10px 50px;
-        border-radius: 300px;
-        cursor: pointer;
-        word-break: keep-all;
+const UploadButton = styled.label`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Logo";
+    font-size: 20px;
+    color: ${Colors.w};
+    background-color: ${Colors.footer};
+    margin: 40px 275px 0 275px;
+    padding: 10px 50px;
+    border-radius: 300px;
+    top: 120px;
+    cursor: pointer;
+    word-break: keep-all;
 
-        input {
-            display: none;
-        }
+    input {
+        display: none;
+    }
 `;
 
-    const AISearchDiv = styled.div`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        position: relative;
-        float: none;
-        margin: 0 auto;
-        top: 80px;
-`;
+//     const AISearchDiv = styled.div`
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         flex-direction: column;
+//         position: relative;
+//         float: none;
+//         margin: 0 auto;
+// `;
 
-    const Button = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
-        margin-top: 10px;
-        padding: 8px 16px;
-        background-color: ${Colors.main};
-        color: ${Colors.w};
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-family: "Logo";
-`;
-
-
-    const SearchButton = styled(Button)`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        padding: 10px 50px;
-        border: 1px solid ${Colors.main};
-        border-radius: 300px;
-        background-color: ${Colors.main};
-        color: ${Colors.w};
-        margin-bottom: 150px;
-        font-family: "Logo";
-        font-size: 20px;
-        top: -270px;
-        cursor: pointer;
+const SearchButton = styled(Button)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px 50px;
+    border: 1px solid ${Colors.main};
+    border-radius: 300px;
+    background-color: ${Colors.main};
+    color: ${Colors.w};
+    font-family: "Logo";
+    font-size: 20px;
+    top: -280px;
+    cursor: pointer;
 `;
     
-    const Modal = styled.div`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        margin-bottom: 270px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: ${Colors.w};
-        font-family: "Text";
+const Modal = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-bottom: 270px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${Colors.w};
+    font-family: "Text";
 `;
 
-    const ModalContent = styled.div`
-        background-color: ${Colors.w};
-        padding: 20px;
-        border-radius: 5px;
+const ModalContent = styled.div`
+    background-color: ${Colors.w};
+    padding: 20px;
+    border-radius: 5px;
 `;
+
+const ModalButton = styled(Button)`
+    margin-top: 10px;
+    padding: 10px 18px;
+    background-color: ${Colors.main};
+    color: ${Colors.w};
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Logo';
+`;
+
 
     const Div = styled.div`
         margin-bottom: 40px;

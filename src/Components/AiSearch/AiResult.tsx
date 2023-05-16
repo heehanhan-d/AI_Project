@@ -1,15 +1,25 @@
 import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
-import { Colors } from "../Common/Colors";
+import { Colors } from '../Common/Styles';
 import { AiResultProps } from '../Common/Interface';
 
 
 export default function AiResult({ responseData }: AiResultProps) {
+
+    const responseRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (responseRef.current) {
+            responseRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+    }, []);
+
+
     return (
-    <div>
+    <div ref={responseRef}>
         {responseData.map((item, index) => (
             <p key={index}>{item}</p>
-        ))}    
+        ))}   
     </div>
     );
 }
