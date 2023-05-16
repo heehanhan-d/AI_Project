@@ -5,40 +5,25 @@ import { AiResultProps } from '../Common/Interface';
 
 
 export default function AiResult({ responseData }: AiResultProps) {
-    const resultRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (resultRef.current) {
-            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        }
-    }, []);
-
     return (
     <div>
-        <div ref={resultRef}>
-            {responseData.map((item, index) => (
-                <p key={index}>{item}</p>
-            ))}
-        </div>
+        {responseData.map((item, index) => (
+            <p key={index}>{item}</p>
+        ))}    
     </div>
     );
 }
 
-const ResultComponent = styled(AiResult)`
-    display: none;
-`
-
-
     // const SearchResultDiv = styled.div`
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     border: 1px dashed ${colors.g};
-    //     position: relative;
-    //     width: 80%;
-    //     top: 400px;
-    //     background-color: ${colors.w};
-    // `;
+    //      display: flex;
+    //      align-items: center;
+    //      justify-content: center;
+    //      border: 1px dashed ${colors.g};
+    //      position: relative;
+    //      width: 80%;
+    //      top: 400px;
+    //      background-color: ${colors.w};
+    //  `;
 
 // const AIResultDiv = styled.div`
 //     display: flex;

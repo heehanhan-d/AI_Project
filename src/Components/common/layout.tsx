@@ -107,7 +107,8 @@ export const Body = styled.div`
     width: 119.8rem;
     height: 120rem;
     padding: 0 2.5rem;
-    padding-bottom: 7.5rem; 
+    padding-bottom: 7.5rem;
+    margin-top: 80px; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

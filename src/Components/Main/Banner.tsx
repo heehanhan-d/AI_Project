@@ -37,8 +37,9 @@ const BannerImage = styled.img`
   border: 15px solid ${Colors.main};
   position: relative;
   width: 90%;
-  margin-top: 160px;
   left: 5px;
+  top: -160px;
+  // margin-bottom: 250px;
   z-index: 10;
 `;
 
@@ -53,7 +54,7 @@ const AIButton = styled.button`
   background-color: ${Colors.main};
   border: solid ${Colors.main};
   border-radius: 30px;
-  margin-top: -35px;
+  margin-top: -200px;
   padding: 10px 50px;
   left: 1010px;
   transform: translateX(-50%);

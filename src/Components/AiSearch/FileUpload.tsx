@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
 import styled from "styled-components";
 import { Body } from "../Common/Layout";
@@ -10,6 +10,7 @@ import AiResult from './AiResult';
 
 export default function FileUpload() {
     
+    // 파일 업로드
     const [filename, setFilename] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState("");
@@ -38,40 +39,51 @@ export default function FileUpload() {
             const formData = new FormData();
             const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement | null;
             if (fileInput && fileInput.files && fileInput.files[0]) {
-            formData.append('file', fileInput.files[0]);
+                formData.append('file', fileInput.files[0]);
 
-            try {
-                //파일을 AI 서버로 전송하는 POST 요청
-                const response = await axios.post<ResponseData>('http://127.0.0.1:5000/breedsAI/user', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                });
+                try {
+                    //파일을 AI 서버로 전송하는 POST 요청
+                    const response = await axios.post<ResponseData>('http://127.0.0.1:5000/breedsAI/user', formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
 
-                // 응답 처리
-                console.log(response.data);
-                const responseData = response.data.data;
-                responseData.map((item: string) => {
-                    console.log(item);
-                });
-                setResponseData(responseData);
+                    // 응답 처리
+                    console.log(response.data);
+                    const responseData = response.data.data;
+                    responseData.map((item: string) => {
+                        console.log(item);
+                    });
+                    setResponseData(responseData);
 
-            } catch (e) {
-                // 오류 처리
-                const error = e as AxiosError;
-                console.error(error.response?.data || error.message);
+                } catch (e) {
+                    // 오류 처리
+                    const error = e as AxiosError;
+                    console.error(error.response?.data || error.message);
+                }
+            } else {
+                console.log("파일을 찾을수 없습니다.");
             }
-        } else {
-            console.log("파일을 찾을수 없습니다.");
-        }
         } else {
             setModalMessage("파일을 먼저 선택해주세요!");
             setShowModal(true);
         }
     };
 
+    
+    // 자동 화면 스크롤링
+    const responseRef = useRef<HTMLDivElement>(null);
+    const resultRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (responseRef.current) {
+            responseRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, []);
+
     return (
-        <Body>
+        <Body ref={responseRef}>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
                 <TextDiv>{Text}</TextDiv>
@@ -97,9 +109,7 @@ export default function FileUpload() {
             )}
             <AiResult responseData={responseData} items={[]} />
         </Body>
-    );
-}
-  
+)};
 
     const UnderdogImage = styled.img`
     display: flex;
@@ -114,7 +124,8 @@ export default function FileUpload() {
         width: 40%;
         height: 480px;
         border: 5px dashed ${Colors.main};
-        margin-top: 220px;
+        margin-top: 150px;
+        margin-bottom: 150px;
 `;
 
     const Text = `PLEASE FIND MY UNDERDOG`
@@ -182,9 +193,10 @@ export default function FileUpload() {
         border-radius: 300px;
         background-color: ${Colors.main};
         color: ${Colors.w};
+        margin-bottom: 150px;
         font-family: "Logo";
         font-size: 20px;
-        top: -115px;
+        top: -270px;
         cursor: pointer;
 `;
     
@@ -193,7 +205,7 @@ export default function FileUpload() {
         justify-content: center;
         align-items: center;
         position: fixed;
-        top: 0;
+        margin-bottom: 270px;
         left: 0;
         width: 100%;
         height: 100%;
@@ -207,3 +219,8 @@ export default function FileUpload() {
         border-radius: 5px;
 `;
 
+    const Div = styled.div`
+        margin-bottom: 40px;
+        width: 80%;
+        height: 500px;
+    `
