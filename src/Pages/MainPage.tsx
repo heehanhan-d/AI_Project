@@ -1,7 +1,7 @@
 import React from 'react';
-import { Body } from "../Components/Common/Layout";
-import BannerComponent from "../Components/Main/Banner";
-import SliderComponent from "../Components/Main/Slider";
+import { Body } from '../Components/Common/Layout';
+import BannerComponent from '../Components/Main/BannerComponent';
+import SliderComponent from '../Components/Main/SliderComponent';
 
 export const MainPage = () => {
     return (

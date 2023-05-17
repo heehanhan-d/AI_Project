@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Colors } from "./Colors";
-import LogoImg from "../../Img/Logo.png";
-import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH } from "./Path";
+import { Colors, LinkStyle } from './Styles';
+import LogoImg from '../../Img/Logo.png';
+import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH } from './Path';
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -16,9 +16,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </Link>
                 </Header>
                 <Nav>
-                    <NavLink to={ABOUT_PATH}>About</NavLink>
-                    <NavLink to={SEARCH_PATH}>Ai Search</NavLink>
-                    <NavLink to={LIST_PATH}>Underdogs</NavLink>
+                    <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
+                    <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
+                    <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
                 </Nav>
                 <Body>
                     {children}

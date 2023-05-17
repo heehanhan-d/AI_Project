@@ -1,7 +1,9 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
+// ColorStyle
 export const Colors = {
     w: "#ffffff",
     b: "#000000",
@@ -11,9 +13,17 @@ export const Colors = {
     sub: "#FEE59F",
     footer: "#94B5EA"
 };    
-    
+ 
+// ButtonStyle
 export const Button = styled.button<ButtonHTMLAttributes<HTMLButtonElement>>`
-    display: none;
+    display: flex;
 `;
 
+// FindText
 export const FindUnderdog = `PLEASE FIND MY UNDERDOG`
+
+// LinkStyle
+export const LinkStyle = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`

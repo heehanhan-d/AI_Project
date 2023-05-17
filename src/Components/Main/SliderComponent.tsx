@@ -6,7 +6,7 @@ import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import { Colors } from '../Common/Styles';
+import { Colors, LinkStyle } from '../Common/Styles';
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
 // import { fetchImageUrls } from '../../Api/FetchImageUrl';
@@ -31,9 +31,9 @@ export default function Slide() {
 
   return (
     <SwiperSlider>
-      <UnderdogImageLink to={LIST_PATH}>
+      <LinkStyle to={LIST_PATH}>
         <UnderdogImage src={Underdog} />
-      </UnderdogImageLink>
+      </LinkStyle>
       <CustomSwiper
         modules={[Navigation, Autoplay]}
         slidesPerView={3}
@@ -121,11 +121,6 @@ const CustomerSwiperSlide = styled(SwiperSlide)`
     height: 280px;
     border: 10px solid ${Colors.w};
   }
-`
-
-const UnderdogImageLink = styled(Link)`
-  text-decoraton: none;
-  color: inherit;
 `
 
 const UnderdogImage = styled.img`

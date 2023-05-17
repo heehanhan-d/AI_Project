@@ -4,28 +4,23 @@ import '../Common/Font.css';
 import { Link } from "react-router-dom";
 import BannerImg from "../../Img/Banner.png";
 import { Body } from "../Common/Layout";
-import { Colors } from '../Common/Styles';
+import { Colors, Button, LinkStyle } from '../Common/Styles';
 import { SEARCH_PATH } from '../Common/Path';
+import { ScrollRef } from '../Common/ScrollRef';
 
 
 export default function Banner() {
-
-  const resultRef = useRef<HTMLImageElement>(null);
-
-    useEffect(() => {
-        if (resultRef.current) {
-            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        }
-    }, []);
   
   return (
     <Body>
-      <BannerImage ref={resultRef} src={BannerImg} alt="배너" />
-      <Link to={SEARCH_PATH} style={{ textDecoration: "none", color: "inherit" }}>
+      <ScrollRef>
+        <BannerImage src={BannerImg} alt="배너" />
+      </ScrollRef>
+      <LinkStyle to={SEARCH_PATH} style={{ textDecoration: "none", color: "inherit" }}>
         <AIButton>
               AI로 나에게 어울리는 UNDERDOG 찾기
         </AIButton>
-      </Link>  
+      </LinkStyle>  
     </Body>
   );
 }
@@ -37,13 +32,13 @@ const BannerImage = styled.img`
   border: 15px solid ${Colors.main};
   position: relative;
   width: 90%;
-  left: 5px;
   top: -160px;
+  margin-left: 85px;
   // margin-bottom: 250px;
   z-index: 10;
 `;
 
-const AIButton = styled.button`
+const AIButton = styled(Button)`
   position: absolute;
   display: flex;
   align-items: center;

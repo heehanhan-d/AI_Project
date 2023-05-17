@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef, ButtonHTMLAttributes } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
-import styled from "styled-components";
-import { Body } from "../Common/Layout";
-import { Colors, Button, FindUnderdog, AiServer } from "../Common/Styles";
-import Underdog from "../../Img/Underdog.png";
+import styled from 'styled-components';
+import { Body } from '../Common/Layout';
+import { Colors, Button, FindUnderdog } from '../Common/Styles';
+import { AiServer } from '../Common/Path';
+import Underdog from '../../Img/Underdog.png';
 import { ResponseData } from '../Common/Interface';
-import AiResult from './AiResult';
+import { ScrollRef } from '../Common/ScrollRef';
+import AiResult from '../../Components/AiSearch/AiResultComponent';
 
 export default function FileUpload() {
     
@@ -69,14 +71,18 @@ export default function FileUpload() {
             setShowModal(true);
         }
     };
-
     
-    // 자동 화면 스크롤링
-    const resultRef = useRef<HTMLDivElement>(null);
-
+    // 하단 스크롤링
+    const ref = useRef<HTMLDivElement>(null);
+    
     useEffect(() => {
-        if (resultRef.current) {
-            resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (ref.current) {
+            ref.current.scrollIntoView(
+                {
+                    behavior: 'smooth',
+                    block: 'start'
+                }
+            );
         }
     }, [responseData]);
 
@@ -94,8 +100,7 @@ export default function FileUpload() {
                 </UploadButton>
                 {filename && <p>파일명: {filename}</p>}
             </DragDiv>
-                <SearchButton onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
-                <div ref={resultRef}></div>
+                <SearchButton ref={ref} onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
                 <AiResult responseData={responseData} items={[]} />
             {showModal && (
                 <Modal>
@@ -149,7 +154,6 @@ const UploadButton = styled.label`
     top: 120px;
     cursor: pointer;
     word-break: keep-all;
-
     input {
         display: none;
     }

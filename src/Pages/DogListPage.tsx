@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { Colors } from '../Components/Common/Colors';
+import { Colors } from '../Components/Common/Styles';
 import { FetchDogList } from '../Api/FetchDogList';
 import { Dog } from '../Components/Common/Interface';
-import DogList from '../Components/DogList/DogList';
+import DogList from '../Components/DogList/DogListComponent';
 import { DogApiResponse } from '../Components/Common/Interface';
 import { Body } from '../Components/Common/Layout';
 

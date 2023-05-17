@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 
 export interface Dog {
     id: string, // 유기번호(desertionNo)
@@ -38,7 +39,7 @@ export interface DogApiResponse {
 
 export interface DogListProps {
     dogList: Dog[];
-};
+}
   
 export interface ResponseData {
     data: string[];
@@ -54,10 +55,15 @@ export interface Dropdownprops {
     options: string[];
     selectedItem: string;
     onSelect: (selectedItem: string) => void;
-};
+}
 
 // swiper
 export interface SliderProps {
     dogList: string[];
     slidesPerView: number;
+}
+
+// Scrolling
+export interface ScrollRefProps {
+    children: React.ReactNode;
 }
