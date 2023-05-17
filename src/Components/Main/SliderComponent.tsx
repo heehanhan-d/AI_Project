@@ -19,7 +19,7 @@ export default function Slide() {
   useEffect(() => {
 
     const fetchImageUrls = async () => {
-      const response = await fetch('http://localhost:3001/underdogs?limit=10&skip=0');
+      const response = await fetch('http://localhost:3001/underdogs?limit=20&skip=20');
       const data = await response.json();
       return data;
     };
@@ -43,7 +43,6 @@ export default function Slide() {
           delay: 5000,
           disableOnInteraction: false
         }}
-        // loop={true}
         onSwiper={(Swiper) => console.log(Swiper)}
         onSlideChange={(Swiper) => console.log('slide change')}
       >
@@ -65,7 +64,7 @@ export default function Slide() {
    position: relative;
    width: 90%;
    height: 400px;
-   top: 750px;
+   top: 800px;
    bottom: 800px;
    margin-bottom: 160px;
    background-color: ${Colors.sub};

@@ -51,11 +51,11 @@ export interface AiResultProps {
     responseData: string[];
 }
 
-export interface Dropdownprops {
-    options: string[];
-    selectedItem: string;
-    onSelect: (selectedItem: string) => void;
-}
+// export interface Dropdownprops {
+//     options: string[];
+//     selectedItem: string;
+//     onSelect: (selectedItem: string) => void;
+// }
 
 // swiper
 export interface SliderProps {

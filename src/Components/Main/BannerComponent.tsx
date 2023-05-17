@@ -6,7 +6,7 @@ import BannerImg from "../../Img/Banner.png";
 import { Body } from "../Common/Layout";
 import { Colors, Button, LinkStyle } from '../Common/Styles';
 import { SEARCH_PATH } from '../Common/Path';
-import { ScrollRef } from '../Common/ScrollRef';
+import { ScrollRef } from '../Common/Ref';
 
 
 export default function Banner() {

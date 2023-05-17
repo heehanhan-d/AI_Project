@@ -1,13 +1,13 @@
 import React from 'react';
 import { Body } from '../Components/Common/Layout';
-import BannerComponent from '../Components/Main/BannerComponent';
-import SliderComponent from '../Components/Main/SliderComponent';
+import Banner from '../Components/Main/BannerComponent';
+import Slide from '../Components/Main/SliderComponent';
 
 export const MainPage = () => {
     return (
         <Body>
-            <BannerComponent />
-            <SliderComponent />
+            <Banner />
+            <Slide />
         </Body>
     );
 };

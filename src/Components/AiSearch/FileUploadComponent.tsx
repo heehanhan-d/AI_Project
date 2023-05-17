@@ -6,7 +6,7 @@ import { Colors, Button, FindUnderdog } from '../Common/Styles';
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
 import { ResponseData } from '../Common/Interface';
-import { ScrollRef } from '../Common/ScrollRef';
+import { ScrollRef } from '../Common/Ref';
 import AiResult from '../../Components/AiSearch/AiResultComponent';
 
 export default function FileUpload() {
@@ -100,8 +100,12 @@ export default function FileUpload() {
                 </UploadButton>
                 {filename && <p>파일명: {filename}</p>}
             </DragDiv>
-                <SearchButton ref={ref} onClick={handleSearch}>AI로 UNDERDOG 검색하기</SearchButton>
+            <SearchButton onClick={handleSearch}>
+                AI로 UNDERDOG 검색하기
+            </SearchButton>
+            <ResultDiv ref={ref}>
                 <AiResult responseData={responseData} items={[]} />
+            </ResultDiv>
             {showModal && (
                 <Modal>
                     <ModalContent>
@@ -159,15 +163,15 @@ const UploadButton = styled.label`
     }
 `;
 
-//     const AISearchDiv = styled.div`
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         flex-direction: column;
-//         position: relative;
-//         float: none;
-//         margin: 0 auto;
-// `;
+    const ResultDiv = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        margin: 0 auto;
+        top: 100px;
+`;
 
 const SearchButton = styled(Button)`
     display: flex;
@@ -201,7 +205,7 @@ const Modal = styled.div`
 
 const ModalContent = styled.div`
     background-color: ${Colors.w};
-    padding: 20px;
+    padding-bottom: 20px;
     border-radius: 5px;
 `;
 
