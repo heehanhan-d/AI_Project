@@ -4,10 +4,12 @@ import { Colors, Button } from '../../Components/Common/Styles';
 import { Body } from '../../Components/Common/Layout';
 import { ScrollRef, ResultRef } from '../../Components//Common/Ref';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
-import AdoptCheckImg from '../../Img/AdoptCheck.png';
+import CheckListImg from '../../Img/CheckList.png';
 
 export function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
+    const [shownCheckList, setShownCheckList] = useState(false);
+    const [shownVisitCenter, setShownVisitCenter] = useState(false);
 
     const handleAdoptButtonClick = () => {
         setShownAdoptInfo(true);
@@ -32,16 +34,60 @@ export function Adopt() {
                 </AdoptGuide>
             );
         }
-        // return null;
-        return (
-            <AdoptCheck>
-                <img src={AdoptCheckImg} alt="입양 전 주의사항을 확인해보세요." />
-            </AdoptCheck>
-        )
+        return null;
     };
 
+    const handleCheckButtonClick = () => {
+        setShownCheckList(true);
+    };
+    
+    const renderCheckButton = () => {
+        if (!shownCheckList) {
+            return (
+                <CheckButton onClick={handleCheckButtonClick}>
+                    입양 전 체크리스트 확인하기
+                </CheckButton>
+            );
+        }
+        return null;
+    };
+
+    const renderCheckList = () => {
+        if (shownAdoptInfo) {
+            return (
+                <CheckList>
+                    <img src={CheckListImg} alt="입양 전 주의사항을 확인해보세요." />
+                </CheckList>
+            );
+        }
+        return null;
+    }
+
+    const handleVisitCenterButtonClick = () => {
+        setShownVisitCenter(true);
+    };
+
+    const renderVisitCenterButton = () => {
+        if (!shownVisitCenter) {
+            return (
+                <VisitButton onClick={handleVisitCenterButtonClick}>
+                    보호소 방문 예약하기
+                </VisitButton>
+            );
+        }
+        return null;
+    };
+
+    const renderReservation = () => {
+        return (
+            <Reservation>
+                <p>예약 신청 폼</p>
+            </Reservation>
+        )
+    }
+
     return (
-        <Body>  
+        <Body>
             <ScrollRef>
                 <DogDetailDiv>
                     언더독 정보
@@ -50,21 +96,29 @@ export function Adopt() {
             </ScrollRef>
             {shownAdoptInfo &&
                 <ResultRef>
-                    {renderAdoptInfo()}   
+                    {renderAdoptInfo()}
+                    {renderCheckButton()}
                 </ResultRef>}
-       </Body>
-    );
+            {shownCheckList &&
+                <ResultRef>
+                    {renderCheckList()}
+                    {renderVisitCenterButton()}
+                </ResultRef>}
+            {shownVisitCenter &&
+                <ResultRef>
+                    {renderReservation()}
+                </ResultRef>}
+        </Body>
+    )
 }
 
-
-const DogDetailDiv = styled.div`
+    const DogDetailDiv = styled.div`
     display: flex;
     width: 80%;
     height: 500px;
 `
 
-const AdoptButton = styled(Button)`
-    // display: ${props => (props.hidden ? 'none' : 'block')};
+    const AdoptButton = styled(Button)`
     justify-content: center;
     align-items: center;
     position: relative;
@@ -79,24 +133,69 @@ const AdoptButton = styled(Button)`
     cursor: pointer;
 `;
 
-const AdoptGuide = styled.div`
+    const AdoptGuide = styled.div`
     display: flex;
     justify-content: center;
     align-item: center;
     position: relative;
-    width: 90%;
-    height: 550px;
+    width: 80%;
+    height: 500px;
     top: 205px;
-    border: 1px solid ${Colors.b};
     left: 80px;
 `
 
-const AdoptCheck = styled.div`
+    const CheckButton = styled(Button)`
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 10px 50px;
+    border: 1px solid ${Colors.footer};
+    border-radius: 300px;
+    background-color: ${Colors.footer};
+    color: ${Colors.w};
+    font-family: "Logo";
+    font-size: 20px;
+    left: 800px;
+    bottom: 325px;
+    cursor: pointer;
+`;
+
+const CheckList = styled.div`
     display: flex;
     justify-content: center;
     align-item: center;
     position: relative;
-    width: 70%;
-    top: 410px;
-    margin: 0 auto;
+    width: 80%;
+    height: 500px;
+    margin-top: 200px;
+    left: 200px;
+`
+
+const VisitButton = styled(Button)`
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 10px 50px;
+    border: 1px solid ${Colors.main};
+    border-radius: 300px;
+    background-color: ${Colors.main};
+    color: ${Colors.w};
+    font-family: "Logo";
+    font-size: 20px;
+    left: 850px;
+    margin-top: 15px;
+    cursor: pointer;
+`;
+
+const Reservation = styled.div`
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    color: ${Colors.w};
+    background-color: ${Colors.b};
+    margin-top: 200px;
+    margin-bottom: 200px;
+    top: 30px;
 `

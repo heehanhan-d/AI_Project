@@ -9,17 +9,17 @@ import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH } from './Path';
 export const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
+            <Header>
+                <Link to={MAIN_PATH}>
+                    <Logo src={LogoImg} alt={ YouIf } />
+                </Link>
+            </Header>
+            <Nav>
+                <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
+                <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
+                <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
+            </Nav>
             <Wrapper>
-                <Header>
-                    <Link to={MAIN_PATH}>
-                        <Logo src={LogoImg} alt={ YouIf } />
-                    </Link>
-                </Header>
-                <Nav>
-                    <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
-                    <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
-                    <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
-                </Nav>
                 <Body>
                     {children}
                 </Body>
