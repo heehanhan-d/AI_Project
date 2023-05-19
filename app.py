@@ -34,25 +34,25 @@ def extract_breeds(who):
                 "data": extractedBreeds
             })
         elif who == "admin":
-            try:
-                img_url = request.get_json()['img_url']
-                response = requests.get(img_url)
-                img_bytes = BytesIO(response.content)
-                extractedBreeds = extractbreeds.extract(img_bytes)
-                print('extractedBreeds : ', extractedBreeds)
-                return jsonify({
-                    "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
-                    "data": list(extractedBreeds)
-                })
-            except Exception as error:
-                return handle_error(error)
+            # try:
+            img_url = request.get_json()['img_url']
+            response = requests.get(img_url)
+            img_bytes = BytesIO(response.content)
+            extractedBreeds = extractbreeds.extract(img_bytes)
+            print('extractedBreeds : ', extractedBreeds)
+            return jsonify({
+                "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
+                "data": list(extractedBreeds)
+            })
+            # except Exception as error:
+            #     return handle_error(error)
 
-@app.errorhandler(Exception)
-def handle_error(error):
-    return jsonify({
-        "message": "품종 추출에 실패하였습니다.",
-        "data": []
-    })
+# @app.errorhandler(Exception)
+# def handle_error(error):
+#     return jsonify({
+#         "message": "품종 추출에 실패하였습니다.",
+#         "data": []
+#     })
 
 if __name__ == "__main__":
     app.run()
