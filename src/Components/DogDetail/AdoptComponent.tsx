@@ -7,7 +7,7 @@ import CheckListImg from '../../Img/CheckList.png';
 import ReservationForm from './ReservationFormComponent';
 import { DogProfile } from "./DogProfile";
 
-export function Adopt() {
+export default function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
     const [shownCheckList, setShownCheckList] = useState(false);
     const [shownVisitCenter, setShownVisitCenter] = useState(false);

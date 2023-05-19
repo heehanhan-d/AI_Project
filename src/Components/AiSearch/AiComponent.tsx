@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useParams } from "react-router-dom";
 import axios, { AxiosError } from 'axios';
 import Select from 'react-select';
 import styled from 'styled-components';
 import { Body } from '../Common/Layout';
 import { Colors, Button, FindUnderdog } from '../Common/Styles';
+import { FetchDog } from "../../Api/FetchDog";
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
-import { ResponseData } from '../Common/Interface';
+import { Dog, ResponseData } from '../Common/Interface';
 import { ScrollRef, ResultRef } from '../Common/Ref';
 import { BackServer } from '../Common/Path';
 
@@ -113,6 +115,33 @@ export default function Ai() {
           console.log('error:', error);
         });
     }
+        
+        const { id } = useParams<{ id: string }>();
+        const [dog, setDog] = useState<Dog | null>(null);
+        
+    useEffect(() => {
+        const handleFetchDog = async () => {
+          try {
+            if (id){ 
+              const response = await FetchDog(id);
+              if (response) {
+                setDog(response.data)
+                console.log(response.data);
+              } else {
+                throw new Error('데이터 패치에 실패했습니다.');
+              } 
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+      
+        // API 호출 함수 실행
+        handleFetchDog();
+      }, [id]);
+
+
+
 
 };
     return (
@@ -142,6 +171,12 @@ export default function Ai() {
                     placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
                     />
             </ResultDiv>
+
+            {/* {dog && (
+                <ListCircle>
+                    <div><img src={dog.img_url} alt="Dog" /></div>
+                </ListCircle>
+            )} */}
             {showModal && (
                 <Modal>
                     <ModalContent>
@@ -266,3 +301,17 @@ const ModalButton = styled(Button)`
     margin-left: auto;
     margin-right: auto;
 `;
+
+const ListCircle = styled.div`
+    display: flex;
+    justify-content: center;
+    align-item: center;
+    margin-top: 55px;
+    img {
+        width:350px;
+        height:350px;
+        border-radius: 50%;
+        border: 15px solid ${Colors.sub};
+        margin-top: 20px;
+    }
+`

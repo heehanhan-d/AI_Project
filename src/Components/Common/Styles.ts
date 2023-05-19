@@ -9,6 +9,7 @@ export const Colors = {
     b: "#000000",
     s: "#c0c0c0",
     c: "#dc143c",
+    p: '#FFABAB',
     main: "#FED159",
     sub: "#FEE59F",
     footer: "#94B5EA"

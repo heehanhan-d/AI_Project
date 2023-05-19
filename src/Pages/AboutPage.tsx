@@ -4,6 +4,7 @@ import { Colors } from '../Components/Common/Styles';
 import UnderdogGraph from '../Components/Data/UnderdogGraph';
 import DisposalRate from '../Components/Data/DisposalRate';
 import AdoptRate from '../Components/Data/AdoptRate';
+import AboutLogo from '../Img/AboutLogo.png';
 
 export const AboutPage = () => (
       <ScrollSnapWrap>
@@ -16,17 +17,17 @@ export const AboutPage = () => (
           </AboutDiv>
         </SlideDiv>
         <SlideDiv>
-          you, if you love under dog <br />
-          사랑이 필요한 언더독, 당신의 마음에 유입하세요
+          <LoveText>you, if you love underdog</LoveText>
+          <SecondText>사랑이 필요한 언더독, 당신의 마음에 유입하세요</SecondText>
         </SlideDiv>
         <SlideDiv>
-            YOU IF는
+      <AboutDiv>What Is<Logo src={ AboutLogo } />?</AboutDiv>
             유실 및 유기되어 보호소에서 보호중인 강아지 중 <br />
             `비품종견(underdog)`과 입양 희망자를 연결하여 <br />
             underdog 입양을 활성화하기 위한 서비스입니다.
         </SlideDiv>
         <SlideDiv>
-          YOUIF는 왜 필요한가요?
+        <Logo src={ AboutLogo } />는 왜 필요한가요?
         </SlideDiv>
         <SlideDiv>
           <UnderdogGraph />
@@ -45,14 +46,14 @@ export const AboutPage = () => (
           YOUIF는 유기견 문제의 해결을 위해 소외되는 비품종견의 입양을 활성화 시키고자 합니다.
         </SlideDiv>
         <SlideDiv>
-          YOUIF는 인공지능을 활용하여 비품종견 유사 품종을 추출하여
+          인공지능을 활용하여 비품종견 유사 품종을 추출하여
           입양 희망자가 이미지 검색을 기반으로 비품종견을 추천받을 수 있습니다
         </SlideDiv>
         <SlideDiv>
           생김새와 성질을 특정하기 어려운 비품종견.
           그렇기 때문에 더욱 매력적인 underdog이 아닐까요?
           품종, 비품종 상관없이 소외받는 반려견이 없도록,
-          보호자와 반려견의 행복한 동행을 꿈꿉니다.
+          <LoveText>보호자와 반려견의 행복한 동행을 꿈꿉니다.</LoveText>
         </SlideDiv>
       </ScrollSnapWrap>
 );
@@ -62,6 +63,7 @@ const AboutDiv = styled.div`
   font-family: 'Logo';
   font-size: 40pt;
   color: ${Colors.main};
+  justify-content: center;
 `;
 
 const fadeIn = keyframes`
@@ -90,15 +92,32 @@ const ScrollSnapWrap = styled.div`
 const SlideDiv = styled.div`
   scroll-snap-align: center;
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 305px);
   justify-content: center;
   align-items: center;
   text-align: center;
-  border: solid;
   font-family: 'Ui';
 `
 
 const YouIFa = styled.a`
   color: ${Colors.footer}
+`
+
+const LoveText = styled.p`
+  font-size: 40pt;
+  color: #FFABAB;
+  margin-bottom: 10px;
+  font-family: 'Logo';
+`;
+
+const SecondText = styled.p`
+  font-size: 20pt;
+  color: ${Colors.footer};
+`;
+
+const Logo = styled.img`
+    width: auto;
+    height: 55px;
 `
