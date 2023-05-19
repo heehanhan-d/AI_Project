@@ -21,7 +21,7 @@ export interface Dog {
         date_start: Date, // 공고시작일(noticeSdt) (YYYYMMDD)
         date_end: Date, // 공고종료일(noticeEdt) (YYYYMMDD)
     }
-    carecenter?: {
+    careCenter?: {
         name?: string, // 보호소 이름(careNm)
         phone: string, // 보호소 전화번호(careTel)
         address: string, // 보호소 주소(careAddr)

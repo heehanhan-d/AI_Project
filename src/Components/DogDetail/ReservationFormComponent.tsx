@@ -43,7 +43,7 @@ export default function ReservationForm() {
         <Modal>
             <ResultRef>
             <ModalContent>
-              <h2>보호소 방문 신청이 완료되었습니다!</h2>
+                <h1>보호소 방문 신청이 완료되었습니다!</h1><br />
               <p>보호소 방문 예약 확정 후 안내드리겠습니다.</p>
               <ModalButton onClick={closeModal}>닫기</ModalButton>
             </ModalContent>
@@ -59,9 +59,8 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Text";
+  font-family: 'Logo';
   font-size: 20px;
-  font-weight: bold;
 `;
 
 const FormGroup = styled.div`
@@ -78,6 +77,8 @@ const Input = styled.input<{ type: string, id: string, required: boolean}>`
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-family: 'Text';
+  font-size: 20px;
 `;
 
 const Button = styled.button<any>`

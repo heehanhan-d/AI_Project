@@ -1,12 +1,16 @@
-import React from "react";
+import React from 'react';
+import styled from 'styled-components';
 import { Body } from '../Components/Common/Layout';
-import { Adopt } from '../Components/DogDetail/AdoptComponent';
+import AdminComponent from '../Components/Admin/Admin';
+import { DogProfile } from '../Components/DogDetail/DogPropfile';
+import { Adopt } from '../Components/DogDetail/AdoptComponent'
 
 export const DogDetailPage = () => {
-    
-    return (
-        <Body>
-            <Adopt />            
-        </Body>        
+    return(
+    <Body>
+        <DogProfile />
+        <Adopt />
+    </Body>
     );
-}
+};
+

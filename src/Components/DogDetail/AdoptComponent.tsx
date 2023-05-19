@@ -195,7 +195,6 @@ const Reservation = styled.div`
     width: 100%;
     color: ${Colors.b};
     background-color: ${Colors.w};
-    top: -30px;
     margin-top: 100px;
     margin-bottom: 150px;
     border: 10px solid ${Colors.sub};

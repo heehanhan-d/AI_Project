@@ -16,6 +16,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             </Header>
             <Nav>
                 <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
+
                 <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
                 <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
             </Nav>

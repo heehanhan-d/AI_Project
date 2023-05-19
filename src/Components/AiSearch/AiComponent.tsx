@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
+import Select from 'react-select';
 import styled from 'styled-components';
 import { Body } from '../Common/Layout';
 import { Colors, Button, FindUnderdog } from '../Common/Styles';
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
 import { ResponseData } from '../Common/Interface';
-import { ScrollRef } from '../Common/Ref';
-import AiResult from './AiResultComponent';
+import { ScrollRef, ResultRef } from '../Common/Ref';
+import { BackServer } from '../Common/Path';
 
-export default function FileUpload() {
+export default function Ai() {
     
     // 파일 업로드
     const [filename, setFilename] = useState('');
@@ -86,8 +87,37 @@ export default function FileUpload() {
         }
     }, [responseData]);
 
+    
+  const options = responseData.map((item) => ({
+    value: item,
+    label: item
+  }));
+
+
+    const [selectedOption, setSelectedOption] = useState(null);
+    
+    const handleOptionChange = (option: any) => {
+        setSelectedOption(option);
+    
+        setSelectedOption(option);
+
+    if (option) {
+      axios
+        .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+        .then((response) => {
+          console.log('response:', response);
+          console.log('response.data:', response.data);
+          // setDogData(response.data);
+        })
+        .catch((error) => {
+          console.log('error:', error);
+        });
+    }
+
+};
     return (
         <Body>
+            <ScrollRef>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
                 <TextDiv>{FindUnderdog}</TextDiv>
@@ -102,9 +132,15 @@ export default function FileUpload() {
             </DragDiv>
             <SearchButton onClick={handleSearch}>
                 AI로 UNDERDOG 검색하기
-            </SearchButton>
-            <ResultDiv ref={ref}>
-                <AiResult responseData={responseData} items={[]} />
+                </SearchButton>
+            </ScrollRef>
+            <ResultDiv>
+                <Select
+                    options={options}
+                    value={selectedOption}
+                    onChange={handleOptionChange}
+                    placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
+                    />
             </ResultDiv>
             {showModal && (
                 <Modal>
