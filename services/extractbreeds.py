@@ -28,11 +28,11 @@ def extract(input_image):
     num_classes = 120 # 품종 갯수 (분류할 클래스의 갯수)
 
     # Load pre-trained MobileNet model
-    model = torch.hub.load('pytorch/vision:v0.9.0', 'mobilenet_v2', weights=True)
+    model = torch.hub.load('pytorch/vision:v0.9.0', 'resnet50', weights=True)
 
     # Replace the last fully-connected layer with a new one to fit our classification task
-    num_ftrs = model.classifier[-1].in_features 
-    model.classifier[-1] = nn.Linear(num_ftrs, num_classes)
+    num_ftrs = model.fc.in_features
+    model.fc = nn.Linear(num_ftrs, num_classes)
     model = model.to(device)
 
     # 이미지 전처리 방식
@@ -42,11 +42,9 @@ def extract(input_image):
     ])
 
     # 모델파일 입력 (pt or ckpt)
-    pt_path = os.path.join(current_dir, 'aimodels/mobilenet_64_0.01_20.pt')
-    # ckpt_path = os.path.join(current_dir, 'aimodels/mobilenet_32_0.001_30.ckpt')
+    pt_path = os.path.join(current_dir, 'aimodels/Cmatrix_ague_wandb_resnet50_64_0.001_30.pt')
 
     model = torch.load(pt_path,map_location=torch.device('cpu'))
-    # model.load_state_dict(torch.load(ckpt_path, map_location=torch.device('cpu')))
 
     # 이미지 불러오기 및 전처리 (수정)
     image = Image.open(input_image)
