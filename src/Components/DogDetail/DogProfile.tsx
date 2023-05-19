@@ -1,11 +1,11 @@
  
 import React, { useState, useEffect } from "react";
 import { FetchDog } from "../../Api/FetchDog";
-import { Dog } from '../../Components/Common/Interface';
+import { Dog } from '../Common/Interface';
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { Colors } from "../../Components/Common/Styles";
-import { ScrollRef } from "../../Components/Common/Ref";
+import { Colors } from "../Common/Styles";
+import { ScrollRef } from "../Common/Ref";
 
 export const DogProfile = () => {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
@@ -82,15 +82,13 @@ const ListCircle = styled.div`
     display: flex;
     justify-content: center;
     align-item: center;
-    h2 {
-        text-decoration: none;
-        color: ${Colors.footer};
-    }
+    margin-top: 55px;
     img {
-        width:450px;
-        height:450px;
+        width:350px;
+        height:350px;
         border-radius: 50%;
-        border: 20px solid ${Colors.sub};
+        border: 15px solid ${Colors.sub};
+        margin-top: 20px;
     }
 `
 
@@ -113,7 +111,7 @@ const Td = styled.td`
     text-align: left;
     border: ${Colors.sub} dashed 2px;
     border-radius: 15px;
-    padding: 15px;
+    padding: 20px;
     font-family: 'Text';
     font-size: 20px;
     width: 1200px;

@@ -5,7 +5,7 @@ import { ScrollRef, CenterRef, ResultRef } from '../../Components//Common/Ref';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
 import ReservationForm from './ReservationFormComponent';
-import { DogProfile } from "./DogPropfile";
+import { DogProfile } from "./DogProfile";
 
 export function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
@@ -24,7 +24,9 @@ export function Adopt() {
                 </AdoptButton>
             );
         }
-        return null;
+        return (
+            <IngButton>입양 신청중</IngButton>
+        )
     };
 
     const renderAdoptInfo = () => {
@@ -76,7 +78,7 @@ export function Adopt() {
                 </VisitButton>
             );
         }
-        return null;
+        // return null;
     };
 
     const renderReservation = () => {
@@ -94,82 +96,95 @@ export function Adopt() {
                 {renderAdoptButton()}
             </ScrollRef>
             {shownAdoptInfo &&
-                <ResultRef>
+                <CenterRef>
                     {renderAdoptInfo()}
                     {renderCheckButton()}
-                </ResultRef>}
+                </CenterRef>}
             {shownCheckList &&
-                <ResultRef>
+                <CenterRef>
                     {renderCheckList()}
                     {renderVisitCenterButton()}
-                </ResultRef>}
+                </CenterRef>}
             {shownVisitCenter &&
-                <ResultRef>
+                <CenterRef>
                     {renderReservation()}
-                </ResultRef>}
+                </CenterRef>}
         </>
     )
 }
 
-    const DogDetailDiv = styled.div`
-    display: flex;
-    width: 80%;
-    height: 500px;
-`
-
     const AdoptButton = styled(Button)`
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 10px 50px;
-    border: 1px solid ${Colors.main};
-    border-radius: 300px;
-    background-color: ${Colors.main};
-    color: ${Colors.w};
-    font-family: "Logo";
-    font-size: 20px;
-    top: -150px;
-    cursor: pointer;
-    z-index: 10px;
-`;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 10px 50px;
+        border: 1px solid ${Colors.main};
+        border-radius: 300px;
+        background-color: ${Colors.main};
+        color: ${Colors.w};
+        font-family: "Logo";
+        font-size: 20px;
+        top: -70px;
+        margin-left: 350px;
+        cursor: pointer;
+        z-index: 10px;
+    `;
 
+    const IngButton = styled(Button)`
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 10px 50px;
+        border: 3px dashed ${Colors.main};
+        border-radius: 300px;
+        background-color: ${Colors.w};
+        color: ${Colors.b};
+        font-family: "Logo";
+        font-size: 20px;
+        top: -70px;
+        margin-left: 350px;
+        cursor: pointer;
+        z-index: 10px;
+        `;
+    
     const AdoptGuide = styled.div`
-    display: flex;
-    justify-content: center;
-    align-item: center;
-    position: relative;
-    width: 80%;
-    height: 500px;
-    top: 205px;
-    left: 80px;
-`
+        display: flex;
+        justify-content: center;
+        align-item: center;
+        position: relative;
+        width: 80%;
+        height: 600px;
+        top: -80px;
+        margin: 150px auto 180px auto;
+    `
 
     const CheckButton = styled(Button)`
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    padding: 10px 50px;
-    border: 1px solid ${Colors.footer};
-    border-radius: 300px;
-    background-color: ${Colors.footer};
-    color: ${Colors.w};
-    font-family: "Logo";
-    font-size: 20px;
-    left: 800px;
-    bottom: 325px;
-    cursor: pointer;
-`;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 10px 50px;
+        border: 1px solid ${Colors.footer};
+        border-radius: 300px;
+        background-color: ${Colors.footer};
+        color: ${Colors.w};
+        font-family: "Logo";
+        font-size: 20px;
+        top: -250px;
+        margin: 0 auto;
+        bottom: 325px;
+        cursor: pointer;
+    `;
 
 const CheckList = styled.div`
-    display: flex;
-    justify-content: center;
-    align-item: center;
-    position: relative;
-    width: 80%;
-    height: 500px;
-    margin-top: 200px;
-    left: 200px;
-`
+        display: flex;
+        justify-content: center;
+        align-item: center;
+        position: relative;
+        width: 80%;
+        height: 600px;
+        margin: 0 auto 200px auto;
+        top: -50px;
+    `   
 
 const VisitButton = styled(Button)`
     justify-content: center;
@@ -182,9 +197,10 @@ const VisitButton = styled(Button)`
     color: ${Colors.w};
     font-family: "Logo";
     font-size: 20px;
-    left: 850px;
-    margin-top: 15px;
+    left: 40%;
+    top: 2100px;
     cursor: pointer;
+    z-index: 10px;
 `;
 
 const Reservation = styled.div`
@@ -194,8 +210,6 @@ const Reservation = styled.div`
     width: 100%;
     color: ${Colors.b};
     background-color: ${Colors.w};
-    margin-top: 100px;
-    margin-bottom: 150px;
     border: 10px solid ${Colors.sub};
     border-radius: 30px;
     padding: 30px;

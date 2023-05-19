@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, Modal, ModalContent, ModalButton } from '../Common/Styles';
-import { ResultRef } from '../Common/Ref';
+import { CenterRef, ResultRef } from '../Common/Ref';
 
 export default function ReservationForm() {
     
@@ -41,13 +41,13 @@ export default function ReservationForm() {
             </form>
         {isModalOpen && (
         <Modal>
-            <ResultRef>
+            <CenterRef>
             <ModalContent>
                 <h1>보호소 방문 신청이 완료되었습니다!</h1><br />
               <p>보호소 방문 예약 확정 후 안내드리겠습니다.</p>
               <ModalButton onClick={closeModal}>닫기</ModalButton>
             </ModalContent>
-              </ResultRef>
+              </CenterRef>
         </Modal>
       )}
       </FormContainer>
@@ -61,6 +61,7 @@ const FormContainer = styled.div`
   align-items: center;
   font-family: 'Logo';
   font-size: 20px;
+  margin-bottom: 100px;
 `;
 
 const FormGroup = styled.div`
