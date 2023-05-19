@@ -15,6 +15,14 @@
 pip install -r requirements.txt
 ```
 
+-   AI 모델 로드
+
+```
+git lfs pull
+or
+tar -zxvf ai
+```
+
 -   프로젝트 실행
 
 ```
