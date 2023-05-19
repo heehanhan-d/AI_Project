@@ -116,7 +116,7 @@ export default function Ai() {
 
 };
     return (
-        <Body>
+        <>
             <ScrollRef>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
@@ -150,7 +150,7 @@ export default function Ai() {
                     </ModalContent>
                 </Modal>
             )}
-    </Body>
+    </>
 )}
 
 const UnderdogImage = styled.img`
@@ -166,7 +166,10 @@ const DragDiv = styled.div`
     width: 40%;
     height: 480px;
     border: 5px dashed ${Colors.main};
-    margin-bottom: 250px;
+    left: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 65px auto;
 `;
 
 const TextDiv = styled.div`
@@ -188,7 +191,9 @@ const UploadButton = styled.label`
     font-size: 20px;
     color: ${Colors.w};
     background-color: ${Colors.footer};
-    margin: 40px 275px 0 275px;
+    margin: 40px 270px 0 270px;
+    // margin-left: auto;
+    // margin-right: auto;
     padding: 10px 50px;
     border-radius: 300px;
     top: 120px;
@@ -221,8 +226,10 @@ const SearchButton = styled(Button)`
     color: ${Colors.w};
     font-family: "Logo";
     font-size: 20px;
-    top: -280px;
+    top: -90px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 `;
     
 const Modal = styled.div`

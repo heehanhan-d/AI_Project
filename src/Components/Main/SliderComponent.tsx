@@ -30,6 +30,7 @@ export default function Slide() {
   console.log(underdogs, 'underdogs')
 
   return (
+    <>
     <SwiperSlider>
       <LinkStyle to={LIST_PATH}>
         <UnderdogImage src={Underdog} />
@@ -52,7 +53,8 @@ export default function Slide() {
           </CustomerSwiperSlide>
           ))}
       </CustomSwiper>
-    </SwiperSlider>
+      </SwiperSlider>
+    </>
   );
 }
 
@@ -64,9 +66,8 @@ export default function Slide() {
    position: relative;
    width: 90%;
    height: 400px;
-   top: 800px;
-   bottom: 800px;
-   margin-bottom: 160px;
+   margin-top: 200px;
+   margin-bottom: 200px;
    background-color: ${Colors.sub};
    `;
 

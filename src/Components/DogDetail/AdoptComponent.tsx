@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { Colors, Button } from '../../Components/Common/Styles';
-import { Body } from '../../Components/Common/Layout';
 import { ScrollRef, CenterRef, ResultRef } from '../../Components//Common/Ref';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
@@ -89,7 +88,7 @@ export function Adopt() {
     }
 
     return (
-        <Body>
+        <>
             <ScrollRef>
                 <DogProfile />
                 {renderAdoptButton()}
@@ -108,7 +107,7 @@ export function Adopt() {
                 <ResultRef>
                     {renderReservation()}
                 </ResultRef>}
-        </Body>
+        </>
     )
 }
 

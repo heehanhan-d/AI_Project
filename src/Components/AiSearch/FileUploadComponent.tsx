@@ -87,7 +87,7 @@ export default function FileUpload() {
     }, [responseData]);
 
     return (
-        <Body>
+        <>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
                 <TextDiv>{FindUnderdog}</TextDiv>
@@ -114,8 +114,8 @@ export default function FileUpload() {
                     </ModalContent>
                 </Modal>
             )}
-    </Body>
-)}
+        </>
+    )}
 
 const UnderdogImage = styled.img`
     display: flex;

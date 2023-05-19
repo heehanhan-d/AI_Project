@@ -12,19 +12,31 @@ import { ScrollRef } from '../Common/Ref';
 export default function Banner() {
   
   return (
-    <Body>
+    <>
       <ScrollRef>
-        <BannerImage src={BannerImg} alt="배너" />
-      </ScrollRef>
-      <LinkStyle to={SEARCH_PATH} style={{ textDecoration: "none", color: "inherit" }}>
-        <AIButton>
+        <MainDiv>
+          <LinkStyle to={SEARCH_PATH} style={{ textDecoration: "none", color: "inherit" }}>
+            <AIButton>
               AI로 나에게 어울리는 UNDERDOG 찾기
-        </AIButton>
-      </LinkStyle>  
-    </Body>
+            </AIButton>
+          </LinkStyle>  
+          <BannerImage src={BannerImg} alt="배너" />
+        </MainDiv>
+      </ScrollRef>
+    </>
   );
 }
 
+
+const MainDiv = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: ${Colors.w};
+  margin-top: 65px;
+  float: none;
+  `
 
 const BannerImage = styled.img`
   display: flex;
@@ -32,10 +44,6 @@ const BannerImage = styled.img`
   border: 15px solid ${Colors.main};
   position: relative;
   width: 90%;
-  top: -160px;
-  margin-left: 85px;
-  // margin-bottom: 250px;
-  z-index: 10;
 `;
 
 const AIButton = styled(Button)`
@@ -51,9 +59,10 @@ const AIButton = styled(Button)`
   border-radius: 30px;
   margin-top: -200px;
   padding: 10px 50px;
-  left: 1010px;
+  left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
   word-break: keep-all;
+  bottom: -16px;
   z-index: 10;
 `;

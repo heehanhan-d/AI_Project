@@ -57,14 +57,8 @@ export const AboutPage = () => (
       </ScrollSnapWrap>
 );
 
-// const ContentWrapper = styled.div`
-//   margin-top: 200px;
-//   margin-bottom: 120px;
-// `
-
 const AboutDiv = styled.div`
   display: flex;
-  justify-content: center;
   font-family: 'Logo';
   font-size: 40pt;
   color: ${Colors.main};
@@ -90,7 +84,7 @@ const FadeInContainer = styled.div`
 const ScrollSnapWrap = styled.div`
   scroll-snap-type: y mandatory;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 305px);
   overflow-y: scroll;
 `
 const SlideDiv = styled.div`

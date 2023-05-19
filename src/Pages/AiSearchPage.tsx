@@ -5,9 +5,9 @@ import Ai from '../Components/AiSearch/AiComponent';
 
 export const AiSearchPage = () => {
     return (
-        <Body>
+        <>
             <Ai />
-        </Body>
+        </>
     );
 };
   
