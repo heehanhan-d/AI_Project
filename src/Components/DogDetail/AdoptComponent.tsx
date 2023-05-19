@@ -6,6 +6,7 @@ import { ScrollRef, CenterRef, ResultRef } from '../../Components//Common/Ref';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
 import ReservationForm from './ReservationFormComponent';
+import { DogProfile } from "./DogPropfile";
 
 export function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
@@ -90,9 +91,7 @@ export function Adopt() {
     return (
         <Body>
             <ScrollRef>
-                <DogDetailDiv>
-                    언더독 정보
-                </DogDetailDiv>
+                <DogProfile />
                 {renderAdoptButton()}
             </ScrollRef>
             {shownAdoptInfo &&
@@ -132,6 +131,7 @@ export function Adopt() {
     font-size: 20px;
     top: -150px;
     cursor: pointer;
+    z-index: 10px;
 `;
 
     const AdoptGuide = styled.div`
