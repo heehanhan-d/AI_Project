@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { Colors, Button } from '../../Components/Common/Styles';
 import { Body } from '../../Components/Common/Layout';
-import { ScrollRef, ResultRef } from '../../Components//Common/Ref';
+import { ScrollRef, CenterRef, ResultRef } from '../../Components//Common/Ref';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
+import ReservationForm from './ReservationFormComponent';
 
 export function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
@@ -71,7 +72,7 @@ export function Adopt() {
         if (!shownVisitCenter) {
             return (
                 <VisitButton onClick={handleVisitCenterButtonClick}>
-                    보호소 방문 예약하기
+                    Underdog 만나러 가기!
                 </VisitButton>
             );
         }
@@ -81,7 +82,7 @@ export function Adopt() {
     const renderReservation = () => {
         return (
             <Reservation>
-                <p>예약 신청 폼</p>
+                <ReservationForm />
             </Reservation>
         )
     }
@@ -192,10 +193,12 @@ const Reservation = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 500px;
-    color: ${Colors.w};
-    background-color: ${Colors.b};
-    margin-top: 200px;
-    margin-bottom: 200px;
-    top: 30px;
+    color: ${Colors.b};
+    background-color: ${Colors.w};
+    top: -30px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+    border: 10px solid ${Colors.sub};
+    border-radius: 30px;
+    padding: 30px;
 `

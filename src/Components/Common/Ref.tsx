@@ -18,6 +18,25 @@ export function ScrollRef({ children }: ScrollRefProps) {
     return <div ref={ref}>{children}</div>;
 }
 
+
+export function CenterRef({ children }: ScrollRefProps) {
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.scrollIntoView(
+                {
+                    behavior: 'smooth',
+                    block: 'center'
+                }
+            )
+        }
+    }, []);
+
+    return <div ref={ref}>{children}</div>;
+}
+
+
 export function ResultRef({ children }: ScrollRefProps) {
     const ref = useRef<HTMLDivElement>(null);
 
