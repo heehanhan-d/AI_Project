@@ -9,7 +9,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # cors 방지
-CORS(app)
+CORS(app, origins='*', allow_headers=['Content-Type'])
 
 @app.route("/") # 파이썬 기본 서버 포트 5000
 def test():
@@ -29,10 +29,12 @@ def extract_breeds(who):
         if who == "user":
             input_img = request.files['file']
             extractedBreeds = extractbreeds.extract(input_img)
-            return jsonify({
-                "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
-                "data": extractedBreeds
+            response = jsonify({
+            "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
+            "data": extractedBreeds
             })
+            response.headers.add("Access-Control-Allow-Origin", "*")  # CORS 헤더 추가
+            return response
         elif who == "admin":
             # try:
             img_url = request.get_json()['img_url']
@@ -40,19 +42,13 @@ def extract_breeds(who):
             img_bytes = BytesIO(response.content)
             extractedBreeds = extractbreeds.extract(img_bytes)
             print('extractedBreeds : ', extractedBreeds)
-            return jsonify({
+            response = jsonify({
                 "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
                 "data": list(extractedBreeds)
             })
-            # except Exception as error:
-            #     return handle_error(error)
+            response.headers.add("Access-Control-Allow-Origin", "*")  # CORS 헤더 추가
+            return response
 
-# @app.errorhandler(Exception)
-# def handle_error(error):
-#     return jsonify({
-#         "message": "품종 추출에 실패하였습니다.",
-#         "data": []
-#     })
 
 if __name__ == "__main__":
     app.run()
