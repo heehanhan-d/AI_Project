@@ -9,7 +9,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # cors 방지
-CORS(app, origins='*', allow_headers=['Content-Type'])
+CORS(app, resources={r"/api/*": {"origins": "*"}},supports_credentials=True)
 
 @app.route("/") # 파이썬 기본 서버 포트 5000
 def test():
