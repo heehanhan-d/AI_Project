@@ -8,9 +8,10 @@ import { Colors, Button, FindUnderdog } from '../Common/Styles';
 import { FetchDog } from "../../Api/FetchDog";
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
-import { Dog, ResponseData } from '../Common/Interface';
+import { Dog, DogDetailsProps, ResponseData } from '../Common/Interface';
 import { ScrollRef, ResultRef } from '../Common/Ref';
 import { BackServer } from '../Common/Path';
+import {DogImg} from '../AiSearch/ImgComponent';
 
 export default function Ai() {
     
@@ -108,13 +109,30 @@ export default function Ai() {
         .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
         .then((response) => {
           console.log('response:', response);
-          console.log('response.data:', response.data);
+            console.log('response.data:', response.data);
+            console.log(response.data.img_url);
           // setDogData(response.data);
         })
         .catch((error) => {
           console.log('error:', error);
         });
     }
+    
+        // const dogData = Response.data;
+        // const dogId = dogData.data;
+        // console.log(dogId.img_url);
+       
+
+        const DogDetails: React.FC<DogDetailsProps> = ({ dog }) => {
+          return (
+            <div>
+              {/* 기타 필요한 정보 출력 */}
+              <img src={dog.img_url} alt="Dog" />
+            </div>
+          );
+        };
+        
+        
         
     //     const { id } = useParams<{ id: string }>();
     //     const [dog, setDog] = useState<Dog | null>(null);

@@ -67,3 +67,7 @@ export interface SliderProps {
 export interface ScrollRefProps {
     children: React.ReactNode;
 }
+
+export interface DogDetailsProps {
+    dog: Dog;
+}

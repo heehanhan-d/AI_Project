@@ -63,7 +63,6 @@ export const DogListPage = () => {
     return (
     <>
         <ScrollRef>
-          <h1>Dog List</h1>
         </ScrollRef>
             <div>
                 <ListDiv>

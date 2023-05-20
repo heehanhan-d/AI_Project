@@ -23,6 +23,7 @@
         "react-scripts": "5.0.1",
         "react-select": "^5.7.3",
         "recharts": "^2.6.2",
+        "serve": "^14.2.0",
         "styled-components": "^5.3.10",
         "swiper": "^9.3.1",
         "ts-node": "^10.9.1",
