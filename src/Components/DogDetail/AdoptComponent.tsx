@@ -183,7 +183,7 @@ const CheckList = styled.div`
         width: 80%;
         height: 600px;
         margin: 0 auto 200px auto;
-        top: -50px;
+        top: -100px;
     `   
 
 const VisitButton = styled(Button)`
@@ -198,7 +198,7 @@ const VisitButton = styled(Button)`
     font-family: "Logo";
     font-size: 20px;
     left: 40%;
-    top: 2100px;
+    top: 2150px;
     cursor: pointer;
     z-index: 10px;
 `;
@@ -207,10 +207,13 @@ const Reservation = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
+    height: 500px;
     color: ${Colors.b};
     background-color: ${Colors.w};
     border: 10px solid ${Colors.sub};
     border-radius: 30px;
     padding: 30px;
+    top: -350px;
+    margin-top: 200px;
 `

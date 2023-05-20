@@ -29,19 +29,19 @@ export const AboutPage = () => (
         <SlideDiv>
         <Logo src={ AboutLogo } />는 왜 필요한가요?
         </SlideDiv>
-        <SlideDiv>
+        <SlideDivDiv>
           <UnderdogGraph />
           매해 7~8만에 가까운 유기, 유실 동물들이 접수되고 있습니다.<br/>
           그 중에서도 비품종견이 압도적으로 높은 비율을 차지합니다.
-        </SlideDiv>
-        <SlideDiv>
+        </SlideDivDiv>
+        <SlideDivDiv>
           <DisposalRate />
           그 누구에게도 선택받지 못해 인도적 처리(폐사 및 안락사) 되는 비율이 높은 현황입니다.
-        </SlideDiv>
-        <SlideDiv>
+        </SlideDivDiv>
+        <SlideDivDiv>
           <AdoptRate/>
           <div>사람들이 반려 동물을 입양하는 방법 중 유기견 입양의 비율은 적은 실정입니다.</div>
-        </SlideDiv>
+        </SlideDivDiv>
         <SlideDiv>
           YOUIF는 유기견 문제의 해결을 위해 소외되는 비품종견의 입양을 활성화 시키고자 합니다.
         </SlideDiv>
@@ -120,4 +120,16 @@ const SecondText = styled.p`
 const Logo = styled.img`
     width: auto;
     height: 55px;
+`
+
+const SlideDivDiv = styled.div`
+  scroll-snap-align: center;
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 305px);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: solid;
+  font-family: 'Ui';
 `
