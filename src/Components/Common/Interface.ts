@@ -73,5 +73,5 @@ export interface DogDetailsProps {
 }
 
 export interface ImageSectionProps {
-    dogImages: string[];
+    dogData: string[];
 }

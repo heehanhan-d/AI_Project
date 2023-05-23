@@ -1,13 +1,16 @@
- 
 import React, { useState, useEffect } from "react";
 import { FetchDog } from "../../Api/FetchDog";
-import { Dog } from '../Common/Interface';
+import { Dog } from '../../Components/Common/Interface';
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { Colors } from "../Common/Styles";
-import { ScrollRef } from "../Common/Ref";
+import styled from 'styled-components';
+import { Body } from '../../Components/Common/Layout';
+import AdminComponent from '../../Components/Admin/Admin';
+import Adopt from '../../Components/DogDetail/AdoptComponent'
+import { Colors } from "../../Components/Common/Styles";
+import { ScrollRef } from "../../Components/Common/Ref";
 
 export const DogProfile = () => {
+
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
     const [dog, setDog] = useState<Dog | null>(null);
     const { id } = useParams<{id:string}>();
@@ -33,8 +36,9 @@ export const DogProfile = () => {
         handleFetchDog();
       }, [id]);
 
-  return (
-    <ScrollRef>
+    return (
+        <>
+        <ScrollRef>
         {dog && (
           <ListCircle>
             <div><img src={dog.img_url} alt="Dog" /></div>
@@ -74,8 +78,11 @@ export const DogProfile = () => {
         </Table>
         </ListCircle>
       )}
-    </ScrollRef>
-  );
+            </ScrollRef>
+            <Adopt />
+
+        </>
+    );
 };
 
 const ListCircle = styled.div`

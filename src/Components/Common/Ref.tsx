@@ -66,14 +66,14 @@ export function UpScroll({ children }: ScrollRefProps) {
     return <div ref={ref}>{children}</div>;
 }
 
-export function ImageSection({ dogImages }: ImageSectionProps) {
+export function ImageSection({ dogData }: ImageSectionProps) {
     const imageSectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (imageSectionRef.current) {
             imageSectionRef.current.scrollIntoView({ behavior: 'smooth' })
         }
-    }, [dogImages]);
+    }, [dogData]);
 
     return (
         <div ref={imageSectionRef}></div>

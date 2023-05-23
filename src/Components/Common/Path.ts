@@ -9,3 +9,4 @@ export const ADOPT_PATH = '/adopt';
 
 export const AiServer = 'http://127.0.0.1:5000/breedsAI/user';
 export const BackServer = 'http://localhost:3001/underdogs'
+export const FrontServer = 'http://localhost:3000'

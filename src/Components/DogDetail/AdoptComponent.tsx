@@ -4,7 +4,7 @@ import { Colors, Button } from '../../Components/Common/Styles';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
 import ReservationForm from './ReservationFormComponent';
-import { DogProfile } from "./DogProfile";
+import { DogProfile } from "../../Components/DogDetail/DogProfile";
 import { CenterRef } from "../Common/Ref";
 
 export default function Adopt() {

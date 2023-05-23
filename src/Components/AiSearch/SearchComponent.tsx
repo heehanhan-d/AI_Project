@@ -2,17 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
 import Select from 'react-select';
 import styled from 'styled-components';
-import { Colors, Button, FindUnderdog } from '../Common/Styles';
-import { AiServer } from '../Common/Path';
+import { Colors, Button, FindUnderdog, LinkStyle } from '../Common/Styles';
+import { AiServer, FrontServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
-import { ResponseData } from '../Common/Interface';
+import { Dog, ResponseData } from '../Common/Interface';
 import { BackServer } from '../Common/Path';
 import { CenterRef, ImageSection } from '../Common/Ref';
+import { Link } from 'react-router-dom';
 
 
 export default function Search() {
 
     const [dogImages, setDogImages] = useState<string[]>([]);
+    const [dogData, setDogData] = useState<Dog[]>([]); 
     
     // 파일 업로드
     const [filename, setFilename] = useState('');
@@ -100,37 +102,58 @@ export default function Search() {
     const handleOptionChange = (option: any) => {
         setSelectedOption(option);
 
-        if (option) {
-            axios
-              .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
-                .then((response) => {
-                    const DogData = response.data.data; 
-                    console.log('DogData:', DogData);
+//         if (option) {
+//             axios
+//               .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+//                 .then((response) => {
+//                     const DogData = response.data.data;
+//                     console.log('DogData:', DogData);
       
-                    // 이미지 출력을 위한 변수 선언
-                    const dogImages: string[] = [];
+//                     // 이미지 출력을 위한 변수 선언
+//                     const dogImages: string[] = [];
                     
-                    // DogData 배열의 각 요소에 대해 반복하여 img_url 출력
-                    DogData.forEach((dog: any) => {
-                        console.log('dog img_url:', dog.img_url);
-                        console.log('dog id:', dog.id);
+//                     // DogData 배열의 각 요소에 대해 반복하여 img_url 출력
+//                     DogData.forEach((dog: any) => {
+//                         console.log('dog img_url:', dog.img_url);
+//                         console.log('dog id:', dog.id);
                       
-                    // // DogImg 변수 갱신
-                    //     const dogImg = dog.img_url;
-                    //     console.log('dogImg:', dogImg);
+//                     // // DogImg 변수 갱신
+//                     //     const dogImg = dog.img_url;
+//                     //     console.log('dogImg:', dogImg);
                         
-                        // DogImages 배열에 img_url 추가
-                        dogImages.push(dog.img_url);
-                    });
+//                         // DogImages 배열에 img_url 추가
+//                         dogImages.push(dog.img_url);
+//                     });
 
-                    //화면에 이미지 출력
-                    setDogImages(dogImages);
-        })
-        .catch((error) => {
-          console.log('error:', error);
-        });
-    }
+//                     //화면에 이미지 출력
+//                     setDogImages(dogImages);
+//         })
+//         .catch((error) => {
+//           console.log('error:', error);
+//         });
+//     }
         
+// };
+        
+if (option) {
+    axios
+      .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+        .then((response) => {
+            const dogData: Dog[] = [];
+
+            response.data.data.forEach((dog: Dog) => {
+                console.log('아이디:', dog.id);
+                console.log('이미지:', dog.img_url);
+                dogData.push(dog);
+            })
+            
+            setDogData(dogData);
+})
+.catch((error) => {
+  console.log('error:', error);
+});
+}
+
 };
     return (
         <>
@@ -157,13 +180,16 @@ export default function Search() {
                     placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
                     />
             </ResultDiv>
-            <ImageSection dogImages={dogImages} />
+            {/* {dogData.map((dog: Dog) => (
+                <ImageSection key={dog.id} dogData={dog.img_url} />
+            ))}; */}
             <CenterRef>
             <ListDiv>
-                {dogImages.map((dogImg: any, index: any) => (
-                <ListCircle key={dogImg}>
-                        <img src={dogImg} alt='Dog' />
-                </ListCircle>
+                    {dogData.map((dog: Dog) => (
+                        <ListCircle key={dog.id}>
+                            <Link to = {`/list/${dog.id}`} />
+                                <img src={dog.img_url} alt={`Dog ${dog.id}`} />
+                        </ListCircle>
                 ))}
             </ListDiv>
             </CenterRef>
