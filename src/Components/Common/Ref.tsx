@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ScrollRefProps } from './Interface';
+import { ImageSectionProps, ScrollRefProps } from './Interface';
 
 export function ScrollRef({ children }: ScrollRefProps) {
     const ref = useRef<HTMLDivElement>(null);
@@ -52,4 +52,30 @@ export function ResultRef({ children }: ScrollRefProps) {
     }, []);
 
     return <div ref={ref}>{children}</div>;
+}
+
+export function UpScroll({ children }: ScrollRefProps) {
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (ref.current) {
+            window.scrollTo(0, 0);
+        }
+    }, []);
+
+    return <div ref={ref}>{children}</div>;
+}
+
+export function ImageSection({ dogImages }: ImageSectionProps) {
+    const imageSectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (imageSectionRef.current) {
+            imageSectionRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
+    }, [dogImages]);
+
+    return (
+        <div ref={imageSectionRef}></div>
+    )
 }

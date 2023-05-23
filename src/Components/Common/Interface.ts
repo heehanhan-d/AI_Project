@@ -71,3 +71,7 @@ export interface ScrollRefProps {
 export interface DogDetailsProps {
     dog: Dog;
 }
+
+export interface ImageSectionProps {
+    dogImages: string[];
+}

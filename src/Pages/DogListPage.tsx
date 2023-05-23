@@ -5,7 +5,6 @@ import { FetchDogList } from '../Api/FetchDogList';
 import { Dog } from '../Components/Common/Interface';
 import { DogApiResponse } from '../Components/Common/Interface';
 import { Link } from 'react-router-dom';
-import { ScrollRef } from '../Components/Common/Ref';
 
 export const DogListPage = () => {
   const [dogList, setDogList] = useState<Dog[]>([]);
@@ -62,8 +61,6 @@ export const DogListPage = () => {
 
     return (
     <>
-        <ScrollRef>
-        </ScrollRef>
             <div>
                 <ListDiv>
                     {dogList.map((dog) => (

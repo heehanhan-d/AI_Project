@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Colors, LinkStyle } from './Styles';
 import LogoImg from '../../Img/Logo.png';
 import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH } from './Path';
+import { ScrollRef, UpScroll } from './Ref';
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -19,9 +20,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
                 <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
             </Nav>
+                <UpScroll>
                 <Body>
                     {children}
                 </Body>
+                </UpScroll>
             <Footer>
                 <div>
                     <Slogan>

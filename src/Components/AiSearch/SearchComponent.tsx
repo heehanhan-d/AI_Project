@@ -6,8 +6,8 @@ import { Colors, Button, FindUnderdog } from '../Common/Styles';
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
 import { ResponseData } from '../Common/Interface';
-import { ScrollRef, ResultRef } from '../Common/Ref';
 import { BackServer } from '../Common/Path';
+import { CenterRef, ImageSection } from '../Common/Ref';
 
 
 export default function Search() {
@@ -113,6 +113,7 @@ export default function Search() {
                     // DogData 배열의 각 요소에 대해 반복하여 img_url 출력
                     DogData.forEach((dog: any) => {
                         console.log('dog img_url:', dog.img_url);
+                        console.log('dog id:', dog.id);
                       
                     // // DogImg 변수 갱신
                     //     const dogImg = dog.img_url;
@@ -133,7 +134,6 @@ export default function Search() {
 };
     return (
         <>
-            <ScrollRef>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
                 <TextDiv>{FindUnderdog}</TextDiv>
@@ -149,7 +149,6 @@ export default function Search() {
             <SearchButton onClick={handleSearch}>
                 AI로 UNDERDOG 검색하기
                 </SearchButton>
-            </ScrollRef>
             <ResultDiv>
                 <Select
                     options={options}
@@ -158,15 +157,16 @@ export default function Search() {
                     placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
                     />
             </ResultDiv>
-            <ResultRef>
+            <ImageSection dogImages={dogImages} />
+            <CenterRef>
             <ListDiv>
-            {dogImages.map((dogImg: any, index: any) => (
+                {dogImages.map((dogImg: any, index: any) => (
                 <ListCircle key={dogImg}>
-                    <img src={dogImg} alt='Dog' />
+                        <img src={dogImg} alt='Dog' />
                 </ListCircle>
                 ))}
             </ListDiv>
-            </ResultRef>
+            </CenterRef>
             {showModal && (
                 <Modal>
                     <ModalContent>
@@ -233,6 +233,8 @@ const ResultDiv = styled.div`
     position: absolute;
     margin: 0 auto 200px auto;
     top: 100px;
+    border: 5px solid ${Colors.sub};
+
 `;
 
 const SearchButton = styled(Button)`
@@ -257,7 +259,7 @@ const Modal = styled.div`
     justify-content: center;
     align-items: center;
     position: fixed;
-    margin-bottom: 270px;
+    margin-bottom: 350px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -291,7 +293,7 @@ const ListDiv = styled.div`
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
-    margin: 100px auto;
+    margin: 50px auto 150px auto;
 `
 
 const ListCircle = styled.div`

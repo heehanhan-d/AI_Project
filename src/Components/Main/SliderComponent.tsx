@@ -9,7 +9,6 @@ import "swiper/css/autoplay";
 import { Colors, LinkStyle } from '../Common/Styles';
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
-// import { fetchImageUrls } from '../../Api/FetchImageUrl';
 import { LIST_PATH } from '../Common/Path';
 
 
@@ -67,7 +66,6 @@ export default function Slide() {
    width: 90%;
    height: 400px;
    margin: 300px auto;
-   top: -50px;
    background-color: ${Colors.sub};
    `;
 

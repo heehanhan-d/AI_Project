@@ -9,7 +9,6 @@ import { FetchDog } from "../../Api/FetchDog";
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
 import { AiResultProps, Dog, DogDetailsProps, ResponseData } from '../Common/Interface';
-import { ScrollRef, ResultRef } from '../Common/Ref';
 import { BackServer } from '../Common/Path';
 
 
@@ -56,7 +55,7 @@ export default function Underdogs({ responseData }: AiResultProps) {
       
 };
     return (
-        <>
+      <>
             <ResultDiv>
                 <Select
                     options={options}
@@ -64,7 +63,7 @@ export default function Underdogs({ responseData }: AiResultProps) {
                     onChange={handleOptionChange}
                     placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
                     />
-        </ResultDiv>
+          </ResultDiv>
     </>
 )}
 

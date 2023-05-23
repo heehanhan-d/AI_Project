@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { Colors, Button } from '../../Components/Common/Styles';
-import { ScrollRef, CenterRef, ResultRef } from '../../Components//Common/Ref';
 import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
 import ReservationForm from './ReservationFormComponent';
 import { DogProfile } from "./DogProfile";
+import { CenterRef } from "../Common/Ref";
 
 export default function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
@@ -91,10 +91,8 @@ export default function Adopt() {
 
     return (
         <>
-            <ScrollRef>
                 <DogProfile />
                 {renderAdoptButton()}
-            </ScrollRef>
             {shownAdoptInfo &&
                 <CenterRef>
                     {renderAdoptInfo()}
@@ -125,7 +123,7 @@ export default function Adopt() {
         font-family: "Logo";
         font-size: 20px;
         top: -70px;
-        margin-left: 350px;
+        left: -425px;
         cursor: pointer;
         z-index: 10px;
     `;
@@ -142,7 +140,7 @@ export default function Adopt() {
         font-family: "Logo";
         font-size: 20px;
         top: -70px;
-        margin-left: 350px;
+        left: -425px;
         cursor: pointer;
         z-index: 10px;
         `;
@@ -154,7 +152,7 @@ export default function Adopt() {
         position: relative;
         width: 80%;
         height: 600px;
-        top: -80px;
+        top: -60px;
         margin: 150px auto 180px auto;
     `
 
@@ -183,7 +181,7 @@ const CheckList = styled.div`
         width: 80%;
         height: 600px;
         margin: 0 auto 200px auto;
-        top: -100px;
+        top: -80px;
     `   
 
 const VisitButton = styled(Button)`
@@ -198,7 +196,7 @@ const VisitButton = styled(Button)`
     font-family: "Logo";
     font-size: 20px;
     left: 40%;
-    top: 2050px;
+    top: 2100px;
     cursor: pointer;
     z-index: 10px;
 `;
@@ -214,6 +212,6 @@ const Reservation = styled.div`
     border: 10px solid ${Colors.sub};
     border-radius: 30px;
     padding: 30px;
-    top: -300px;
-    margin-top: 200px;
+    bottom: 10px;
+    margin-bottom: 250px;
 `

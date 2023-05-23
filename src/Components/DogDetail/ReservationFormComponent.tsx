@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
-import { CenterRef, ResultRef } from '../Common/Ref';
+import { CenterRef } from '../Common/Ref';
 
 export default function ReservationForm() {
     
@@ -15,7 +15,8 @@ export default function ReservationForm() {
     }; 
     
     const closeModal = () => {
-        setModalOpen(false);
+      setModalOpen(false);
+      window.scrollTo(0, 0);
       };
   
     return (
@@ -100,11 +101,13 @@ const Modal = styled.div`
     align-items: center;
     position: fixed;
     width: 100%;
+    height: 100%;
     background-color: ${Colors.w};
     font-family: "Text";
     font-size: 20px;
-    // margin-top: 300px;
-    // margin-bottom: 300px;
+    bottom: 100px;
+    // margin-top: 200px;
+    // margin-bottom: 250px;
 `;
 
 const ModalContent = styled.div`
