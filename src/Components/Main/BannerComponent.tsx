@@ -58,7 +58,7 @@ const BannerImage = styled.img`
   justify-content: center;
   border: 15px solid ${Colors.main};
   position: relative;
-  width: 100%;
+  width: 90%;
   margin: 40px auto;
 `;
 

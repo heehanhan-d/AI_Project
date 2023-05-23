@@ -291,6 +291,7 @@ const ListDiv = styled.div`
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    margin: 100px auto;
 `
 
 const ListCircle = styled.div`
