@@ -4,13 +4,13 @@ import '../Common/Font.css';
 import { Colors, Button, LinkStyle } from '../Common/Styles';
 import { SEARCH_PATH } from '../Common/Path';
 import { ScrollRef } from '../Common/Ref';
-import BannerImg from "../../Img/Banner.png";
-import BannerImg1 from "../../Img/Banner2.png";
-import BannerImg2 from "../../Img/Banner3.png";
-import BannerImg3 from "../../Img/Banner4.png";
+import BannerImg1 from "../../Img/Banner1.png";
+import BannerImg2 from "../../Img/Banner2.png";
+import BannerImg3 from "../../Img/Banner3.png";
+import BannerImg4 from "../../Img/Banner4.png";
 
-const bannerImages = [BannerImg, BannerImg1, BannerImg2, BannerImg3];
-const imageChangeInterval = 2000; // 2초
+const bannerImages = [BannerImg1, BannerImg2, BannerImg3, BannerImg4];
+const imageChangeInterval = 5000; // 5초
 
 export default function Banner() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -49,7 +49,7 @@ const MainDiv = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${Colors.w};
-  margin-top: 65px;
+  margin-top: 60px;
   float: none;
 `;
 
@@ -58,7 +58,8 @@ const BannerImage = styled.img`
   justify-content: center;
   border: 15px solid ${Colors.main};
   position: relative;
-  width: 90%;
+  width: 100%;
+  margin: 40px auto;
 `;
 
 const AIButton = styled(Button)`
@@ -72,13 +73,12 @@ const AIButton = styled(Button)`
   background-color: ${Colors.main};
   border: solid ${Colors.main};
   border-radius: 30px;
-  margin-top: -200px;
   padding: 10px 50px;
   left: 50%;
+  bottom: 20px;
   transform: translateX(-50%);
   cursor: pointer;
   word-break: keep-all;
-  bottom: -16px;
   z-index: 10;
 `;
 

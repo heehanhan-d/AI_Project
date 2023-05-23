@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Colors, Modal, ModalContent, ModalButton } from '../Common/Styles';
+import { Colors } from '../Common/Styles';
 import { CenterRef, ResultRef } from '../Common/Ref';
 
 export default function ReservationForm() {
@@ -9,10 +9,10 @@ export default function ReservationForm() {
 
     const handleSubmit = (event: any) => {
       
-        setModalOpen(true);
+      setModalOpen(true);
         event.preventDefault();
       // 폼 데이터 처리 로직 추가
-    };
+    }; 
     
     const closeModal = () => {
         setModalOpen(false);
@@ -92,4 +92,38 @@ const Button = styled.button<any>`
   font-family: 'Logo';
   font-size: 20px;
   margin-top: 50px;
+`;
+
+const Modal = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    background-color: ${Colors.w};
+    font-family: "Text";
+    font-size: 20px;
+    // margin-top: 300px;
+    // margin-bottom: 300px;
+`;
+
+const ModalContent = styled.div`
+    background-color: ${Colors.w};
+    padding-bottom: 20px;
+    border-radius: 5px;
+`;
+
+
+const ModalButton = styled(Button)`
+    margin-top: 10px;
+    padding: 12px 24px;
+    background-color: ${Colors.main};
+    color: ${Colors.w};
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Logo";
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
 `;

@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios, { AxiosError } from 'axios';
+import Select from 'react-select';
 import styled from 'styled-components';
-import { Body } from '../Common/Layout';
 import { Colors, Button, FindUnderdog } from '../Common/Styles';
 import { AiServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
 import { ResponseData } from '../Common/Interface';
-import { ScrollRef } from '../Common/Ref';
-import AiResult from './AiResultComponent';
+import { ScrollRef, ResultRef } from '../Common/Ref';
+import { BackServer } from '../Common/Path';
 
-export default function FileUpload() {
+
+export default function Search() {
+
+    const [dogImages, setDogImages] = useState<string[]>([]);
     
     // 파일 업로드
     const [filename, setFilename] = useState('');
@@ -86,8 +89,51 @@ export default function FileUpload() {
         }
     }, [responseData]);
 
+    
+  const options = responseData.map((item) => ({
+    value: item,
+    label: item
+  }));
+    
+    const [selectedOption, setSelectedOption] = useState(null);
+    
+    const handleOptionChange = (option: any) => {
+        setSelectedOption(option);
+
+        if (option) {
+            axios
+              .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+                .then((response) => {
+                    const DogData = response.data.data; 
+                    console.log('DogData:', DogData);
+      
+                    // 이미지 출력을 위한 변수 선언
+                    const dogImages: string[] = [];
+                    
+                    // DogData 배열의 각 요소에 대해 반복하여 img_url 출력
+                    DogData.forEach((dog: any) => {
+                        console.log('dog img_url:', dog.img_url);
+                      
+                    // // DogImg 변수 갱신
+                    //     const dogImg = dog.img_url;
+                    //     console.log('dogImg:', dogImg);
+                        
+                        // DogImages 배열에 img_url 추가
+                        dogImages.push(dog.img_url);
+                    });
+
+                    //화면에 이미지 출력
+                    setDogImages(dogImages);
+        })
+        .catch((error) => {
+          console.log('error:', error);
+        });
+    }
+        
+};
     return (
         <>
+            <ScrollRef>
             <DragDiv>
                 <UnderdogImage src={Underdog} />
                 <TextDiv>{FindUnderdog}</TextDiv>
@@ -102,10 +148,25 @@ export default function FileUpload() {
             </DragDiv>
             <SearchButton onClick={handleSearch}>
                 AI로 UNDERDOG 검색하기
-            </SearchButton>
-            <ResultDiv ref={ref}>
-                <AiResult responseData={responseData} items={[]} />
+                </SearchButton>
+            </ScrollRef>
+            <ResultDiv>
+                <Select
+                    options={options}
+                    value={selectedOption}
+                    onChange={handleOptionChange}
+                    placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
+                    />
             </ResultDiv>
+            <ResultRef>
+            <ListDiv>
+            {dogImages.map((dogImg: any, index: any) => (
+                <ListCircle key={dogImg}>
+                    <img src={dogImg} alt='Dog' />
+                </ListCircle>
+                ))}
+            </ListDiv>
+            </ResultRef>
             {showModal && (
                 <Modal>
                     <ModalContent>
@@ -114,23 +175,24 @@ export default function FileUpload() {
                     </ModalContent>
                 </Modal>
             )}
-        </>
-    )}
+    </>
+)}
 
 const UnderdogImage = styled.img`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 35%;
-    margin: 30px 240px 30px 240px;
-    left: 30px;
+    margin: 30px 240px 30px 260px;
+    
 `;
 
 const DragDiv = styled.div`
     width: 40%;
     height: 480px;
     border: 5px dashed ${Colors.main};
-    margin-bottom: 250px;
+    left: 50%;
+    margin: 70px auto;
 `;
 
 const TextDiv = styled.div`
@@ -152,7 +214,7 @@ const UploadButton = styled.label`
     font-size: 20px;
     color: ${Colors.w};
     background-color: ${Colors.footer};
-    margin: 40px 275px 0 275px;
+    margin: 40px 260px 0 260px;
     padding: 10px 50px;
     border-radius: 300px;
     top: 120px;
@@ -163,14 +225,14 @@ const UploadButton = styled.label`
     }
 `;
 
-    const ResultDiv = styled.div`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        position: relative;
-        margin: 0 auto;
-        top: 100px;
+const ResultDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    margin: 0 auto 200px auto;
+    top: 100px;
 `;
 
 const SearchButton = styled(Button)`
@@ -185,8 +247,9 @@ const SearchButton = styled(Button)`
     color: ${Colors.w};
     font-family: "Logo";
     font-size: 20px;
-    top: -280px;
+    top: -100px;
     cursor: pointer;
+    margin: 0 auto;
 `;
     
 const Modal = styled.div`
@@ -211,7 +274,6 @@ const ModalContent = styled.div`
 
 
 const ModalButton = styled(Button)`
-    margin-top: 10px;
     padding: 12px 24px;
     background-color: ${Colors.main};
     color: ${Colors.w};
@@ -220,6 +282,29 @@ const ModalButton = styled(Button)`
     cursor: pointer;
     font-family: "Logo";
     font-size: 15px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto 0 auto;
 `;
+
+const ListDiv = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+`
+
+const ListCircle = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    flex: 1 0 18%;
+
+    img {
+        width:200px;
+        height:200px;
+        border-radius: 50%;
+        border: 0.5rem dashed ${Colors.sub};
+    }
+`

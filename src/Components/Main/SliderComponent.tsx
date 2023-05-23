@@ -66,8 +66,8 @@ export default function Slide() {
    position: relative;
    width: 90%;
    height: 400px;
-   margin-top: 200px;
-   margin-bottom: 200px;
+   margin: 300px auto;
+   top: -50px;
    background-color: ${Colors.sub};
    `;
 
@@ -128,8 +128,8 @@ const UnderdogImage = styled.img`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 48px;
-  left: 0rem;
+  top: 20px;
+  left: -20px;
   width: 20%;
   height: auto;
   z-index: 10;

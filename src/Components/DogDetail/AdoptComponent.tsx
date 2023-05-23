@@ -198,7 +198,7 @@ const VisitButton = styled(Button)`
     font-family: "Logo";
     font-size: 20px;
     left: 40%;
-    top: 2150px;
+    top: 2050px;
     cursor: pointer;
     z-index: 10px;
 `;
@@ -214,6 +214,6 @@ const Reservation = styled.div`
     border: 10px solid ${Colors.sub};
     border-radius: 30px;
     padding: 30px;
-    top: -350px;
+    top: -300px;
     margin-top: 200px;
 `
