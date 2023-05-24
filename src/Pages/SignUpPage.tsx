@@ -1,11 +1,11 @@
 import React from 'react';
-import SignUpComponent from '../Components/SignUp/SignUp';
+import { SignUpForm } from '../Components/SignUp/SignUpForm';
 
 export const SignUpPage = () => {
     return (
         <div>
             회원가입 페이지
-            <SignUpComponent />
+            {/* <SignUpForm  /> */}
         </div>
     );
 }

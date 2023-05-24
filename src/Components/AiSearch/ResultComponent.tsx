@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios, { AxiosError } from 'axios';
 import Select from 'react-select';
 import styled from 'styled-components';
-import { Body } from '../Common/Layout';
 import { Colors, Button, FindUnderdog } from '../Common/Styles';
 import { FetchDog } from "../../Api/FetchDog";
 import { AiServer } from '../Common/Path';
@@ -56,14 +55,14 @@ export default function Underdogs({ responseData }: AiResultProps) {
 };
     return (
       <>
-            <ResultDiv>
-                <Select
-                    options={options}
-                    value={selectedOption}
-                    onChange={handleOptionChange}
-                    placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
-                    />
-          </ResultDiv>
+        <ResultDiv>
+            <Select
+                options={options}
+                value={selectedOption}
+                onChange={handleOptionChange}
+                placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
+                />
+      </ResultDiv>
     </>
 )}
 

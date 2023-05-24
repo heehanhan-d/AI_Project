@@ -183,16 +183,15 @@ if (option) {
             {/* {dogData.map((dog: Dog) => (
                 <ImageSection key={dog.id} dogData={dog.img_url} />
             ))}; */}
-            <CenterRef>
             <ListDiv>
                     {dogData.map((dog: Dog) => (
                         <ListCircle key={dog.id}>
-                            <Link to = {`/list/${dog.id}`} />
+                            {/* <Link to = {`/list/${dog.id}`} /> */}
+                            <ImageSection key={dog.id} dogData={dog.img_url} />
                                 <img src={dog.img_url} alt={`Dog ${dog.id}`} />
                         </ListCircle>
                 ))}
             </ListDiv>
-            </CenterRef>
             {showModal && (
                 <Modal>
                     <ModalContent>

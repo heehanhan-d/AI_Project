@@ -1,31 +1,28 @@
+ 
 import React, { useState, useEffect } from "react";
 import { FetchDog } from "../../Api/FetchDog";
-import { Dog } from '../../Components/Common/Interface';
+import { Dog } from '../Common/Interface';
 import { useParams } from "react-router-dom";
-import styled from 'styled-components';
-import { Body } from '../../Components/Common/Layout';
-import AdminComponent from '../../Components/Admin/Admin';
-import Adopt from '../../Components/DogDetail/AdoptComponent'
-import { Colors } from "../../Components/Common/Styles";
-import { ScrollRef } from "../../Components/Common/Ref";
+import styled from "styled-components";
+import { Colors } from "../Common/Styles";
+import { ScrollRef } from "../Common/Ref";
 
 export const DogProfile = () => {
-
-    const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
+    // const [shownAdoptInfo, setShownAdoptInfo] = useState(false);
     const [dog, setDog] = useState<Dog | null>(null);
     const { id } = useParams<{id:string}>();
 
     useEffect(() => {
         const handleFetchDog = async () => {
           try {
-            if (id){ 
+            if (id){
               const response = await FetchDog(id);
               if (response) {
                 setDog(response.data)
                 console.log(response.data);
               } else {
                 throw new Error('데이터 패치에 실패했습니다.');
-              } 
+              }
             }
           } catch (error) {
             console.error(error);
@@ -36,9 +33,8 @@ export const DogProfile = () => {
         handleFetchDog();
       }, [id]);
 
-    return (
-        <>
-        <ScrollRef>
+  return (
+    <ScrollRef>
         {dog && (
           <ListCircle>
             <div><img src={dog.img_url} alt="Dog" /></div>
@@ -78,11 +74,8 @@ export const DogProfile = () => {
         </Table>
         </ListCircle>
       )}
-            </ScrollRef>
-            <Adopt />
-
-        </>
-    );
+    </ScrollRef>
+  );
 };
 
 const ListCircle = styled.div`
@@ -123,3 +116,4 @@ const Td = styled.td`
     font-size: 20px;
     width: 1200px;
 `;
+

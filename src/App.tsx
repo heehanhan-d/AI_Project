@@ -27,6 +27,7 @@ function App() {
                     <Route element={<SignUpPage />} path={SIGNUP_PATH} />
                     <Route element={<AdminPage />} path={ADMIN_PATH} />
                     <Route element={<AdoptPage />} path={ADOPT_PATH} />
+                    <Route element={<SignUpPage />} path={SIGNUP_PATH} />
                 </Routes>
             </Layout>
         </BrowserRouter>

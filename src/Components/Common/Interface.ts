@@ -73,5 +73,14 @@ export interface DogDetailsProps {
 }
 
 export interface ImageSectionProps {
-    dogData: string[];
+    dogData: string;
+}
+
+// // 회원가입
+export interface SignUpFormProps {
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    phone: string;
 }
