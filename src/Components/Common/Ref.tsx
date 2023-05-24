@@ -71,7 +71,7 @@ export function ImageSection({ dogData }: ImageSectionProps) {
 
     useEffect(() => {
         if (imageSectionRef.current) {
-            imageSectionRef.current.scrollIntoView({ behavior: 'smooth' })
+            imageSectionRef.current.scrollIntoView({ behavior: 'smooth'})
         }
     }, [dogData]);
 

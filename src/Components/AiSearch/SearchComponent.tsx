@@ -13,7 +13,6 @@ import { Link } from 'react-router-dom';
 
 export default function Search() {
 
-    const [dogImages, setDogImages] = useState<string[]>([]);
     const [dogData, setDogData] = useState<Dog[]>([]); 
     
     // 파일 업로드
@@ -77,21 +76,6 @@ export default function Search() {
         }
     };
     
-    // 하단 스크롤링
-    const ref = useRef<HTMLDivElement>(null);
-    
-    useEffect(() => {
-        if (ref.current) {
-            ref.current.scrollIntoView(
-                {
-                    behavior: 'smooth',
-                    block: 'start'
-                }
-            );
-        }
-    }, [responseData]);
-
-    
   const options = responseData.map((item) => ({
     value: item,
     label: item
@@ -102,38 +86,6 @@ export default function Search() {
     const handleOptionChange = (option: any) => {
         setSelectedOption(option);
 
-//         if (option) {
-//             axios
-//               .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
-//                 .then((response) => {
-//                     const DogData = response.data.data;
-//                     console.log('DogData:', DogData);
-      
-//                     // 이미지 출력을 위한 변수 선언
-//                     const dogImages: string[] = [];
-                    
-//                     // DogData 배열의 각 요소에 대해 반복하여 img_url 출력
-//                     DogData.forEach((dog: any) => {
-//                         console.log('dog img_url:', dog.img_url);
-//                         console.log('dog id:', dog.id);
-                      
-//                     // // DogImg 변수 갱신
-//                     //     const dogImg = dog.img_url;
-//                     //     console.log('dogImg:', dogImg);
-                        
-//                         // DogImages 배열에 img_url 추가
-//                         dogImages.push(dog.img_url);
-//                     });
-
-//                     //화면에 이미지 출력
-//                     setDogImages(dogImages);
-//         })
-//         .catch((error) => {
-//           console.log('error:', error);
-//         });
-//     }
-        
-// };
         
 if (option) {
     axios
@@ -155,6 +107,7 @@ if (option) {
 }
 
 };
+
     return (
         <>
             <DragDiv>
@@ -177,19 +130,19 @@ if (option) {
                     options={options}
                     value={selectedOption}
                     onChange={handleOptionChange}
-                    placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
+                    placeholder='AI로 검색된 Underdog들을 확인해보세요.'
                     />
             </ResultDiv>
-            {/* {dogData.map((dog: Dog) => (
+            {dogData.map((dog: Dog) => (
                 <ImageSection key={dog.id} dogData={dog.img_url} />
-            ))}; */}
+            ))}
             <ListDiv>
-                    {dogData.map((dog: Dog) => (
-                        <ListCircle key={dog.id}>
-                            {/* <Link to = {`/list/${dog.id}`} /> */}
-                            <ImageSection key={dog.id} dogData={dog.img_url} />
-                                <img src={dog.img_url} alt={`Dog ${dog.id}`} />
+                {dogData.map((dog: Dog) => (
+                    <LinkStyle key = {dog.id} to = {`/list/${dog.id}`}>
+                        <ListCircle>
+                            <img src={dog.img_url} alt={`Dog ${dog.id}`} />
                         </ListCircle>
+                    </LinkStyle>
                 ))}
             </ListDiv>
             {showModal && (
