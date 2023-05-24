@@ -1,5 +1,6 @@
 # env variable 환경변수
 .env
+/python
 
 # Logs 로그파일
 logs

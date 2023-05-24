@@ -9,7 +9,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # cors 방지
-CORS(app, resources={r"/api/*": {"origins": "*"}},supports_credentials=True)
+CORS(app, resources={r'*': {'origins': ['http://localhost:3000','http://localhost:3001']}})
 
 @app.route("/") # 파이썬 기본 서버 포트 5000
 def test():
@@ -33,7 +33,6 @@ def extract_breeds(who):
             "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
             "data": extractedBreeds
             })
-            response.headers.add("Access-Control-Allow-Origin", "*")  # CORS 헤더 추가
             return response
         elif who == "admin":
             # try:
@@ -46,9 +45,8 @@ def extract_breeds(who):
                 "message": "품종 추출에 성공하여 5개의 품종을 반환합니다.",
                 "data": list(extractedBreeds)
             })
-            response.headers.add("Access-Control-Allow-Origin", "*")  # CORS 헤더 추가
             return response
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run('0.0.0.0', port=3002, debug=True)
