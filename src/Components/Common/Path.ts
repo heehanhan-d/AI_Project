@@ -7,6 +7,6 @@ export const SIGNUP_PATH = '/signup';
 export const ADMIN_PATH = '/admin';
 export const ADOPT_PATH = '/adopt';
 
-export const AiServer = 'http://127.0.0.1:5000/breedsAI/user';
-export const BackServer = 'http://localhost:3001'
-export const FrontServer = 'http://localhost:3000'
+export const FrontServer = process.env.REACT_APP_FRONT_URL; 
+export const BackServer = process.env.REACT_APP_BACK_URL; 
+export const AiServer = process.env.REACT_APP_AI_URL; 

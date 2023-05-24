@@ -12,13 +12,16 @@ import { Dog } from '../Common/Interface';
 import { LIST_PATH } from '../Common/Path';
 
 
+const BackServer = process.env.REACT_APP_BACK_URL; 
+
+
 export default function Slide() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);
 
   useEffect(() => {
 
     const fetchImageUrls = async () => {
-      const response = await fetch('http://localhost:3001/underdogs?limit=20&skip=20');
+      const response = await fetch(`${BackServer}/underdogs?limit=20&skip=20`);
       const data = await response.json();
       return data;
     };
