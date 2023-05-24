@@ -9,11 +9,7 @@ import "swiper/css/autoplay";
 import { Colors, LinkStyle } from '../Common/Styles';
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
-import { LIST_PATH } from '../Common/Path';
-
-
-const BackServer = process.env.REACT_APP_BACK_URL; 
-
+import { BackServer, LIST_PATH } from '../Common/Path'
 
 export default function Slide() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);

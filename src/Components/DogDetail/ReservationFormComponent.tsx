@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 import { CenterRef } from '../Common/Ref';
-import { BackServer } from '../Common/Path';
+import { AiServer, BackServer } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { FetchDog } from '../../Api/FetchDog';
 import { Dog } from '../Common/Interface';

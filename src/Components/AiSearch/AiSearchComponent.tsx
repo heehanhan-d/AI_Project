@@ -8,7 +8,6 @@ import Underdog from '../../Img/Underdog.png';
 import { Dog, ResponseData } from '../Common/Interface';
 import { ImageSection } from '../Common/Ref';
 
-
 export default function AiSearch() {
 
     const [dogData, setDogData] = useState<Dog[]>([]);

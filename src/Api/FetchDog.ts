@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { BackServer } from '../Components/Common/Path';
+import { AiServer, BackServer } from '../Components/Common/Path';
+
 
 export const FetchDog = async (id: string) => {
     try {
