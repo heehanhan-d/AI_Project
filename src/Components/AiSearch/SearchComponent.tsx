@@ -97,7 +97,7 @@ export default function Search() {
 
 //         if (option) {
 //             axios
-//             .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+//             .get(`${BackServer}/underdogs/search?breeds=${decodeURI(option.value)}`)
 //                 .then((response) => {
 //                     const dogData: Dog[] = [];
 

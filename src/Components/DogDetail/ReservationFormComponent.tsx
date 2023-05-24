@@ -1,17 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'; 
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 import { CenterRef } from '../Common/Ref';
+import { BackServer } from '../Common/Path';
+import axios, { AxiosError } from 'axios';
+import { FetchDog } from '../../Api/FetchDog';
+import { Dog } from '../Common/Interface';
 
 export default function ReservationForm() {
     
-    const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  
+  const [responseData, setResponseData] = useState('');
 
-    const handleSubmit = (event: any) => {
+  const [dog, setDog] = useState<Dog | null>(null);
+  const { id } = useParams<{id:string}>();
+
+  useEffect(() => {
+      const handleFetchDog = async () => {
+        try {
+          if (id){
+            const response = await FetchDog(id);
+            if (response) {
+              setDog(response.data)
+              console.log(response.data);
+            } else {
+              throw new Error('데이터 패치에 실패했습니다.');
+            }
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    
+      // API 호출 함수 실행
+      handleFetchDog();
+    }, [id]);
+
+    const handleSubmit = async (event: any) => {
       
       setModalOpen(true);
         event.preventDefault();
-      // 폼 데이터 처리 로직 추가
+  
+      if (dog) {
+        // 폼 데이터 가져오기
+        const formData = {
+          dog_id: dog.id,
+          name: event.target.name.value,
+          phone: event.target.phone.value,
+          when_day: event.target.date.value,
+          when_time: event.target.time.value,
+        };
+
+        try {
+          // 서버에 POST 요청 보내기
+          const response = await axios.post(`${BackServer}/underdogs/visitrequest`, formData);
+
+          // 응답 처리
+          console.log(response.data);
+          const responseData = response.data;
+      
+          setResponseData(responseData);
+
+        } catch (e) {
+          // 오류 처리
+          const error = e as AxiosError;
+          console.error(error.response?.data || error.message);
+        }
+      } 
     }; 
     
     const closeModal = () => {

@@ -65,11 +65,20 @@ export interface ImageSectionProps {
     dogData: string;
 }
 
-// // 회원가입
+// 회원가입
 export interface SignUpFormProps {
     name: string;
     email: string;
     password: string;
     confirmPassword: string;
     phone: string;
+    errors: string;
+}
+
+export interface FormValue {
+    name: string;
+    phone: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
 }

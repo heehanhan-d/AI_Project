@@ -113,7 +113,7 @@ export default function Result() {
 
   //     if (option) {
   //       axios
-  //         .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+  //         .get(`${BackServer}/underdogs/search?breeds=${decodeURI(option.value)}`)
   //         .then((response) => {
   //           console.log('response:', response);
   //           console.log('response.data:', response.data);
