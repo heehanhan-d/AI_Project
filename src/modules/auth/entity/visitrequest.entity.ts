@@ -1,4 +1,4 @@
-import { State } from 'src/constants/dog/dog';
+import { State } from 'src/constants/dog/dog.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
