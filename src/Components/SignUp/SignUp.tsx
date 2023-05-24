@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 
 
-export const SignUpForm = () => {
+export const SignUp = () => {
   // 회원가입 폼 필드의 상태와 유효성 검사 에러 메시지 상태 정의
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
