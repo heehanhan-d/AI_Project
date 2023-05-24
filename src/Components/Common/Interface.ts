@@ -46,17 +46,6 @@ export interface ResponseData {
     message: string;
 }
 
-export interface AiResultProps {
-    items: string[];
-    responseData: string[];
-}
-
-// export interface Dropdownprops {
-//     options: string[];
-//     selectedItem: string;
-//     onSelect: (selectedItem: string) => void;
-// }
-
 // swiper
 export interface SliderProps {
     dogList: string[];

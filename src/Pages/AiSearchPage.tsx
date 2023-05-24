@@ -1,33 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import Search from '../Components/AiSearch/SearchComponent';
-import Result from '../Components/AiSearch/ResultComponent';
+import React from 'react';
+import Search from '../Components/AiSearch/SearchComponent'
+import Result from '../Components/AiSearch/ResultComponent'
+import AiSearch from '../Components/AiSearch/AiSearchComponent';
 
 export const AiSearchPage = () => {
     return (
         <>
+            <AiSearch />
             <Search />
-            {/* <Result items={[]} responseData={[]} /> */}
+            <Result />
         </>
-    );
-};
-  
-// import React, { useState, useEffect, useRef } from 'react';
+    )
+}
+
+// import React, { useState } from 'react';
 // import axios, { AxiosError } from 'axios';
 // import Select from 'react-select';
 // import styled from 'styled-components';
-// import { Colors, Button, FindUnderdog } from '../Common/Styles';
-// import { AiServer } from '../Common/Path';
+// import { Colors, Button, FindUnderdog, LinkStyle } from '../Components/Common/Styles';
+// import { AiServer } from '../Components/Common/Path';
 // import Underdog from '../../Img/Underdog.png';
-// import { ResponseData } from '../Common/Interface';
-// import { BackServer } from '../Common/Path';
-// import { CenterRef, ImageSection } from '../Common/Ref';
+// import { Dog, ResponseData } from '../Components/Common/Interface';
+// import { BackServer } from '../Components/Common/Path';
+// import { ImageSection } from '../Components/Common/Ref';
+// import Search from '../Components/AiSearch/SearchComponent';
+// import Result from '../Components/AiSearch/ResultComponent';
 
 
-// export default function Search() {
+// export default function AiSearchPage() {
 
-//     const [dogImages, setDogImages] = useState<string[]>([]);
+//     const [dogData, setDogData] = useState<Dog[]>([]);
     
-//     // 파일 업로드
+//     // 파일 업로드 
 //     const [filename, setFilename] = useState('');
 //     const [showModal, setShowModal] = useState(false);
 //     const [modalMessage, setModalMessage] = useState('');
@@ -88,63 +92,36 @@ export const AiSearchPage = () => {
 //         }
 //     };
     
-//     // 하단 스크롤링
-//     const ref = useRef<HTMLDivElement>(null);
-    
-//     useEffect(() => {
-//         if (ref.current) {
-//             ref.current.scrollIntoView(
-//                 {
-//                     behavior: 'smooth',
-//                     block: 'start'
-//                 }
-//             );
-//         }
-//     }, [responseData]);
-
-    
-//   const options = responseData.map((item) => ({
+//     const options = responseData.map((item) => ({
 //     value: item,
 //     label: item
-//   }));
-    
+//     }));
+
 //     const [selectedOption, setSelectedOption] = useState(null);
-    
+
 //     const handleOptionChange = (option: any) => {
 //         setSelectedOption(option);
 
 //         if (option) {
 //             axios
-//               .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+//             .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
 //                 .then((response) => {
-//                     const DogData = response.data.data; 
-//                     console.log('DogData:', DogData);
-      
-//                     // 이미지 출력을 위한 변수 선언
-//                     const dogImages: string[] = [];
-                    
-//                     // DogData 배열의 각 요소에 대해 반복하여 img_url 출력
-//                     DogData.forEach((dog: any) => {
-//                         console.log('dog img_url:', dog.img_url);
-//                         console.log('dog id:', dog.id);
-                      
-//                     // // DogImg 변수 갱신
-//                     //     const dogImg = dog.img_url;
-//                     //     console.log('dogImg:', dogImg);
-                        
-//                         // DogImages 배열에 img_url 추가
-//                         dogImages.push(dog.img_url);
-//                     });
+//                     const dogData: Dog[] = [];
 
-//                     //화면에 이미지 출력
-//                     setDogImages(dogImages);
-//         })
-//         .catch((error) => {
-//           console.log('error:', error);
-//         });
-//     }
-        
-// };
+//                     response.data.data.forEach((dog: Dog) => {
+//                         console.log('아이디:', dog.id);
+//                         console.log('이미지:', dog.img_url);
+//                         dogData.push(dog);
+//                     })
+                    
+//                     setDogData(dogData);
+//                 })
+//             .catch((error) => {
+//             console.log('error:', error);
+//             });
+//         }
+//     };
+
 //     return (
 //         <>
 //             <DragDiv>
@@ -161,25 +138,27 @@ export const AiSearchPage = () => {
 //             </DragDiv>
 //             <SearchButton onClick={handleSearch}>
 //                 AI로 UNDERDOG 검색하기
-//                 </SearchButton>
+//             </SearchButton>
 //             <ResultDiv>
 //                 <Select
 //                     options={options}
 //                     value={selectedOption}
 //                     onChange={handleOptionChange}
-//                     placeholder='AI로 검색된 Underdog의 특성을 골라보세요.'
-//                     />
+//                     placeholder='AI로 검색된 Underdog들을 확인해보세요.'
+//                 />
 //             </ResultDiv>
-//             <ImageSection dogImages={dogImages} />
-//             <CenterRef>
+//             {dogData.map((dog: Dog) => (
+//                 <ImageSection key={dog.id} dogData={dog.img_url} />
+//             ))}
 //             <ListDiv>
-//                 {dogImages.map((dogImg: any, index: any) => (
-//                 <ListCircle key={dogImg}>
-//                         <img src={dogImg} alt='Dog' />
-//                 </ListCircle>
+//                 {dogData.map((dog: Dog) => (
+//                     <LinkStyle key = {dog.id} to = {`/list/${dog.id}`}>
+//                         <ListCircle>
+//                             <img src={dog.img_url} alt={`Dog ${dog.id}`} />
+//                         </ListCircle>
+//                     </LinkStyle>
 //                 ))}
 //             </ListDiv>
-//             </CenterRef>
 //             {showModal && (
 //                 <Modal>
 //                     <ModalContent>
@@ -188,10 +167,13 @@ export const AiSearchPage = () => {
 //                     </ModalContent>
 //                 </Modal>
 //             )}
-//     </>
-// )}
+//             <Search />
+//             <Result />
+//         </>
+//     )
+// }
 
-// const UnderdogImage = styled.img`
+//     const UnderdogImage = styled.img`
 //     display: flex;
 //     justify-content: center;
 //     align-items: center;
