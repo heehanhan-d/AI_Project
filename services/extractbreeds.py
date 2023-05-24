@@ -42,7 +42,8 @@ def extract(input_image):
     ])
 
     # 모델파일 입력 (pt or ckpt)
-    pt_path = os.path.join(current_dir, 'aimodels/Cmatrix_ague_wandb_resnet50_64_0.001_30.pt')
+    # pt_path = os.path.join(current_dir, 'aimodels/Cmatrix_ague_wandb_resnet50_64_0.001_30.pt')
+    pt_path = os.path.join(current_dir, 'Cmatrix_ague_wandb_resnet50_64_0.001_30.pt')
 
     model = torch.load(pt_path, map_location=torch.device('cpu'))
 
