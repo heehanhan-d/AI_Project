@@ -30,3 +30,10 @@ export const LinkStyle = styled(Link)`
   text-decoration: none;
   color: inherit;
 `
+
+// HeaderLinkStyle
+export const HeaderLinkStyle = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  font-family: 'UI';
+`

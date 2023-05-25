@@ -98,3 +98,7 @@ export interface User {
     password: string,
     confirmPassword: string
 }
+
+export interface AdminLinkProps {
+    adminPath: string;
+  }

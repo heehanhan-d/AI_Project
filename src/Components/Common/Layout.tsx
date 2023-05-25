@@ -1,27 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Colors, LinkStyle } from './Styles';
+import { Colors, HeaderLinkStyle, LinkStyle } from './Styles';
 import LogoImg from '../../Img/Logo.png';
 import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNIN_PATH, SIGNUP_PATH, ADMIN_PATH } from './Path';
 import { UpScroll } from './Ref';
+import { AdminLink } from '../Admin/AdminLinkComponent';
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
-        {/* <Div> */}
+            {/* <Div> */}
             <Header>
                 <Link to={MAIN_PATH}>
                     <Logo src={LogoImg} alt={ YouIf } />
                 </Link>
             </Header>
+            <HeaderLink>
+                <HeaderLinkStyle to={SIGNIN_PATH}>로그인</HeaderLinkStyle>
+                <HeaderLinkStyle to={SIGNUP_PATH}>회원가입</HeaderLinkStyle>
+            </HeaderLink>
             <Nav>
                 <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
                 <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
                 <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
-                <LinkStyle to={SIGNUP_PATH}>SignUp</LinkStyle>
-                <LinkStyle to={ADMIN_PATH}>Admin</LinkStyle>
             </Nav>
                 <UpScroll>
                     <Body>
@@ -34,7 +37,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                         { YouIf }
                     </Slogan>
                     <Copyright>
-                        { Underdog }
+                        <AdminLink adminPath={ADMIN_PATH}>ⓒ</AdminLink>{Underdog}
                     </Copyright>
                 </div>
             </Footer>
@@ -58,21 +61,31 @@ const Logo = styled.img`
 
 const Header = styled.div`
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 90px;
     background-color: ${Colors.main};
     z-index: 10;
 `;
+
+const HeaderLink = styled.div`
+    display: grid;
+    place-items: center;
+    grid-template-columns: 100px 100px 100px;
+    background-color: ${Colors.main};
+    height: 40px;
+    justify-content: end;
+    text-align: start;
+`
 
 
 const Nav = styled.div`
     display: grid;
     place-items: center;
-    grid-template-columns: 160px 160px 160px 160px 160px ;
+    grid-template-columns: 160px 160px 160px;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -127,4 +140,5 @@ const Copyright = styled.div`
     font-family: "Text";
     margin-top: 10px;
 `
-const Underdog = "ⓒ 7팀(Underdog) - 엘리스 AI 6기 3차 프로젝트"
+const Underdog = "  7팀(Underdog) - 엘리스 AI 6기 3차 프로젝트"
+
