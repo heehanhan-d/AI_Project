@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
-import { BackServer } from '../Common/Path';
+import { ADMIN_PATH, BackServer } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
     
@@ -41,12 +42,14 @@ export default function SignUp() {
         }
     }; 
     
-    window.scrollTo(0, 0);
+  const handleLink = () => {
+    window.location.href = ADMIN_PATH; 
+    }
   
     return (
-        <FormDiv>
-            <FormContainer>
-            <form onSubmit={handleSubmit}>
+      <FormDiv>
+          <FormContainer>
+          <form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label htmlFor="email">이메일</Label>
                 <Input type="email" id="email" required />
@@ -55,10 +58,10 @@ export default function SignUp() {
                 <Label htmlFor="password">비밀번호</Label>
                 <Input type="password" id="password" required />
             </FormGroup>
-            <Button type="submit">You, if 에 로그인 하기</Button>
-                </form>
-            </FormContainer>
-        </FormDiv>
+              <Button type="submit" onClick={handleLink}>You, if 에 로그인 하기</Button>
+          </form>
+          </FormContainer>
+      </FormDiv>
     );
 }
   

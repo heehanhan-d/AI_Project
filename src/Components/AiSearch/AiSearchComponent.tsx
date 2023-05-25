@@ -161,127 +161,127 @@ export default function AiSearch() {
     
 `;
 
-const DragDiv = styled.div`
-    width: 40%;
-    height: 480px;
-    border: 5px dashed ${Colors.main};
-    left: 50%;
-    margin: 70px auto;
-`;
+    const DragDiv = styled.div`
+        width: 40%;
+        height: 480px;
+        border: 5px dashed ${Colors.main};
+        left: 50%;
+        margin: 70px auto;
+    `;
 
-const TextDiv = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: -60px 0 0 10px;
-    font-size: 32px;
-    font-weight: bold;
-    color: ${Colors.main};
-`;
+    const TextDiv = styled.div`
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: -60px 0 0 10px;
+        font-size: 32px;
+        font-weight: bold;
+        color: ${Colors.main};
+    `;
 
-const UploadButton = styled.label`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Logo";
-    font-size: 20px;
-    color: ${Colors.w};
-    background-color: ${Colors.footer};
-    margin: 40px 260px 0 260px;
-    padding: 10px 50px;
-    border-radius: 300px;
-    top: 120px;
-    cursor: pointer;
-    word-break: keep-all;
-    input {
-        display: none;
-    }
-`;
+    const UploadButton = styled.label`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Logo";
+        font-size: 20px;
+        color: ${Colors.w};
+        background-color: ${Colors.footer};
+        margin: 40px 260px 0 260px;
+        padding: 10px 50px;
+        border-radius: 300px;
+        top: 120px;
+        cursor: pointer;
+        word-break: keep-all;
+        input {
+            display: none;
+        }
+    `;
 
-const ResultDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: absolute;
-    margin: 0 auto 200px auto;
-    top: 100px;
-    border: 5px solid ${Colors.sub};
+    const ResultDiv = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        margin: 0 auto 200px auto;
+        top: 100px;
+        border: 5px solid ${Colors.sub};
 
-`;
+    `;
 
-const SearchButton = styled(Button)`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 10px 50px;
-    border: 1px solid ${Colors.main};
-    border-radius: 300px;
-    background-color: ${Colors.main};
-    color: ${Colors.w};
-    font-family: "Logo";
-    font-size: 20px;
-    top: -100px;
-    cursor: pointer;
-    margin: 0 auto;
-`;
-    
-const Modal = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    margin-bottom: 350px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${Colors.w};
-    font-family: "Text";
-    font-size: 20px;
-`;
+    const SearchButton = styled(Button)`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 10px 50px;
+        border: 1px solid ${Colors.main};
+        border-radius: 300px;
+        background-color: ${Colors.main};
+        color: ${Colors.w};
+        font-family: "Logo";
+        font-size: 20px;
+        top: -100px;
+        cursor: pointer;
+        margin: 0 auto;
+    `;
+        
+    const Modal = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        margin-bottom: 350px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: ${Colors.w};
+        font-family: "Text";
+        font-size: 20px;
+    `;
 
-const ModalContent = styled.div`
-    background-color: ${Colors.w};
-    padding-bottom: 20px;
-    border-radius: 5px;
-`;
+    const ModalContent = styled.div`
+        background-color: ${Colors.w};
+        padding-bottom: 20px;
+        border-radius: 5px;
+    `;
 
 
-const ModalButton = styled(Button)`
-    padding: 12px 24px;
-    background-color: ${Colors.main};
-    color: ${Colors.w};
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: "Logo";
-    font-size: 15px;
-    margin: 10px auto 0 auto;
-`;
+    const ModalButton = styled(Button)`
+        padding: 12px 24px;
+        background-color: ${Colors.main};
+        color: ${Colors.w};
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: "Logo";
+        font-size: 15px;
+        margin: 10px auto 0 auto;
+    `;
 
-const ListDiv = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
-    margin: 50px auto 150px auto;
-`
+    const ListDiv = styled.div`
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        margin: 50px auto 150px auto;
+    `
 
-const ListCircle = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 16px;
-    flex: 1 0 18%;
+    const ListCircle = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 16px;
+        flex: 1 0 18%;
 
-    img {
-        width:200px;
-        height:200px;
-        border-radius: 50%;
-        border: 0.5rem dashed ${Colors.sub};
-    }
-`
+        img {
+            width:200px;
+            height:200px;
+            border-radius: 50%;
+            border: 0.5rem dashed ${Colors.sub};
+        }
+    `

@@ -9,7 +9,8 @@ import { UpScroll } from './Ref';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <Div>
+        <>
+        {/* <Div> */}
             <Header>
                 <Link to={MAIN_PATH}>
                     <Logo src={LogoImg} alt={ YouIf } />
@@ -20,7 +21,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
                 <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
                 <LinkStyle to={SIGNUP_PATH}>SignUp</LinkStyle>
-                <LinkStyle to={SIGNIN_PATH}>SignIn</LinkStyle>
                 <LinkStyle to={ADMIN_PATH}>Admin</LinkStyle>
             </Nav>
                 <UpScroll>
@@ -38,7 +38,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </Copyright>
                 </div>
             </Footer>
-        </Div>
+        {/* </Div> */}
+    </>
     );
 };
 
@@ -48,12 +49,12 @@ const Logo = styled.img`
     height: 55px;
 `
 
-const Div = styled.div`
-    display: absolute;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-`
+// const Div = styled.div`
+//     display: absolute;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+// `
 
 const Header = styled.div`
     display: flex;
@@ -71,7 +72,7 @@ const Header = styled.div`
 const Nav = styled.div`
     display: grid;
     place-items: center;
-    grid-template-columns: 160px 160px 160px 160px 160px 160px ;
+    grid-template-columns: 160px 160px 160px 160px 160px ;
     align-items: center;
     justify-content: center;
     width: 100%;
