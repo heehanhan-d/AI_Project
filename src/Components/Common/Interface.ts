@@ -82,3 +82,19 @@ export interface FormValue {
     password: string;
     confirmPassword: string;
 }
+
+export interface SignUp {
+    name: string;
+    phone: string;
+    password: string;
+    ConfirmPassword: string;
+    extraError?: string;
+}
+
+export interface User {
+    name: string,
+    phone: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}

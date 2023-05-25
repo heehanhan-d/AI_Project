@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors, LinkStyle } from './Styles';
 import LogoImg from '../../Img/Logo.png';
-import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH } from './Path';
+import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNIN_PATH, SIGNUP_PATH } from './Path';
 import { UpScroll } from './Ref';
 
 
@@ -20,6 +20,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
                 <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
                 <LinkStyle to={SIGNUP_PATH}>SignUp</LinkStyle>
+                <LinkStyle to={SIGNIN_PATH}>SignIn</LinkStyle>
             </Nav>
                 <UpScroll>
                     <Body>
@@ -69,7 +70,7 @@ const Header = styled.div`
 const Nav = styled.div`
     display: grid;
     place-items: center;
-    grid-template-columns: 10rem 10rem 10rem 10rem;
+    grid-template-columns: 10rem 10rem 10rem 10rem 10rem;
     align-items: center;
     justify-content: center;
     width: 100%;

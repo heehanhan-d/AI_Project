@@ -125,15 +125,114 @@
 //     );
 // };
 
+// import { SignUp } from '../Components/SignUp/SignUp';
+// import React from 'react';
+// import { useForm } from 'react-hook-form';
+// import { useNavigate } from 'react-router-dom';
+// import styled from 'styled-components';
+// import '../Components/Common/Font.css';
+// import { Colors } from '../Components/Common/Styles';
+// import { BackServer } from '../Components/Common/Path';
+
+// export const SignUpPage = () => {
+
+//     // 유효성 검사
+//     const {
+//         register,
+//         handleSubmit,
+//         watch,
+//         formState: { errors, isSubmitting, isDirty, isValid },
+//     } = useForm({ mode: 'onChange' });
+
+//     const navigate = useNavigate();
+
+//     // post 요청
+//     const onSubmit = data => {
+//         console.log(data);
+//         fetch(`${BackServer}/users/sign-up`, {
+//             method: 'POST',
+//             headers: { 'Content-type': 'applicaton/json' },
+//             body: JSON.stringify({
+//                 name: data.name,
+//                 phone: data.phone,
+//                 email: data.email,
+//                 password: data.password
+//             })
+//         })
+//             .then(res => res.json())
+//             .then(() => {
+//                 alert('회원가입 완료! 로그인 후 이용해주세요.');
+//                 navigate('../sign-in');
+//             });
+        
+//         // 에러 처리
+//         const onError = errors => console.log(errors);
+//     }
+
+//     return (
+//         <>회원가입 페이지
+//             <SignUp />
+//             <form onSubmit={handleSubmit(onSubmit, onError)}>
+//             {/* 이름 에러 핸들링 */}
+//                 {errors.name && errors.name?.type === 'required' && (
+//                     <AlertMessage>이름을 입력하세요.</AlertMessage>
+//                 )}
+//                 {errors.name && errors.name?.type === 'minLength' && (
+//                     <AlertMessage>{errors.name.message}</AlertMessage>
+//                 )}
+//                 <Input
+//                     id='name'
+//                     type='text'
+//                     placeholder='이름(실명)을 입력해주세요.'
+//                     aria-invalid={errors.name ? `${Colors.r}` : `${Colors.s}`}
+//                     {...register('name', {
+//                         required: true,
+//                         minLength: { value: 2, message: '이름은 2자 이상이어야 합니다.' }
+//                     })}
+//                 />
+//             {/* 전화번호 에러 핸들링 */}
+//             {/* 이메일 에러 핸들링 */}
+//                 {errors.email && errors.email?.type === 'required' && (
+//                     <AlertMessage>이메일을 입력하세요.</AlertMessage>
+//                 )}
+//                 {errors.email && errors.email?.type === 'pattern' && (
+//                     <AlertMessage>{errors.email.message}</AlertMessage>
+//                 )}
+//                 <Input
+//                     id='email'
+//                     type='text'
+//                     placeholder='이메일을 입력해주세요.'
+//                     aria-invalid={errors.email ? `${Colors.r}` : `${Colors.s}`}
+//                     {...register('email', {
+//                         required: true,
+//                         pattern: { value: /@/, message: '이메일 형식에 맞지 않습니다.' }
+//                 })}
+//                 />
+//             {/* 비밀번호 에러 핸들링 */}
+                
+//             </form>
+
+//         </>
+//     );
+// }
+
+// const AlertMessage = styled.span`
+//     margin-bottom: 5px;
+//     color: ${props => props.theme.alert};
+//     font-size: ${props => props.theme.fontSize.small};
+// `;
+
+// const Input = styled.input`
+//     border: 2px solid ${props => props['aria-invalid']};
+// `
 
 import React from 'react';
-import { SignUp } from '../Components/SignUp/SignUp';
+import SignUp  from '../Components/SignUp/SignUpComponent';
 
 export const SignUpPage = () => {
     return (
-        <div>
-            회원가입 페이지
+        <>
             <SignUp />
-        </div>
-    );
+        </>
+    )
 }

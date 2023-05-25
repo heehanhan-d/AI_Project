@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom';
 export const Colors = {
     w: "#ffffff",
     b: "#000000",
-    s: "#c0c0c0",
-    c: "#dc143c",
-    p: '#FFABAB',
+    r: 'ff000',
+    g: "#c0c0c0",
+    s: '#dadada',
+    hot: "#dc143c",
+    pink: '#FFABAB',
     main: "#FED159",
     sub: "#FEE59F",
     footer: "#94B5EA"

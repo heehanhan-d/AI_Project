@@ -4,6 +4,7 @@ export const SEARCH_PATH = '/search';
 export const LIST_PATH = '/list';
 export const DETAIL_PATH = '/list/:id';
 export const SIGNUP_PATH = '/signup';
+export const SIGNIN_PATH = '/signin';
 export const ADMIN_PATH = '/admin';
 export const ADOPT_PATH = '/adopt';
 
