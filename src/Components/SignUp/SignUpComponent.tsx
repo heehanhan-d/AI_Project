@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 import { CenterRef } from '../Common/Ref';
-import { BackServer } from '../Common/Path';
+import { BackServer, SIGNIN_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
     
@@ -77,8 +78,10 @@ export default function SignUp() {
                 <CenterRef>
                 <ModalContent>
                     <h1>회원가입이 완료되었습니다!</h1><br />
-                <p>로그인 후 You, if 의 서비스를 이용해보세요.</p>
-                <ModalButton onClick={closeModal}>로그인 하러 가기</ModalButton>
+                  <p>로그인 후 You, if 의 서비스를 이용해보세요.</p>
+                  <Link to={SIGNIN_PATH}>
+                    <ModalButton onClick={closeModal}>로그인 하러 가기</ModalButton>
+                  </Link>
                 </ModalContent>
                 </CenterRef>
             </Modal>

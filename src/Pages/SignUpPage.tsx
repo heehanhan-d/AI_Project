@@ -1,3 +1,15 @@
+import React from 'react';
+import SignUp  from '../Components/SignUp/SignUpComponent';
+
+export const SignUpPage = () => {
+    return (
+        <>
+            <SignUp />
+        </>
+    )
+}
+
+
 // import React, { useState } from 'react';
 // import axios from 'axios';
 // import { BackServer } from '../Components/Common/Path';
@@ -226,13 +238,3 @@
 //     border: 2px solid ${props => props['aria-invalid']};
 // `
 
-import React from 'react';
-import SignUp  from '../Components/SignUp/SignUpComponent';
-
-export const SignUpPage = () => {
-    return (
-        <>
-            <SignUp />
-        </>
-    )
-}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
-import { CenterRef } from '../Common/Ref';
 import { BackServer } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
@@ -83,14 +82,12 @@ const FormContainer = styled.div`
   align-items: center;
   font-family: 'Logo';
   font-size: 20px;
-//   margin-bottom: 100px;
 `;
 
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-
 `;
 
 const Label = styled.label<any>`
