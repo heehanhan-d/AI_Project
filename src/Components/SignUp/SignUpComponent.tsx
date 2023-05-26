@@ -11,8 +11,7 @@ import { Link } from 'react-router-dom';
 export default function SignUp() {
     
     const [isModalOpen, setModalOpen] = useState(false);
-    const [user, setUser] = useState<User | null>(null);  
-    const [responseData, setResponseData] = useState('');
+  const [responseData, setResponseData] = useState([]);
 
     const handleSubmit = async (event: any) => {
       
@@ -26,6 +25,7 @@ export default function SignUp() {
           email: event.target.email.value,
           password: event.target.password.value
         };
+        
         console.log(formData);
 
         try {
@@ -49,7 +49,7 @@ export default function SignUp() {
     const closeModal = () => {
       setModalOpen(false);
       window.scrollTo(0, 0);
-      };
+  };
   
     return (
         <FormDiv>

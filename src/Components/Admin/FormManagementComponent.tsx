@@ -60,7 +60,7 @@ export const FormManagement: React.FC = () => {
             {/* <h1>Welcome, Admin!</h1>
             보호소 방문 신청 폼 전체를 확인할 수 있어야 해. */}
             <FormDiv>
-                <h1>보호소 방문 예약 조회</h1>
+                <h1>보호소 방문 예약 목록 조회</h1>
                 <Table>
                     <thead>
                         <tr>

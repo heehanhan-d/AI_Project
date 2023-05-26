@@ -13,7 +13,7 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [responseData, setResponseData] = useState('');
+  const [responseData, setResponseData] = useState({});
 
   const handleSignin = async (event: any) => {
       event.preventDefault();
@@ -25,9 +25,29 @@ export default function SignIn() {
       };
       console.log(formData);
 
+    const mockData = [
+        {
+          email: 'underdog247@gmail.com',
+          password: 'underdog247',
+          role: 'user',
+          token: 'mockTocken123'
+        },
+        {
+        email: 'youif247@gmail.com',
+        password: 'youif247',
+        role: 'admin',
+        token: 'mockTocken456'
+        }
+      ]
+    
       try {
         // 서버에 POST 요청 보내기
-        const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/users/sign-in', formData);
+        // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/users/sign-in', formData);
+
+        // // 목업 데이터를 사용해서 테스트 하기
+        const response = {
+          data: mockData
+        };
 
         // 응답 처리
           const responseData = response.data;
@@ -36,14 +56,15 @@ export default function SignIn() {
           setResponseData(responseData);
 
         // 로그인 성공 시 처리
-        if (responseData.success) {
-          const token = responseData.token;
-
+        const loggedIn = responseData.find((data: any) => data.email === formData.email && data.password === formData.password);
+        if (loggedIn) {
+          const token = loggedIn.token;
+        
           // 토큰을 로컬 스토리지에 저장
           localStorage.setItem('token', token);
 
           // 관리자 로그인 성공 시
-          if (formData.email === 'youif247@gmail.com') {
+          if (loggedIn.role === 'admin') {
             window.location.href = ADMIN_PATH;
           } else {
             // 유저 로그인 성공 시
@@ -57,16 +78,16 @@ export default function SignIn() {
         // 오류 처리
         const error = e as AxiosError;
         console.error(error.response?.data || error.message);
-      }
+    }
   }; 
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  }
+  // const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setEmail(event.target.value);
+  // }
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  }
+  // const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setPassword(event.target.value);
+  // }
 
   return (
     <>
