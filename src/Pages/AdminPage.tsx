@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Body } from '../Components/Common/Layout';
-import { Admin }from '../Components/Admin/AdminComponent';
+import { FormManagement }from '../Components/Admin/FormManagementComponent';
 
 export const AdminPage = () => {
     return(
         <>
-            <Admin />
+            <FormManagement />
         </>
         );
     };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Colors } from '../Common/Styles';
-import { ADMIN_PATH, LIST_PATH, MYPAGE_PATH } from '../Common/Path';
+import { Colors, HeaderLinkStyle } from '../Common/Styles';
+import { ADMIN_PATH, LIST_PATH, MYPAGE_PATH, SIGNIN_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
 import { Link } from 'react-router-dom';
@@ -79,7 +79,7 @@ export default function SignIn() {
         const error = e as AxiosError;
         console.error(error.response?.data || error.message);
     }
-  }; 
+}; 
 
   // const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   setEmail(event.target.value);
@@ -163,3 +163,13 @@ const Button = styled.button<any>`
   margin-top: 20px;
   top: -200px;
 `;
+
+const HeaderLink = styled.div`
+    display: grid;
+    place-items: center;
+    grid-template-columns: 100px 100px;
+    background-color: ${Colors.main};
+    height: 40px;
+    justify-content: end;
+    text-align: start;
+`
