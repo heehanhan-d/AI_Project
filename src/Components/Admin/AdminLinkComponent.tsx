@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AdminLinkProps } from '../Common/Interface';
-
+import { Colors } from '../Common/Styles';
 
 export const AdminLink: React.FC<AdminLinkProps> = ({ adminPath, children }) => {
   const [hovered, setHovered] = useState(false);
@@ -18,7 +18,7 @@ export const AdminLink: React.FC<AdminLinkProps> = ({ adminPath, children }) => 
   };
 
   const linkStyle = {
-    color: hovered ? 'red' : 'black',
+    color: hovered ? `${Colors.w}` : `${Colors.b}`,
     textDecoration: 'none',
   };
 
@@ -30,7 +30,7 @@ export const AdminLink: React.FC<AdminLinkProps> = ({ adminPath, children }) => 
       onMouseLeave={handleMouseLeave}
       style={linkStyle}
     >
-      ⓒ
+      {children}
     </a>
   );
 };

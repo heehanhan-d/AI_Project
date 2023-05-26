@@ -101,4 +101,5 @@ export interface User {
 
 export interface AdminLinkProps {
     adminPath: string;
+    children?: React.ReactNode;
   }

@@ -74,7 +74,7 @@ const Header = styled.div`
 const HeaderLink = styled.div`
     display: grid;
     place-items: center;
-    grid-template-columns: 100px 100px 100px;
+    grid-template-columns: 100px 100px;
     background-color: ${Colors.main};
     height: 40px;
     justify-content: end;
