@@ -6,11 +6,13 @@ import { AboutPage } from "./Pages/AboutPage";
 import { AiSearchPage } from "./Pages/AiSearchPage";
 import { DogListPage } from "./Pages/DogListPage";
 import { SignUpPage } from "./Pages/SignUpPage";
+import { SignInPage } from "./Pages/SignInPage";
 import { DogDetailPage } from "./Pages/DogDetailPage";
 import { AdminPage } from "./Pages/AdminPage";
+import { AdoptPage } from './Pages/AdoptPage';
     
 import './App.css';
-import { ABOUT_PATH, ADMIN_PATH, DETAIL_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH } from "./Components/Common/Path";
+import { ABOUT_PATH, ADMIN_PATH, DETAIL_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH, ADOPT_PATH, SIGNIN_PATH } from "./Components/Common/Path";
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
                     <Route element={<DogDetailPage />} path={DETAIL_PATH} />
                     <Route element={<SignUpPage />} path={SIGNUP_PATH} />
                     <Route element={<AdminPage />} path={ADMIN_PATH} />
+                    <Route element={<AdoptPage />} path={ADOPT_PATH} />
+                    <Route element={<SignInPage />} path={SIGNIN_PATH} />
                 </Routes>
             </Layout>
         </BrowserRouter>

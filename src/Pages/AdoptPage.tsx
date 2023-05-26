@@ -1,10 +1,13 @@
 import React from 'react';
-import { Body } from '../Components/Common/Layout';
+import styled from 'styled-components';
+import Adopt from '../Components/DogDetail/AdoptComponent';
+
 
 export const AdoptPage = () => {
-    return (
-        <Body>
-            입양 페이지
-        </Body>
+    return(
+    <>
+        <Adopt />
+    </>
     );
-}
+};
+

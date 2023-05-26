@@ -9,9 +9,7 @@ import "swiper/css/autoplay";
 import { Colors, LinkStyle } from '../Common/Styles';
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
-// import { fetchImageUrls } from '../../Api/FetchImageUrl';
-import { LIST_PATH } from '../Common/Path';
-
+import { BackServer, LIST_PATH } from '../Common/Path'
 
 export default function Slide() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);
@@ -19,7 +17,7 @@ export default function Slide() {
   useEffect(() => {
 
     const fetchImageUrls = async () => {
-      const response = await fetch('http://localhost:3001/underdogs?limit=20&skip=20');
+      const response = await fetch(`${BackServer}/underdogs?limit=20&skip=20`);
       const data = await response.json();
       return data;
     };
@@ -30,6 +28,7 @@ export default function Slide() {
   console.log(underdogs, 'underdogs')
 
   return (
+    <>
     <SwiperSlider>
       <LinkStyle to={LIST_PATH}>
         <UnderdogImage src={Underdog} />
@@ -52,7 +51,8 @@ export default function Slide() {
           </CustomerSwiperSlide>
           ))}
       </CustomSwiper>
-    </SwiperSlider>
+      </SwiperSlider>
+    </>
   );
 }
 
@@ -64,9 +64,7 @@ export default function Slide() {
    position: relative;
    width: 90%;
    height: 400px;
-   top: 800px;
-   bottom: 800px;
-   margin-bottom: 160px;
+   margin: 300px auto;
    background-color: ${Colors.sub};
    `;
 
@@ -127,8 +125,8 @@ const UnderdogImage = styled.img`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 48px;
-  left: 0rem;
+  top: 20px;
+  left: -20px;
   width: 20%;
   height: auto;
   z-index: 10;

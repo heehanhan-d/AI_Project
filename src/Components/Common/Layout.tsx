@@ -1,85 +1,95 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Colors, LinkStyle } from './Styles';
+import { Colors, HeaderLinkStyle, LinkStyle } from './Styles';
 import LogoImg from '../../Img/Logo.png';
-import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH } from './Path';
+import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNIN_PATH, SIGNUP_PATH, ADMIN_PATH } from './Path';
+import { UpScroll } from './Ref';
+import { AdminLink } from '../Admin/AdminLinkComponent';
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div>
+        <>
+            {/* <Div> */}
             <Header>
                 <Link to={MAIN_PATH}>
                     <Logo src={LogoImg} alt={ YouIf } />
                 </Link>
             </Header>
+            <HeaderLink>
+                <HeaderLinkStyle to={SIGNIN_PATH}>로그인</HeaderLinkStyle>
+                <HeaderLinkStyle to={SIGNUP_PATH}>회원가입</HeaderLinkStyle>
+            </HeaderLink>
             <Nav>
                 <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
                 <LinkStyle to={SEARCH_PATH}>Ai Search</LinkStyle>
                 <LinkStyle to={LIST_PATH}>Underdogs</LinkStyle>
             </Nav>
-            <Wrapper>
-                <Body>
-                    {children}
-                </Body>
-            </Wrapper>
+                <UpScroll>
+                    <Body>
+                        {children}
+                    </Body>
+                </UpScroll>
             <Footer>
                 <div>
                     <Slogan>
                         { YouIf }
                     </Slogan>
                     <Copyright>
-                        { Underdog }
+                        <AdminLink adminPath={ADMIN_PATH}>ⓒ</AdminLink>{Underdog}
                     </Copyright>
                 </div>
             </Footer>
-        </div>
+        {/* </Div> */}
+    </>
     );
 };
 
 
 const Logo = styled.img`
-    width: 12.5rem;
-    height: auto;
+    width: auto;
+    height: 55px;
 `
 
-const Wrapper = styled.div`
-    display: absolute;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-width: 1000px;
-    padding-bottom: 120px;
-`
+// const Div = styled.div`
+//     display: absolute;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+// `
 
 const Header = styled.div`
-    position: fixed;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
-    min-width: 1000px;
-    height: 120px;
+    height: 90px;
     background-color: ${Colors.main};
     z-index: 10;
 `;
 
-
-const Nav = styled.div`
-    position: fixed;
+const HeaderLink = styled.div`
     display: grid;
     place-items: center;
-    grid-template-columns: 10rem 10rem 10rem;
+    grid-template-columns: 100px 100px;
+    background-color: ${Colors.main};
+    height: 40px;
+    justify-content: end;
+    text-align: start;
+`
+
+
+const Nav = styled.div`
+    display: grid;
+    place-items: center;
+    grid-template-columns: 160px 160px 160px;
     align-items: center;
     justify-content: center;
-    margin-top: 120px;
-    left: 0;
     width: 100%;
-    min-width: 1000px;
-    height: 50px;
+    height: 65px;
     font-family: "Logo";
     font-size: 20px;
     text-decoration: none;
@@ -87,12 +97,6 @@ const Nav = styled.div`
     background-color: ${Colors.sub};
     color: ${Colors.b};
     z-index: 10;
-`
-
-const NavLink = styled(Link)`
-    color: ${Colors.b};
-    font-size: 20px;
-    text-decoration: none;
 `
 
 export const Body = styled.div`
@@ -104,14 +108,7 @@ export const Body = styled.div`
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    width: 119.8rem;
-    height: 120rem;
-    padding: 0 2.5rem;
-    padding-bottom: 7.5rem;
-    margin-top: 80px; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
 `;
 
 const Footer = styled.div`
@@ -123,7 +120,6 @@ const Footer = styled.div`
     justify-content: center;
     text-align: center;
     width: 100%;
-    min-width: 1000px;
     height: 120px;
     bottom: 0;
     left: 0;
@@ -144,4 +140,5 @@ const Copyright = styled.div`
     font-family: "Text";
     margin-top: 10px;
 `
-const Underdog = "ⓒ 7팀(Underdog) - 엘리스 AI 6기 3차 프로젝트"
+const Underdog = "  7팀(Underdog) - 엘리스 AI 6기 3차 프로젝트"
+

@@ -1,23 +1,21 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Body } from '../Common/Layout';
 import { Colors } from '../Common/Styles';
 import '../Common/Font.css';
-import { ScrollRef } from '../Common/Ref';
 
 export default function Service() {
   return (
-    <ScrollRef>
-        <AboutDiv>
-            🐕 유기견을 입양해요,
-          <FadeInContainer>
-            <AnimatedLink> YOU If </AnimatedLink>
-          </FadeInContainer>
-        </AboutDiv>
-        <div>
-            <p>안녕하세요</p>
-        </div>
-    </ScrollRef>
+    <>
+      <AboutDiv>
+          🐕 유기견을 입양해요,
+        <FadeInContainer>
+          <AnimatedLink> YOU If </AnimatedLink>
+        </FadeInContainer>
+      </AboutDiv>
+      <div>
+          <p>안녕하세요</p>
+      </div>
+    </>
   );
 }
 

@@ -21,7 +21,7 @@ export interface Dog {
         date_start: Date, // 공고시작일(noticeSdt) (YYYYMMDD)
         date_end: Date, // 공고종료일(noticeEdt) (YYYYMMDD)
     }
-    carecenter?: {
+    careCenter?: {
         name?: string, // 보호소 이름(careNm)
         phone: string, // 보호소 전화번호(careTel)
         address: string, // 보호소 주소(careAddr)
@@ -46,17 +46,6 @@ export interface ResponseData {
     message: string;
 }
 
-export interface AiResultProps {
-    items: string[];
-    responseData: string[];
-}
-
-// export interface Dropdownprops {
-//     options: string[];
-//     selectedItem: string;
-//     onSelect: (selectedItem: string) => void;
-// }
-
 // swiper
 export interface SliderProps {
     dogList: string[];
@@ -67,3 +56,50 @@ export interface SliderProps {
 export interface ScrollRefProps {
     children: React.ReactNode;
 }
+
+export interface DogDetailsProps {
+    dog: Dog;
+}
+
+export interface ImageSectionProps {
+    dogData: string;
+}
+
+// 회원가입
+export interface SignUpFormProps {
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    phone: string;
+    errors: string;
+}
+
+export interface FormValue {
+    name: string;
+    phone: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+export interface SignUp {
+    name: string;
+    phone: string;
+    password: string;
+    ConfirmPassword: string;
+    extraError?: string;
+}
+
+export interface User {
+    name: string,
+    phone: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}
+
+export interface AdminLinkProps {
+    adminPath: string;
+    children?: React.ReactNode;
+  }

@@ -1,14 +1,9 @@
 import React from 'react';
-import Search from '../Components/AiSearch/SearchComponent'
-import Result from '../Components/AiSearch/ResultComponent'
-import AiSearch from '../Components/AiSearch/AiSearchComponent';
 
-export const AiSearchPage = () => {
+export default function Search() {
     return (
         <>
-            <AiSearch />
-            <Search />
-            <Result />
+            검색 컴포넌트
         </>
     )
 }
@@ -17,17 +12,15 @@ export const AiSearchPage = () => {
 // import axios, { AxiosError } from 'axios';
 // import Select from 'react-select';
 // import styled from 'styled-components';
-// import { Colors, Button, FindUnderdog, LinkStyle } from '../Components/Common/Styles';
-// import { AiServer } from '../Components/Common/Path';
+// import { Colors, Button, FindUnderdog, LinkStyle } from '../Common/Styles';
+// import { AiServer } from '../Common/Path';
 // import Underdog from '../../Img/Underdog.png';
-// import { Dog, ResponseData } from '../Components/Common/Interface';
-// import { BackServer } from '../Components/Common/Path';
-// import { ImageSection } from '../Components/Common/Ref';
-// import Search from '../Components/AiSearch/SearchComponent';
-// import Result from '../Components/AiSearch/ResultComponent';
+// import { Dog, ResponseData } from '../Common/Interface';
+// import { BackServer } from '../Common/Path';
+// import { ImageSection } from '../Common/Ref';
 
 
-// export default function AiSearchPage() {
+// export default function Search() {
 
 //     const [dogData, setDogData] = useState<Dog[]>([]);
     
@@ -104,7 +97,7 @@ export const AiSearchPage = () => {
 
 //         if (option) {
 //             axios
-//             .get(`${BackServer}/search?breeds=${decodeURI(option.value)}`)
+//             .get(`${BackServer}/underdogs/search?breeds=${decodeURI(option.value)}`)
 //                 .then((response) => {
 //                     const dogData: Dog[] = [];
 
@@ -127,18 +120,18 @@ export const AiSearchPage = () => {
 //             <DragDiv>
 //                 <UnderdogImage src={Underdog} />
 //                 <TextDiv>{FindUnderdog}</TextDiv>
-//                 <UploadButton>사진 추가하기
-//                     <input
-//                         type="file"
-//                         accept=".jpg, .jpeg, .png"
-//                         onChange={handleFileInputChange}
-//                     />
-//                 </UploadButton>
-//                 {filename && <p>파일명: {filename}</p>}
-//             </DragDiv>
-//             <SearchButton onClick={handleSearch}>
-//                 AI로 UNDERDOG 검색하기
-//             </SearchButton>
+            //     <UploadButton>사진 추가하기
+            //         <input
+            //             type="file"
+            //             accept=".jpg, .jpeg, .png"
+            //             onChange={handleFileInputChange}
+            //         />
+            //     </UploadButton>
+            //     {filename && <p>파일명: {filename}</p>}
+            // </DragDiv>
+            // <SearchButton onClick={handleSearch}>
+            //     AI로 UNDERDOG 검색하기
+            // </SearchButton>
 //             <ResultDiv>
 //                 <Select
 //                     options={options}
@@ -167,8 +160,6 @@ export const AiSearchPage = () => {
 //                     </ModalContent>
 //                 </Modal>
 //             )}
-//             <Search />
-//             <Result />
 //         </>
 //     )
 // }

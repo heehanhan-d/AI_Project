@@ -1,14 +1,12 @@
-import React from 'react';
 import axios from 'axios';
+import { AiServer, BackServer } from '../Components/Common/Path';
 
-export const ApiUrl = process.env.REACT_APP_API_URL
 
-export const fetchDog = async (id: string) => {
+export const FetchDog = async (id: string) => {
     try {
-        const result = await axios.get(`${ApiUrl}/underdogs/${id}`);
-        result.data();
-        return result;
+        const result = await axios.get(`${BackServer}/underdogs/${id}`);
+        return result.data;
     } catch(error) {
-        console.error(error);
+        throw Error('데이터 패치에 실패했습니다.')
     }
 }
