@@ -1,68 +1,92 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
-import { ADMIN_PATH, BackServer } from '../Common/Path';
+import { ADMIN_PATH, LIST_PATH, MYPAGE_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
 import { Link } from 'react-router-dom';
+import { FormManagement } from '../Admin/FormManagementComponent';
 
-export default function SignUp() {
+
+export default function SignIn() {
     
-    // const [isModalOpen, setModalOpen] = useState(false);
-    const [user, setUser] = useState<User | null>(null);  
-    const [responseData, setResponseData] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [responseData, setResponseData] = useState('');
 
-    const handleSubmit = async (event: any) => {
+  const handleSignin = async (event: any) => {
+      event.preventDefault();
+    
+      // 폼 데이터 가져오기
+      const formData = {
+        email: event.target.email.value,
+        password: event.target.password.value
+      };
+      console.log(formData);
+
+      try {
+        // 서버에 POST 요청 보내기
+        const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/users/sign-in', formData);
+
+        // 응답 처리
+          const responseData = response.data;
+          console.log(responseData);
       
-        // setModalOpen(true);
-        event.preventDefault();
-     
-        // 폼 데이터 가져오기
-        const formData = {
-          email: event.target.email.value,
-          password: event.target.password.value
-        };
-        console.log(formData);
+          setResponseData(responseData);
 
-        try {
-          // 서버에 POST 요청 보내기
-          const response = await axios.post(`${BackServer}/users/sign-in`, formData);
+        // 로그인 성공 시 처리
+        if (responseData.success) {
+          const token = responseData.token;
 
-          // 응답 처리
-            console.log(response.data);
-            const responseData = response.data;
-            console.log(responseData);
-        
-            setResponseData(responseData);
+          // 토큰을 로컬 스토리지에 저장
+          localStorage.setItem('token', token);
 
-        } catch (e) {
-          // 오류 처리
-          const error = e as AxiosError;
-          console.error(error.response?.data || error.message);
+          // 관리자 로그인 성공 시
+          if (formData.email === 'youif247@gmail.com') {
+            window.location.href = ADMIN_PATH;
+          } else {
+            // 유저 로그인 성공 시
+            setIsLoggedIn(true);
+            window.location.href = MYPAGE_PATH;
+          }
+        } else {
+          alert('이메일과 비밀번호를 다시 확인해주세요.')
         }
-    }; 
-    
-  const handleLink = () => {
-    window.location.href = ADMIN_PATH; 
-    }
-  
-    return (
+      } catch (e) {
+        // 오류 처리
+        const error = e as AxiosError;
+        console.error(error.response?.data || error.message);
+      }
+  }; 
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  }
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  }
+
+  return (
+    <>
       <FormDiv>
-          <FormContainer>
-          <form onSubmit={handleSubmit}>
+        <FormContainer>
+          <form onSubmit={handleSignin}>
             <FormGroup>
-                <Label htmlFor="email">이메일</Label>
-                <Input type="email" id="email" required />
+              <Label htmlFor="email">이메일</Label>
+              <Input type="email" id="email" required />
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="password">비밀번호</Label>
-                <Input type="password" id="password" required />
+              <Label htmlFor="password">비밀번호</Label>
+              <Input type="password" id="password" required />
             </FormGroup>
-              <Button type="submit" onClick={handleLink}>You, if 에 로그인 하기</Button>
+            <Button type="submit">You, if 에 로그인 하기</Button>
           </form>
-          </FormContainer>
+        </FormContainer>
       </FormDiv>
-    );
+    </>
+  );
 }
   
 const FormDiv = styled.div`

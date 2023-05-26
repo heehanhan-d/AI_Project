@@ -12,7 +12,8 @@ import { AdminPage } from "./Pages/AdminPage";
 import { AdoptPage } from './Pages/AdoptPage';
     
 import './App.css';
-import { ABOUT_PATH, ADMIN_PATH, DETAIL_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH, ADOPT_PATH, SIGNIN_PATH } from "./Components/Common/Path";
+import { ABOUT_PATH, ADMIN_PATH, DETAIL_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH, ADOPT_PATH, SIGNIN_PATH, MYPAGE_PATH } from "./Components/Common/Path";
+import MyPagePage from "./Pages/MyPagePage";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                     <Route element={<AdminPage />} path={ADMIN_PATH} />
                     <Route element={<AdoptPage />} path={ADOPT_PATH} />
                     <Route element={<SignInPage />} path={SIGNIN_PATH} />
+                    <Route element={<MyPagePage />} path={MYPAGE_PATH} />
                 </Routes>
             </Layout>
         </BrowserRouter>

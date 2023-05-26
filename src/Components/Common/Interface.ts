@@ -102,4 +102,12 @@ export interface User {
 export interface AdminLinkProps {
     adminPath: string;
     children?: React.ReactNode;
-  }
+}
+  
+// 보호소 방문 예약 폼
+export interface FormDataType {
+    name: string;
+    phone: string;
+    when_day: string;
+    when_time: string;
+}

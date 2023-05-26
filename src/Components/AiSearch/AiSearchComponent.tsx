@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import Select from 'react-select';
 import styled from 'styled-components';
 import { Colors, Button, FindUnderdog, LinkStyle } from '../Common/Styles';
-import { AiServer, BackServer } from '../Common/Path';
+// import { AiServer, BackServer } from '../Common/Path';
 import Underdog from '../../Img/Underdog.png';
 import { Dog, ResponseData } from '../Common/Interface';
 import { ImageSection } from '../Common/Ref';
@@ -45,7 +45,7 @@ export default function AiSearch() {
 
                 try {
                     //파일을 AI 서버로 전송하는 POST 요청
-                    const response = await axios.post<ResponseData>(`${AiServer}/breedsAI/user`, fileData, {
+                    const response = await axios.post<ResponseData>('http://kdt-ai6-team07.elicecoding.com:3002/breedsAI/user', fileData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -85,7 +85,7 @@ export default function AiSearch() {
 
         if (option) {
             axios
-            .get(`${BackServer}/underdogs/search?breeds=${decodeURI(option.value)}`)
+            .get(`http://kdt-ai6-team07.elicecoding.com:3001/underdogs/search?breeds=${decodeURI(option.value)}`)
                 .then((response) => {
                     const dogData: Dog[] = [];
 

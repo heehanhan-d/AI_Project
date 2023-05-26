@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Body } from '../Components/Common/Layout';
-import AdminComponent from '../Components/Admin/AdminComponent';
+import AdminComponent from '../Components/Admin/AdminLoginComponent';
 import { DogProfile } from '../Components/DogDetail/DogProfile';
 import  Adopt from '../Components/DogDetail/AdoptComponent';
 import ReservationForm from '../Components/DogDetail/ReservationFormComponent';

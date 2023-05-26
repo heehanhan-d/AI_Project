@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 import { CenterRef } from '../Common/Ref';
-import { BackServer, SIGNIN_PATH } from '../Common/Path';
+import { SIGNIN_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
 import { Link } from 'react-router-dom';
+// import { BackServer, SIGNIN_PATH } from '../Common/Path';
 
 export default function SignUp() {
     
@@ -20,7 +21,7 @@ export default function SignUp() {
      
         // 폼 데이터 가져오기
         const formData = {
-          name: event.target.name.value,
+          userName: event.target.userName.value,
           phone: event.target.phone.value,
           email: event.target.email.value,
           password: event.target.password.value
@@ -29,7 +30,7 @@ export default function SignUp() {
 
         try {
           // 서버에 POST 요청 보내기
-          const response = await axios.post(`${BackServer}/users/sign-up`, formData);
+          const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/users/sign-up', formData);
 
           // 응답 처리
             console.log(response.data);
@@ -56,8 +57,8 @@ export default function SignUp() {
                 <h2>회원 가입</h2>
             <form onSubmit={handleSubmit}>
             <FormGroup>
-                <Label htmlFor="name">이름</Label>
-                <Input type="text" id="name" required />
+                <Label htmlFor="userName">이름</Label>
+                <Input type="text" id="userName" required />
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="phone">전화번호</Label>
