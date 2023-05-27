@@ -85,7 +85,8 @@ export default function AiSearch() {
 
         if (option) {
             axios
-            .get(`http://kdt-ai6-team07.elicecoding.com:3001/underdogs/search?breeds=${decodeURI(option.value)}`)
+            .get(`http://localhost:3001/underdogs/search?breeds=${decodeURI(option.value)}`)
+            // .get(`http://kdt-ai6-team07.elicecoding.com:3001/underdogs/search?breeds=${decodeURI(option.value)}`)
                 .then((response) => {
                     const dogData: Dog[] = [];
 

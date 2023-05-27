@@ -24,7 +24,7 @@ export const FormManagement: React.FC = () => {
     
     const fetchData = async (adminToken: string) => {
         try {
-            const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=7&skip=0', {
+            const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=9&skip=14', {
                 headers: {
                     Authorization: `Bearer ${adminToken}`
                 }
@@ -44,8 +44,6 @@ export const FormManagement: React.FC = () => {
 
     return (
         <>
-            {/* <h1>Welcome, Admin!</h1>
-            보호소 방문 신청 폼 전체를 확인할 수 있어야 해. */}
             <FormDiv>
                 <h1>보호소 방문 예약 목록 조회</h1>
                 <Table>
@@ -86,9 +84,9 @@ export const FormManagement: React.FC = () => {
 
 const FormDiv = styled.div`
     width: 60%;
-    height: 450px;
+    height: 500px;
     padding: 10px 0;
-    margin-top: 10px;
+    margin-top: 40px;
     font-family: 'UI';
     border: 5px solid ${Colors.sub};
     border-radius: 50px;
