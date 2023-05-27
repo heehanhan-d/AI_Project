@@ -59,19 +59,19 @@ export const DogListPage = () => {
     };
   }, []);
 
-    return (
+  return (
     <>
             <div>
                 <ListDiv>
                     {dogList.map((dog) => (
-                        <LinkStyle key = {dog.id} to = {`/list/${dog.id}`}> 
-                            <ListCircle>
-                                <div>
+                      <ListCircle key = {dog.id}>
+                              <LinkStyle to = {`/list/${dog.id}`}> 
                                     <img src={dog.img_url} alt={`Dog ${dog.id}`}/>
+                              </LinkStyle>
+                              <LinkStyle to = {`/list/${dog.id}`}> 
                                     <h2>{dog.notice.date_start.toLocaleString()}부터 <br/> 보호하고 있어요</h2>
-                                </div>
-                            </ListCircle>
-                        </LinkStyle>
+                              </LinkStyle>
+                      </ListCircle>
                         ))}
                 </ListDiv>
             </div>
