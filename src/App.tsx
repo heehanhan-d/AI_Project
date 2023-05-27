@@ -12,11 +12,12 @@ import { AdminPage } from "./Pages/AdminPage";
 import { AdoptPage } from './Pages/AdoptPage';
     
 import './App.css';
-import { ABOUT_PATH, ADMIN_PATH, DETAIL_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH, ADOPT_PATH, SIGNIN_PATH, MYPAGE_PATH, CHECK_PATH, STATE_PATH, LOGOUT_PATH } from "./Components/Common/Path";
+import { ABOUT_PATH, ADMIN_PATH, DETAIL_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNUP_PATH, ADOPT_PATH, SIGNIN_PATH, MYPAGE_PATH, CHECK_PATH, STATE_PATH, LOGOUT_PATH, SIGNOFF_PATH } from "./Components/Common/Path";
 import MyPagePage from "./Pages/MyPagePage";
 import { FormManagement } from "./Components/Admin/FormManagementComponent";
 import { FormState } from "./Components/Admin/FormStateComponent";
 import { LogoutPage } from "./Pages/LogoutPage";
+import { SignOffPage } from "./Pages/SignOffPage";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                     <Route element={<AdminPage />} path={ADMIN_PATH} />
                     <Route element={<AdoptPage />} path={ADOPT_PATH} />
                     <Route element={<SignInPage />} path={SIGNIN_PATH} />
+                    <Route element={<SignOffPage />} path={SIGNOFF_PATH} />
                     <Route element={<LogoutPage />} path={LOGOUT_PATH} />
                     <Route element={<MyPagePage />} path={MYPAGE_PATH} />
                     <Route element={<FormState />} path={STATE_PATH} />

@@ -45,8 +45,11 @@ export default function SignIn() {
         localStorage.setItem('token', token);
         console.log('localStorage:', localStorage.getItem('token'));
 
-        // @ 앞부분을 추출해서 유저 닉네임으로 설정
+        // 이메일을 로컬 스토리지에 저장
         const email = formData.email;
+        localStorage.setItem('email', email);
+
+        // @ 앞부분을 추출해서 유저 닉네임으로 설정
         const nickname = email.split('@')[0];
 
         // 유저 닉네임을 로컬 스토리지에 저장

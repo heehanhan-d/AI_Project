@@ -2,16 +2,39 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors, LinkStyle } from '../Common/Styles';
 import { MAIN_PATH } from '../Common/Path';
+import axios from 'axios';
 
 export const SignOff = () => {
     const nickName = localStorage.getItem('nickname');
     console.log('nickName:', nickName);
 
-    const handleSignOff = () => {
-        console.log('localStorage:', localStorage.getItem('token'));
-        localStorage.removeItem('token');
-        console.log('localStorage:', localStorage.getItem('token'));
-        localStorage.removeItem('nickname');
+    const handleSignOff = async () => {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            await fetchSignOff(token);
+            localStorage.getItem('SignOffEmail'); 
+            console.log('SignOffEmail:', localStorage.getItem('email'));
+        }
+    };
+    
+    const fetchSignOff = async (Token: string) => {
+        try {
+            const response = await axios.delete('http://localhost:3001/auth/users/sign-off', {
+                headers: {
+                    Authorization: `Bearer ${Token}`
+                }
+            });
+
+            const message = response.data.message;
+            if (message === "이미 탈퇴된 회원입니다.") {
+                const signOffEmail = localStorage.getItem('email')
+            } 
+            // const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/auth/users/sign-off');
+            
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (
@@ -23,9 +46,11 @@ export const SignOff = () => {
                 <TextContainer>
                     그동안 유입해주셔서 감사합니다!
                 </TextContainer>
-                <LinkStyle to={MAIN_PATH}>
-                    <Button onClick={handleSignOff}>You, if 그만 하기</Button>
-                </LinkStyle>
+                {/* <LinkStyle to={MAIN_PATH}> */}
+                    <Button onClick={handleSignOff}>
+                        You, if 그만 하기
+                    </Button>
+                {/* </LinkStyle> */}
             </SignOffDiv>
         </>
     );
