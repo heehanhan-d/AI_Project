@@ -55,8 +55,9 @@ export default function ReservationForm() {
 
         try {
           // 서버에 POST 요청 보내기
-          const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/underdogs/visitrequest', formData);
-
+          const response = await axios.post('http://localhost:3001/underdogs/visitrequest', formData);
+          // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/underdogs/visitrequest', formData);
+    
           // 응답 처리
           console.log(response.data);
           const responseData = response.data;
@@ -103,9 +104,7 @@ export default function ReservationForm() {
             <ModalContent>
                 <h1>보호소 방문 신청이 완료되었습니다!</h1><br />
                 <p>보호소 방문 예약 확정 후 안내드리겠습니다.</p>
-                <LinkStyle to='/list'>
                   <ModalButton onClick={closeModal}>닫기</ModalButton>
-                </LinkStyle>
             </ModalContent>
               </CenterRef>
         </Modal>

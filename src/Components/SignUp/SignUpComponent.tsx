@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 export default function SignUp() {
     
     const [isModalOpen, setModalOpen] = useState(false);
-  const [responseData, setResponseData] = useState([]);
+    const [responseData, setResponseData] = useState([]);
 
     const handleSubmit = async (event: any) => {
       
@@ -20,7 +20,7 @@ export default function SignUp() {
      
         // 폼 데이터 가져오기
         const formData = {
-          userName: event.target.userName.value,
+          username: event.target.username.value,
           phone: event.target.phone.value,
           email: event.target.email.value,
           password: event.target.password.value
@@ -30,12 +30,13 @@ export default function SignUp() {
 
         try {
           // 서버에 POST 요청 보내기
-          const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/users/sign-up', formData);
+          const response = await axios.post('http://localhost:3001/auth/users/sign-up', formData);
+          // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/auth/users/sign-up', formData);
 
           // 응답 처리
-            console.log(response.data);
+            // console.log(response.data);
             const responseData = response.data;
-            console.log(responseData);
+            // console.log(responseData);
         
             setResponseData(responseData);
 
@@ -57,8 +58,8 @@ export default function SignUp() {
                 <h2>회원 가입</h2>
             <form onSubmit={handleSubmit}>
             <FormGroup>
-                <Label htmlFor="userName">이름</Label>
-                <Input type="text" id="userName" required />
+                <Label htmlFor="username">이름</Label>
+                <Input type="text" id="username" required />
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="phone">전화번호</Label>

@@ -3,9 +3,9 @@ export const ABOUT_PATH = '/about';
 export const SEARCH_PATH = '/search';
 export const LIST_PATH = '/list';
 export const DETAIL_PATH = '/list/:id';
-export const SIGNUP_PATH = '/signup';
-export const SIGNIN_PATH = '/signin';
-export const ADMIN_PATH = '/admin';
+export const SIGNUP_PATH = '/auth/users/sign-up';
+export const SIGNIN_PATH = '/auth/users/sign-in';
+export const ADMIN_PATH = '/auth/admin';
 export const ADOPT_PATH = '/adopt';
 export const MYPAGE_PATH = '/mypage';
 
