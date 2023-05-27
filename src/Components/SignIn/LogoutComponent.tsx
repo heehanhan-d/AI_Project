@@ -5,9 +5,8 @@ import { MAIN_PATH } from '../Common/Path';
 
 export const Logout = () => {
     const handleLogout = () => {
-        console.log('localStorage:', localStorage.getItem('token'));
         localStorage.removeItem('token');
-        console.log('localStorage:', localStorage.getItem('token'));
+        localStorage.removeItem('userName');
   };
 
     const userName = localStorage.getItem('userName');
