@@ -52,13 +52,6 @@ const Logo = styled.img`
     height: 55px;
 `
 
-// const Div = styled.div`
-//     display: absolute;
-//     align-items: center;
-//     justify-content: center;
-//     width: 100%;
-// `
-
 const Header = styled.div`
     display: flex;
     align-items: end;
@@ -80,7 +73,6 @@ const HeaderLink = styled.div`
     justify-content: end;
     text-align: start;
 `
-
 
 const Nav = styled.div`
     display: grid;
@@ -120,7 +112,7 @@ const Footer = styled.div`
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 120px;
+    height: 100px;
     bottom: 0;
     left: 0;
     flex-basis: auto;
