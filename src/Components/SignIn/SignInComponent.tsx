@@ -24,7 +24,7 @@ export default function SignIn() {
         email: event.target.email.value,
         password: event.target.password.value
       };
-      console.log(formData);
+      console.log('formData:', formData);
 
     try {
       // 서버에 POST 요청 보내기
@@ -33,17 +33,18 @@ export default function SignIn() {
 
       // 응답 처리
       const { data, isAdmin } = response.data;
-      console.log(data);
+      console.log('response.data:', response.data);
+      console.log('token:', response.data.data);
 
       setResponseData(data);
 
       // 로그인 성공 시 처리
       if (data) {
-        const { token } = data;
-
         // 토큰을 로컬 스토리지에 저장
+        const token = response.data.data
         localStorage.setItem('token', token);
-
+        console.log('localStorage:', localStorage.getItem('token'));
+      
         // 관리자 로그인 성공 시
         if (isAdmin) {
           setIsAdmin(true);

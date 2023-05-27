@@ -12,61 +12,33 @@ export const FormManagement: React.FC = () => {
 
 
     useEffect(() => {
-        fetchData();
+        const adminToken = localStorage.getItem('Token');
+        console.log('adminToken:', adminToken);
+        if (adminToken) {
+            fetchData(adminToken);
+        } else {
+            console.log('토큰이 없습니다.');
+        }
     }, []);
 
-    // Mock 데이터 배열 생성
-    const getMockFormDataList = (): FormDataType[] => {
-        return [
-            {
-                name: '한다희',
-                phone: '010-1234-5678',
-                when_day: '2023-05-30',
-                when_time: '10:00',
-                dog_id: '447511202300398',
-                dog_img_url: 'http://www.animal.go.kr/files/shelter/2023/04/202304181704286.jpg',
-                dog_careCenter_name: '상주시 동물보호센터',
-                dog_careCenter_address: '경상북도 상주시 청리면 남상주로 1205-59'
-            },
-            {
-                name: '정종열',
-                phone: '010-8765-4321',
-                when_day: '2023-06-03',
-                when_time: '18:00',
-                dog_id: '447505202300352',
-                dog_img_url: 'http://www.animal.go.kr/files/shelter/2023/04/202304181104631.jpg',
-                dog_careCenter_name: '경주동물사랑보호센터',
-                dog_careCenter_address: '경상북도 경주시 천북면 천북로 8-4  경주시 동물사랑보호센터'
-            },
-            {
-                name: '이정현',
-                phone: '010-4321-8765',
-                when_day: '2023-06-05',
-                when_time: '13:00',
-                dog_id: '448541202300597',
-                dog_img_url: 'http://www.animal.go.kr/files/shelter/2023/04/202304182204621[1].jpg',
-                dog_careCenter_name: '창녕 유기동물보호소',
-                dog_careCenter_address: '경상남도 창녕군 고암면 창밀로 335-26 (고암면) 고암면 억만리 28'
-            }
-        ];
-    };
     
-    const fetchData = async () => {
+    const fetchData = async (Token: string) => {
         try {
-            const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/admin/adopts');
+            const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=20&skip=0', {
+                headers: {
+                    Authorization: `Bearer ${Token}`
+                }
+            });
+            // const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/auth/admin/visitrequest');
             const fetchedData = response.data;
             setFormDataList(fetchedData);
             console.log(fetchedData);
         } catch (e) {
             console.error(e);
-            setFormDataList(getMockFormDataList());
-            // setFormDataList([]);
+            // setFormDataList(getMockFormDataList());
+            setFormDataList([]);
         }
     };
-
-    const handleFormSelect = (formData: FormDataType) => {
-        setSelectedFormData(formData);
-    }
 
     return (
         <>
@@ -88,7 +60,7 @@ export const FormManagement: React.FC = () => {
                     <tbody>
                         {formDataList.length > 0 ? (
                             formDataList.map((formData, index) => (
-                                <tr key={index} onClick={() => handleFormSelect(formData)}>
+                                <tr key={index}>
                                     <Td>{formData.name}</Td>
                                     <Td>{formData.phone}</Td>
                                     <Td>{formData.when_day}</Td>
@@ -114,7 +86,7 @@ const FormDiv = styled.div`
     width: 60%;
     height: 450px;
     padding: 10px 0;
-    margin-top: 60px;
+    margin-top: 10px;
     font-family: 'UI';
     border: 5px solid ${Colors.sub};
     border-radius: 50px;
@@ -147,10 +119,10 @@ const Td = styled.td`
     font-size: 18px;
 `
 
+
 const NoDataTd = styled.td`
     padding: 8px;
     text-align: center;
-    border-bottom: 1px solid ${Colors.g};
     color: ${Colors.s};
 `
 
