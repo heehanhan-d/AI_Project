@@ -52,7 +52,7 @@ export default function SignIn() {
         } else {
           // 유저 로그인 성공 시
           setIsLoggedIn(true);
-          // window.location.href = MAIN_PATH;
+          window.location.href = MYPAGE_PATH;
         }
       } else {
         alert('이메일과 비밀번호를 다시 확인해주세요.')
