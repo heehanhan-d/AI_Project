@@ -1,35 +1,30 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { State } from 'src/constants/dog/dog.enum';
 
 export type VisitRequestDocument = HydratedDocument<VisitRequest>;
-enum State {
-    Submitted,
-    InReview,
-    Transferred,
-}
 
 @Schema({ timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
 export class VisitRequest {
     @Prop()
-    dog_id: String;
+    dog_id: string;
 
     @Prop()
-    name: String;
+    name: string;
 
     @Prop()
-    phone: String;
+    phone: string;
 
     @Prop()
-    when_day: Date;
+    when_day?: Date;
 
     @Prop()
-    when_time: String;
+    when_time?: string;
 
-    @Prop({ default: State.Submitted })
+    @Prop({ default: State.SUBMITTED })
     state: State;
 
-    @Prop({ default: true })
+    @Prop()
     isActive: boolean;
 }
-
 export const VisitRequestSchema = SchemaFactory.createForClass(VisitRequest);

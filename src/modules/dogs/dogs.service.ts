@@ -2,7 +2,7 @@ import { Model } from 'mongoose'; // 몽구스 모델 임포트
 import { Injectable, Inject } from '@nestjs/common'; // 네스트 의존성 주입 데코레이터 임포트
 import { InjectModel } from '@nestjs/mongoose'; // 몽구스 의존성 주입 데코레이터 임포트
 import { Dog } from './models/dog.schema';
-import { VisitRequest } from './models/visitRequest.schema';
+import { VisitRequest } from '../auth/models/visitRequest.schema';
 import { CreateDogDto } from './dto/create-dog.dto';
 import { SearchDogListDto } from './dto/search-doglist.dto';
 import { PagenationDogDto } from './dto/pagenation-dog.dto';
@@ -17,7 +17,7 @@ export class DogsService {
     constructor(
         @InjectModel(Dog.name) private dogModel: Model<Dog>,
         @InjectModel(VisitRequest.name)
-        private RequestModel: Model<VisitRequest>,
+        private visitRequestModel: Model<VisitRequest>,
         @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
         private readonly httpservice: HttpService
     ) {}
@@ -64,7 +64,7 @@ export class DogsService {
 
     // 방문 예약 신청 데이터 생성
     async createRequest(createRequest: CreateRequestDto) {
-        return await this.RequestModel.create(createRequest);
+        return await this.visitRequestModel.create(createRequest);
     }
 
     // 동물보호관리센터 메인 유기견 데이터 생성 (값 매핑)

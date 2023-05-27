@@ -3,8 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DogsModule } from './modules/dogs/dogs.module';
 import { CacheModule } from '@nestjs/cache-manager';
-// 응용 프로그램의 루트 모듈
-// 데코레이터 : 클래스를 필수 메타데이터와 연결하고, 라우팅 맵을 만들게 한다.
+import { AuthModule } from './modules/auth/auth.module';
 
 // 모듈 데코레이터
 @Module({
@@ -32,6 +31,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 
         // 생성한 모듈 추가
         DogsModule,
+        AuthModule,
     ],
 
     // 현재 모듈에서 구현한 컨트롤러 등록

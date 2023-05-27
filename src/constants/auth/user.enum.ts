@@ -1,17 +1,17 @@
 export enum Platform {
-    YOUIF,
-    KAKAO,
-    GOOGLE,
+    YOUIF = 'YOUIF',
+    KAKAO = 'KAKAO',
+    GOOGLE = 'GOOGLE',
 }
 
 export enum Employed {
-    HAS,
-    NOT,
+    HAS = 'HAS',
+    NOT = 'NOT',
 }
 
 export enum HASDOG {
-    ONE,
-    MORE,
-    NOT,
-    EXPERIENCED,
+    ONE = 'ONE',
+    MORE = 'MORE',
+    NOT = 'NOT',
+    EXPERIENCED = 'EXPERIENCED',
 }
