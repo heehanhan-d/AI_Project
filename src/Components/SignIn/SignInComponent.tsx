@@ -44,6 +44,13 @@ export default function SignIn() {
         const token = response.data.data
         localStorage.setItem('token', token);
         console.log('localStorage:', localStorage.getItem('token'));
+
+        // @ 앞부분을 추출해서 유저 닉네임으로 설정
+        const email = formData.email;
+        const nickname = email.split('@')[0];
+
+        // 유저 닉네임을 로컬 스토리지에 저장
+        localStorage.setItem('nickname', nickname);
       
         // 관리자 로그인 성공 시
         if (isAdmin) {

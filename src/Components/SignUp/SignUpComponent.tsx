@@ -25,8 +25,6 @@ export default function SignUp() {
           email: event.target.email.value,
           password: event.target.password.value
         };
-    
-        localStorage.setItem('userName', formData.username);
 
         try {
           // 서버에 POST 요청 보내기

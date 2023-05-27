@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { ReservationHistory } from './ReservationHistoryComponent';
 import styled from 'styled-components';
-import { Colors } from '../Common/Styles';
+import { Colors, LinkStyle } from '../Common/Styles';
+import { LOGOUT_PATH, SIGNOFF_PATH } from '../Common/Path';
 
 export const MyPage = () => {
 
-    const userName = localStorage.getItem('userName');
+    const nickName = localStorage.getItem('nickname');
     
 return (
     <>
       <LogoutDiv>
             <NameContainer>
-                <h3>{userName}님. 반갑습니다!</h3>
+                <h3>{nickName}님. 반갑습니다!</h3>
             </NameContainer>
             <TextContainer>
                 유입하고 싶은 언더독들을 구경해보세요!
             </TextContainer>
+            <LinkStyle to={LOGOUT_PATH}>
+                <Button>로그아웃 하기</Button>
+            </LinkStyle>
+            <LinkStyle to={SIGNOFF_PATH}>
+                <Button>회원탈퇴 하기</Button>
+            </LinkStyle>
       </LogoutDiv>
     </>
   );
@@ -53,3 +60,17 @@ const TextContainer = styled.div`
   font-size: 20px;
   margin-bottom: 20px;
 `;
+
+
+const Button = styled.button<any>`
+  padding: 10px 50px;
+  background-color: ${Colors.footer};
+  color: ${Colors.w};
+  border: none;
+  border-radius: 300px;
+  cursor: pointer;
+  font-family: 'Logo';
+  font-size: 20px;
+  margin: 50px 10px 0 10px;
+`;
+

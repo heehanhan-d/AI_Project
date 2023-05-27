@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { Colors, LinkStyle } from '../Common/Styles';
 import { MAIN_PATH } from '../Common/Path';
 
-export const Logout = () => {
+export const SignOff = () => {
     const nickName = localStorage.getItem('nickname');
     console.log('nickName:', nickName);
 
-    const handleLogout = () => {
+    const handleSignOff = () => {
         console.log('localStorage:', localStorage.getItem('token'));
         localStorage.removeItem('token');
         console.log('localStorage:', localStorage.getItem('token'));
@@ -16,22 +16,22 @@ export const Logout = () => {
 
     return (
         <>
-            <LogoutDiv>
+            <SignOffDiv>
                 <NameContainer>
                     <h3>{nickName}님!</h3>
                 </NameContainer>
                 <TextContainer>
-                    한번 더 유입하러 오세요!
+                    그동안 유입해주셔서 감사합니다!
                 </TextContainer>
                 <LinkStyle to={MAIN_PATH}>
-                    <Button onClick={handleLogout}>You, if 에서 로그아웃 하기</Button>
+                    <Button onClick={handleSignOff}>You, if 그만 하기</Button>
                 </LinkStyle>
-            </LogoutDiv>
+            </SignOffDiv>
         </>
     );
 }
 
-const LogoutDiv = styled.div`
+const SignOffDiv = styled.div`
     position: relative;
     justify-content: center;
     align-items: center;
