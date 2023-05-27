@@ -1,25 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Colors, HeaderLinkStyle, LinkStyle } from './Styles';
 import LogoImg from '../../Img/Logo.png';
-import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNIN_PATH, SIGNUP_PATH, ADMIN_PATH } from './Path';
+import { ABOUT_PATH, LIST_PATH, MAIN_PATH, SEARCH_PATH, SIGNIN_PATH, SIGNUP_PATH, ADMIN_PATH, SIGNOFF_PATH, LOGOUT_PATH } from './Path';
 import { UpScroll } from './Ref';
 import { AdminLink } from '../Admin/AdminLinkComponent';
 
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isMember, setIsMember] = useState(true);
+
+
+    const handleLogChange = () => {
+        setIsLoggedIn(!isLoggedIn);
+    };
+
+    const handleLogout = () => {
+        console.log('localStorage:', localStorage.getItem('token'));
+        localStorage.removeItem('token');
+        console.log('localStorage:', localStorage.getItem('token'));
+    };
+
+    const handleMembershipChange = () => {
+        setIsMember(!isMember);
+    };
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            setIsMember(true);
+        }
+    }, [isLoggedIn]);
     return (
         <>
-            {/* <Div> */}
             <Header>
                 <Link to={MAIN_PATH}>
                     <Logo src={LogoImg} alt={ YouIf } />
                 </Link>
             </Header>
             <HeaderLink>
-                <HeaderLinkStyle to={SIGNIN_PATH}>로그인</HeaderLinkStyle>
-                <HeaderLinkStyle to={SIGNUP_PATH}>회원가입</HeaderLinkStyle>
+                {isLoggedIn ? (
+                    <HeaderLinkStyle to={LOGOUT_PATH} onClick={handleLogChange} onDoubleClick={handleLogout}>
+                        로그아웃
+                    </HeaderLinkStyle>
+                ) : (
+                    <HeaderLinkStyle to={SIGNIN_PATH} onClick={handleLogChange}>
+                        로그인
+                    </HeaderLinkStyle>
+                )}
+                {isMember ? (
+                    <HeaderLinkStyle to={SIGNUP_PATH} onClick={handleMembershipChange}>
+                        회원가입
+                    </HeaderLinkStyle>
+                ) : (
+                    <HeaderLinkStyle to={SIGNOFF_PATH} onClick={handleMembershipChange}>
+                        회원탈퇴
+                    </HeaderLinkStyle>
+                )}
             </HeaderLink>
             <Nav>
                 <LinkStyle to={ABOUT_PATH}>About</LinkStyle>
@@ -41,8 +80,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </Copyright>
                 </div>
             </Footer>
-        {/* </Div> */}
-    </>
+        </>
     );
 };
 
