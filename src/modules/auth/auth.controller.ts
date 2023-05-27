@@ -55,10 +55,11 @@ export class AuthController {
     async signIn(@Res() res, @Body() signInDto: SignInDto) {
         await this.authService
             .findUserAndGenerateToken(signInDto)
-            .then((token) => {
+            .then((user) => {
                 res.json({
                     message: '사용자 로그인 완료, 토큰 반환',
-                    data: token,
+                    data: user.token,
+                    isAdmin: user.isAdmin,
                 });
             })
             .catch((err) => {

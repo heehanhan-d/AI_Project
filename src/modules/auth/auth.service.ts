@@ -61,26 +61,28 @@ export class AuthService {
     }
 
     // 로그인
-    async findUserAndGenerateToken(signInDto: SignInDto): Promise<string> {
+    async findUserAndGenerateToken(signInDto: SignInDto) {
         try {
-            let { email, password } = signInDto;
-            const foundUser = await this.userModel.findOne({ email });
+            const { email, password } = signInDto;
+            let foundUser: any = await this.userModel.findOne({ email });
             if (!foundUser) {
                 throw new Error('존재하지 않는 회원입니다.');
-            } else {
-                const isPassword = await bcrypt.compare(
-                    password,
-                    foundUser.password
-                );
-                if (!isPassword) {
-                    throw new Error('비밀번호가 일치하지 않습니다.');
-                } else {
-                    const payload = { _id: foundUser._id.toString() };
-                    return this.jwtService.signAsync(payload, {
-                        expiresIn: 60 * 60,
-                    });
-                }
             }
+
+            const isPassword = await bcrypt.compare(
+                password,
+                foundUser.password
+            );
+            if (!isPassword) {
+                throw new Error('비밀번호가 일치하지 않습니다.');
+            }
+
+            const payload = { _id: foundUser._id.toString() };
+            const token: string = await this.jwtService.signAsync(payload, {
+                expiresIn: 60 * 60,
+            });
+            foundUser.token = token;
+            return foundUser;
         } catch (err) {
             throw err;
         }
