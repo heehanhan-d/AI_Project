@@ -163,13 +163,3 @@ const Button = styled.button<any>`
   margin-top: 20px;
   top: -200px;
 `;
-
-const HeaderLink = styled.div`
-    display: grid;
-    place-items: center;
-    grid-template-columns: 100px 100px;
-    background-color: ${Colors.main};
-    height: 40px;
-    justify-content: end;
-    text-align: start;
-`

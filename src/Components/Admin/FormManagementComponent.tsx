@@ -19,22 +19,34 @@ export const FormManagement: React.FC = () => {
     const getMockFormDataList = (): FormDataType[] => {
         return [
             {
-                name: '일번',
+                name: '한다희',
                 phone: '010-1234-5678',
                 when_day: '2023-05-30',
-                when_time: '10:00'
+                when_time: '10:00',
+                dog_id: '447511202300398',
+                dog_img_url: 'http://www.animal.go.kr/files/shelter/2023/04/202304181704286.jpg',
+                dog_careCenter_name: '상주시 동물보호센터',
+                dog_careCenter_address: '경상북도 상주시 청리면 남상주로 1205-59'
             },
             {
-                name: '이번',
+                name: '정종열',
                 phone: '010-8765-4321',
                 when_day: '2023-06-03',
-                when_time: '18:00'
+                when_time: '18:00',
+                dog_id: '447505202300352',
+                dog_img_url: 'http://www.animal.go.kr/files/shelter/2023/04/202304181104631.jpg',
+                dog_careCenter_name: '경주동물사랑보호센터',
+                dog_careCenter_address: '경상북도 경주시 천북면 천북로 8-4  경주시 동물사랑보호센터'
             },
             {
-                name: '삼번',
+                name: '이정현',
                 phone: '010-4321-8765',
                 when_day: '2023-06-05',
-                when_time: '13:00'
+                when_time: '13:00',
+                dog_id: '448541202300597',
+                dog_img_url: 'http://www.animal.go.kr/files/shelter/2023/04/202304182204621[1].jpg',
+                dog_careCenter_name: '창녕 유기동물보호소',
+                dog_careCenter_address: '경상남도 창녕군 고암면 창밀로 335-26 (고암면) 고암면 억만리 28'
             }
         ];
     };
@@ -44,6 +56,7 @@ export const FormManagement: React.FC = () => {
             const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/admin/adopts');
             const fetchedData = response.data;
             setFormDataList(fetchedData);
+            console.log(fetchedData);
         } catch (e) {
             console.error(e);
             setFormDataList(getMockFormDataList());
@@ -68,6 +81,8 @@ export const FormManagement: React.FC = () => {
                             <Th>전화번호</Th>
                             <Th>방문 날짜</Th>
                             <Th>방문 시간</Th>
+                            <Th>언더독 ID</Th>
+                            <Th>보호소 이름</Th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +93,9 @@ export const FormManagement: React.FC = () => {
                                     <Td>{formData.phone}</Td>
                                     <Td>{formData.when_day}</Td>
                                     <Td>{formData.when_time}</Td>
+                                    <Td>{formData.dog_id}</Td>
+                                    <Td>{formData.dog_careCenter_name}</Td>
+                                    {/* <Td><img src={formData.dog_img_url} width='70px' height='70px' /></Td> */}
                                 </tr>
                             ))
                         ) : (
@@ -95,7 +113,7 @@ export const FormManagement: React.FC = () => {
 const FormDiv = styled.div`
     width: 60%;
     height: 450px;
-    padding-top: 30px;
+    padding: 10px 0;
     margin-top: 60px;
     font-family: 'UI';
     border: 5px solid ${Colors.sub};
@@ -104,7 +122,7 @@ const FormDiv = styled.div`
 `
 
 const Table = styled.table`
-    width: 80%;
+    width: 90%;
     border-collapse: collapse;
     margin: 30px auto;
 `
@@ -113,6 +131,8 @@ const Th = styled.th`
     padding: 8px;
     text-align: center;
     background-color: ${Colors.sub};
+    border-left: 1px dashed ${Colors.g};
+    border-right: 1px dashed ${Colors.g};
     border-bottom: 1px solid ${Colors.g};
     font-family: 'Logo';
     font-size: 20px;
@@ -120,6 +140,8 @@ const Th = styled.th`
 
 const Td = styled.td`
     padding: 8px;
+    border-left: 1px dashed ${Colors.g};
+    border-right: 1px dashed ${Colors.g};
     border-bottom: 1px solid ${Colors.g};
     font-family: 'Text';
     font-size: 18px;

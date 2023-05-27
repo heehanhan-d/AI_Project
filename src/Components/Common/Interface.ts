@@ -110,4 +110,8 @@ export interface FormDataType {
     phone: string;
     when_day: string;
     when_time: string;
+    dog_id: string;
+    dog_img_url: string,    
+    dog_careCenter_name: string;
+    dog_careCenter_address: string;
 }
