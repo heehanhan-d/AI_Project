@@ -12,7 +12,8 @@ export const FormManagement: React.FC = () => {
 
 
     useEffect(() => {
-        const adminToken = localStorage.getItem('Token');
+        console.log('localStorage:', localStorage.getItem('token'));
+        const adminToken = localStorage.getItem('token');
         console.log('adminToken:', adminToken);
         if (adminToken) {
             fetchData(adminToken);
@@ -32,10 +33,9 @@ export const FormManagement: React.FC = () => {
             // const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/auth/admin/visitrequest');
             const fetchedData = response.data;
             setFormDataList(fetchedData);
-            console.log(fetchedData);
+            console.log('fetchedData:', fetchedData);
         } catch (e) {
             console.error(e);
-            // setFormDataList(getMockFormDataList());
             setFormDataList([]);
         }
     };
