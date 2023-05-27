@@ -186,7 +186,6 @@ export default function Adopt() {
         font-size: 20pt;
     `;
 
-
     const ModalContent = styled.div`
         background-color: ${Colors.footer};
         padding: 50px;

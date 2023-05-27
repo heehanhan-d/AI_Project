@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, HeaderLinkStyle } from '../Common/Styles';
-import { ADMIN_PATH, MYPAGE_PATH } from '../Common/Path';
+import { ADMIN_PATH, MAIN_PATH, MYPAGE_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
 import { Link } from 'react-router-dom';
@@ -52,7 +52,7 @@ export default function SignIn() {
         } else {
           // 유저 로그인 성공 시
           setIsLoggedIn(true);
-          window.location.href = MYPAGE_PATH;
+          window.location.href = MAIN_PATH;
         }
       } else {
         alert('이메일과 비밀번호를 다시 확인해주세요.')

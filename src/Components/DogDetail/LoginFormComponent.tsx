@@ -64,7 +64,7 @@ export const LoginForm = ({ email, password, setEmail, setPassword, onLogin, onC
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 `
 

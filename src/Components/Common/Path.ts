@@ -5,6 +5,7 @@ export const LIST_PATH = '/list';
 export const DETAIL_PATH = '/list/:id';
 export const SIGNUP_PATH = '/auth/users/sign-up';
 export const SIGNIN_PATH = '/auth/users/sign-in';
+export const LOGOUT_PATH = '/auth/users/log-out';
 export const ADMIN_PATH = '/auth/admin';
 export const ADOPT_PATH = '/adopt';
 export const MYPAGE_PATH = '/mypage';
