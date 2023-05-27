@@ -18,7 +18,7 @@ export const AdminLink: React.FC<AdminLinkProps> = ({ adminPath, children }) => 
   };
 
   const linkStyle = {
-    color: hovered ? `${Colors.w}` : `${Colors.b}`,
+    color: hovered ? `${Colors.sub}` : `${Colors.b}`,
     textDecoration: 'none',
   };
 
