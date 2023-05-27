@@ -46,11 +46,12 @@ export default function ReservationForm() {
       if (dog) {
         // 폼 데이터 가져오기
         const formData = {
-          dog_id: dog.id,
           name: event.target.name.value,
           phone: event.target.phone.value,
           when_day: event.target.date.value,
           when_time: event.target.time.value,
+          dog_id: dog.id,
+          dog_careCenter_name: dog.careCenter?.name
         };
 
         try {

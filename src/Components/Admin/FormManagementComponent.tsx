@@ -24,7 +24,7 @@ export const FormManagement: React.FC = () => {
     
     const fetchData = async (adminToken: string) => {
         try {
-            const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=20&skip=0', {
+            const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=7&skip=0', {
                 headers: {
                     Authorization: `Bearer ${adminToken}`
                 }
@@ -56,7 +56,7 @@ export const FormManagement: React.FC = () => {
                             <Th>방문 날짜</Th>
                             <Th>방문 시간</Th>
                             <Th>언더독 ID</Th>
-                            <Th>보호소 이름</Th>
+                            {/* <Th>보호소 이름</Th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +68,7 @@ export const FormManagement: React.FC = () => {
                                     <Td>{formData.when_day}</Td>
                                     <Td>{formData.when_time}</Td>
                                     <Td>{formData.dog_id}</Td>
-                                    <Td>{formData.dog_careCenter_name}</Td>
+                                    {/* <Td>{formData.dog_careCenter_name}</Td> */}
                                     {/* <Td><img src={formData.dog_img_url} width='70px' height='70px' /></Td> */}
                                 </tr>
                             ))
