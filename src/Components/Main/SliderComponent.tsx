@@ -9,7 +9,8 @@ import "swiper/css/autoplay";
 import { Colors, LinkStyle } from '../Common/Styles';
 import Underdog from "../../Img/Underdog.png";
 import { Dog } from '../Common/Interface';
-import { BackServer, LIST_PATH } from '../Common/Path'
+import { LIST_PATH } from '../Common/Path'
+// import { BackServer, LIST_PATH } from '../Common/Path'
 
 export default function Slide() {
   const [underdogs, setUnderdogs] = useState<Dog[]>([]);
@@ -17,7 +18,7 @@ export default function Slide() {
   useEffect(() => {
 
     const fetchImageUrls = async () => {
-      const response = await fetch(`${BackServer}/underdogs?limit=20&skip=20`);
+      const response = await fetch('http://kdt-ai6-team07.elicecoding.com:3001/underdogs?limit=20&skip=20');
       const data = await response.json();
       return data;
     };

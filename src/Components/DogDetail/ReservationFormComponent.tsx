@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'; 
 import styled from 'styled-components';
-import { Colors } from '../Common/Styles';
+import { Colors, LinkStyle } from '../Common/Styles';
 import { CenterRef } from '../Common/Ref';
-import { AiServer, BackServer } from '../Common/Path';
+// import { BackServer } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { FetchDog } from '../../Api/FetchDog';
 import { Dog } from '../Common/Interface';
@@ -46,17 +46,19 @@ export default function ReservationForm() {
       if (dog) {
         // 폼 데이터 가져오기
         const formData = {
-          dog_id: dog.id,
           name: event.target.name.value,
           phone: event.target.phone.value,
           when_day: event.target.date.value,
           when_time: event.target.time.value,
+          dog_id: dog.id,
+          dog_careCenter_name: dog.careCenter?.name
         };
 
         try {
           // 서버에 POST 요청 보내기
-          const response = await axios.post(`${BackServer}/underdogs/visitrequest`, formData);
-
+          const response = await axios.post('http://localhost:3001/underdogs/visitrequest', formData);
+          // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/underdogs/visitrequest', formData);
+    
           // 응답 처리
           console.log(response.data);
           const responseData = response.data;
@@ -102,8 +104,8 @@ export default function ReservationForm() {
             <CenterRef>
             <ModalContent>
                 <h1>보호소 방문 신청이 완료되었습니다!</h1><br />
-              <p>보호소 방문 예약 확정 후 안내드리겠습니다.</p>
-              <ModalButton onClick={closeModal}>닫기</ModalButton>
+                <p>보호소 방문 예약 확정 후 안내드리겠습니다.</p>
+                  <ModalButton onClick={closeModal}>닫기</ModalButton>
             </ModalContent>
               </CenterRef>
         </Modal>
