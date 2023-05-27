@@ -12,7 +12,6 @@ export const FormManagement: React.FC = () => {
 
 
     useEffect(() => {
-        console.log('localStorage:', localStorage.getItem('token'));
         const adminToken = localStorage.getItem('token');
         console.log('adminToken:', adminToken);
         if (adminToken) {
@@ -23,17 +22,20 @@ export const FormManagement: React.FC = () => {
     }, []);
 
     
-    const fetchData = async (Token: string) => {
+    const fetchData = async (adminToken: string) => {
         try {
             const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=20&skip=0', {
                 headers: {
-                    Authorization: `Bearer ${Token}`
+                    Authorization: `Bearer ${adminToken}`
                 }
             });
             // const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/auth/admin/visitrequest');
             const fetchedData = response.data;
-            setFormDataList(fetchedData);
             console.log('fetchedData:', fetchedData);
+            const formDataList = fetchedData.data;
+            console.log('formDataList:', formDataList);
+            setFormDataList(formDataList);
+            
         } catch (e) {
             console.error(e);
             setFormDataList([]);
