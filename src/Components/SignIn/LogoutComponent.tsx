@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
-import { ReservationHistory } from './ReservationHistoryComponent';
+import React from 'react';
 import styled from 'styled-components';
 import { Colors, LinkStyle } from '../Common/Styles';
-import { LOGOUT_PATH, SIGNOFF_PATH } from '../Common/Path';
+import { MAIN_PATH } from '../Common/Path';
 
-export const MyPage = () => {
-
+export const Logout = () => {
     const nickName = localStorage.getItem('nickname');
-    
-return (
-    <>
-      <LogoutDiv>
-            <NameContainer>
-                <h3>{nickName}님. 반갑습니다!</h3>
-            </NameContainer>
-            <TextContainer>
-                유입하고 싶은 언더독들을 구경해보세요!
-            </TextContainer>
-            <LinkStyle to={LOGOUT_PATH}>
-                <Button>로그아웃 하기</Button>
-            </LinkStyle>
-            <LinkStyle to={SIGNOFF_PATH}>
-                <Button>회원탈퇴 하기</Button>
-            </LinkStyle>
-      </LogoutDiv>
-    </>
-  );
+    console.log('nickName:', nickName);
+
+    const handleLogout = () => {
+        console.log('localStorage:', localStorage.getItem('token'));
+        localStorage.removeItem('token');
+        console.log('localStorage:', localStorage.getItem('token'));
+        localStorage.removeItem('nickname');
+    };
+
+    return (
+        <>
+            <LogoutDiv>
+                <NameContainer>
+                    <h3>{nickName}님!</h3>
+                </NameContainer>
+                <TextContainer>
+                    한번 더 유입하러 오세요!
+                </TextContainer>
+                <LinkStyle to={MAIN_PATH}>
+                    <Button onClick={handleLogout}>You, if 에서 로그아웃 하기</Button>
+                </LinkStyle>
+            </LogoutDiv>
+        </>
+    );
 }
-  
+
 const LogoutDiv = styled.div`
     position: relative;
     justify-content: center;
@@ -35,7 +38,7 @@ const LogoutDiv = styled.div`
     width: 25%;
     height: auto;
     color: ${Colors.b};
-    background-color: ${Colors.sub};
+    background-color: ${Colors.w};
     border: 10px solid ${Colors.sub};
     border-radius: 30px;
     padding: 30px;
@@ -58,7 +61,6 @@ const TextContainer = styled.div`
   align-items: center;
   font-family: 'Text';
   font-size: 20px;
-  margin-bottom: 20px;
 `;
 
 
@@ -71,6 +73,6 @@ const Button = styled.button<any>`
   cursor: pointer;
   font-family: 'Logo';
   font-size: 20px;
-  margin: 50px 10px 0 10px;
+  margin-top: 50px;
 `;
 

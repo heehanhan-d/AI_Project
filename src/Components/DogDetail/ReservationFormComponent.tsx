@@ -7,6 +7,7 @@ import { CenterRef } from '../Common/Ref';
 import axios, { AxiosError } from 'axios';
 import { FetchDog } from '../../Api/FetchDog';
 import { Dog } from '../Common/Interface';
+import { BackServer } from '../Common/Path';
 
 export default function ReservationForm() {
     
@@ -56,8 +57,7 @@ export default function ReservationForm() {
 
         try {
           // 서버에 POST 요청 보내기
-          const response = await axios.post('http://localhost:3001/underdogs/visitrequest', formData);
-          // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/underdogs/visitrequest', formData);
+          const response = await axios.post(`${BackServer}/underdogs/visitrequest`, formData);
     
           // 응답 처리
           console.log(response.data);

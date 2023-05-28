@@ -7,6 +7,8 @@ import { Colors, Button, FindUnderdog, LinkStyle } from '../Common/Styles';
 import Underdog from '../../Img/Underdog.png';
 import { Dog, ResponseData } from '../Common/Interface';
 import { ImageSection } from '../Common/Ref';
+import '../AiSearch/SelectStyle.css'
+import { AiServer } from '../Common/Path';
 
 export default function AiSearch() {
 
@@ -45,7 +47,7 @@ export default function AiSearch() {
 
                 try {
                     //파일을 AI 서버로 전송하는 POST 요청
-                    const response = await axios.post<ResponseData>('http://kdt-ai6-team07.elicecoding.com:3002/breedsAI/user', fileData, {
+                    const response = await axios.post<ResponseData>(`${AiServer}/breedsAI/user`, fileData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -122,7 +124,7 @@ export default function AiSearch() {
                 AI로 UNDERDOG 검색하기
             </SearchButton>
             <ResultDiv>
-                <Select
+                <Select className='react-select__placeholder'
                     options={options}
                     value={selectedOption}
                     onChange={handleOptionChange}
@@ -286,3 +288,4 @@ export default function AiSearch() {
             border: 0.5rem dashed ${Colors.sub};
         }
     `
+

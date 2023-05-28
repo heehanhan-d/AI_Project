@@ -1,14 +1,10 @@
 import React from 'react';
-import Search from '../Components/AiSearch/SearchComponent'
-import Result from '../Components/AiSearch/ResultComponent'
 import AiSearch from '../Components/AiSearch/AiSearchComponent';
 
 export const AiSearchPage = () => {
     return (
         <>
             <AiSearch />
-            <Search />
-            <Result />
         </>
     )
 }

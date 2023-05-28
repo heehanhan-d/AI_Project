@@ -31,7 +31,7 @@ export default function Banner() {
     <>
       <ScrollRef>
         <MainDiv>
-          <LinkStyle to={SEARCH_PATH} style={{ textDecoration: "none", color: "inherit" }}>
+          <LinkStyle to={SEARCH_PATH}>
             <AIButton>
               AI로 나에게 어울리는 UNDERDOG 찾기
             </AIButton>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, HeaderLinkStyle } from '../Common/Styles';
-import { ADMIN_PATH, MYPAGE_PATH } from '../Common/Path';
+import { ADMIN_PATH, BackServer, MAIN_PATH, MYPAGE_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
 import { Link } from 'react-router-dom';
@@ -28,8 +28,7 @@ export default function SignIn() {
 
     try {
       // 서버에 POST 요청 보내기
-      const response = await axios.post('http://localhost:3001/auth/users/sign-in', formData);
-      // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/auth/users/sign-in', formData);
+      const response = await axios.post(`${BackServer}/auth/users/sign-in`, formData);
 
       // 응답 처리
       const { data, isAdmin } = response.data;
@@ -44,6 +43,16 @@ export default function SignIn() {
         const token = response.data.data
         localStorage.setItem('token', token);
         console.log('localStorage:', localStorage.getItem('token'));
+
+        // 이메일을 로컬 스토리지에 저장
+        const email = formData.email;
+        localStorage.setItem('email', email);
+
+        // @ 앞부분을 추출해서 유저 닉네임으로 설정
+        const nickname = email.split('@')[0];
+
+        // 유저 닉네임을 로컬 스토리지에 저장
+        localStorage.setItem('nickname', nickname);
       
         // 관리자 로그인 성공 시
         if (isAdmin) {
