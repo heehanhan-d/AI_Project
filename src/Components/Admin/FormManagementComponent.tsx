@@ -4,6 +4,7 @@ import { FormDataType } from '../Common/Interface';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 import '../Common/Font.css';
+import { BackServer } from '../Common/Path';
 
 export const FormManagement: React.FC = () => {
 
@@ -24,12 +25,11 @@ export const FormManagement: React.FC = () => {
     
     const fetchData = async (adminToken: string) => {
         try {
-            const response = await axios.get('http://localhost:3001/auth/admin/visitrequest?limit=9&skip=16', {
+            const response = await axios.get(`${BackServer}/auth/admin/visitrequest?limit=9&skip=16`, {
                 headers: {
                     Authorization: `Bearer ${adminToken}`
                 }
             });
-            // const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/auth/admin/visitrequest');
             const fetchedData = response.data;
             console.log('fetchedData:', fetchedData);
             const formDataList = fetchedData.data;

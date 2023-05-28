@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Colors, LinkStyle } from '../Components/Common/Styles';
 import { FetchDogList } from '../Api/FetchDogList';
 import { Dog } from '../Components/Common/Interface';
-import { DogApiResponse } from '../Components/Common/Interface';
-import { Link } from 'react-router-dom';
 import Loading from '../Components/DogList/LoadingComponent';
 
 export const DogListPage = () => {

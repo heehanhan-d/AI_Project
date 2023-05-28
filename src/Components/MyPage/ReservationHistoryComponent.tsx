@@ -4,6 +4,7 @@ import { FormDataType } from '../Common/Interface';
 import styled from 'styled-components';
 import { Colors } from '../Common/Styles';
 import '../Common/Font.css';
+import { BackServer } from '../Common/Path';
 
 export const ReservationHistory: React.FC = () => {
 
@@ -24,7 +25,7 @@ export const ReservationHistory: React.FC = () => {
     
     const fetchData = async (userToken: string) => {
         try {
-            const response = await axios.get('http://localhost:3001/auth/users/visitrequest', {
+            const response = await axios.get(`${BackServer}/auth/users/visitrequest`, {
                 headers: {
                     Authorization: `Bearer ${userToken}`
                 }

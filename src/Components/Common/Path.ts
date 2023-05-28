@@ -14,10 +14,6 @@ export const MYPAGE_PATH = '/mypage';
 export const CHECK_PATH = '/auth/admin/check';
 export const STATE_PATH = '/auth/admin/state';
 
-// export const FrontServer = process.env.REACT_APP_FRONT_PRODUCTION_URL; 
-// export const BackServer = process.env.REACT_APP_BACK_PRODUCTION_URL; 
-// export const AiServer = process.env.REACT_APP_AI_PRODUCTION_URL; 
-
-// export const FrontServer = process.env.REACT_APP_FRONT_URL; 
-// export const BackServer = process.env.REACT_APP_BACK_URL; 
-// export const AiServer = process.env.REACT_APP_AI_URL; 
+export const FrontServer = process.env.REACT_APP_FRONT_URL; 
+export const BackServer = process.env.REACT_APP_BACK_URL; 
+export const AiServer = process.env.REACT_APP_AI_URL; 

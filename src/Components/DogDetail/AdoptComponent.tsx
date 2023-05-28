@@ -5,8 +5,8 @@ import AdoptGuideImg from '../../Img/AdoptGuide.png';
 import CheckListImg from '../../Img/CheckList.png';
 import ReservationForm from './ReservationFormComponent';
 import { LoginForm } from '../DogDetail/LoginFormComponent';
-import { DogProfile } from "../../Components/DogDetail/DogProfile";
 import { CenterRef } from "../Common/Ref";
+import { DogProfile } from "./DogProfile";
 
 export default function Adopt() {
     const [shownAdoptInfo, setShownAdoptInfo] = useState(false);

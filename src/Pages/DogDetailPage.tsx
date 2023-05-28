@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Body } from '../Components/Common/Layout';
-import { DogProfile } from '../Components/DogDetail/DogProfile';
 import  Adopt from '../Components/DogDetail/AdoptComponent';
-import ReservationForm from '../Components/DogDetail/ReservationFormComponent';
 import { Colors } from '../Components/Common/Styles';
 
 export const DogDetailPage = () => {
     return(
     <>
         <Adopt />
-        {/* <ReservationForm /> */}
     </>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, HeaderLinkStyle } from '../Common/Styles';
-import { ADMIN_PATH, MAIN_PATH, MYPAGE_PATH } from '../Common/Path';
+import { ADMIN_PATH, BackServer, MAIN_PATH, MYPAGE_PATH } from '../Common/Path';
 import axios, { AxiosError } from 'axios';
 import { User } from '../Common/Interface';
 import { Link } from 'react-router-dom';
@@ -28,8 +28,7 @@ export default function SignIn() {
 
     try {
       // 서버에 POST 요청 보내기
-      const response = await axios.post('http://localhost:3001/auth/users/sign-in', formData);
-      // const response = await axios.post('http://kdt-ai6-team07.elicecoding.com:3001/auth/users/sign-in', formData);
+      const response = await axios.post(`${BackServer}/auth/users/sign-in`, formData);
 
       // 응답 처리
       const { data, isAdmin } = response.data;

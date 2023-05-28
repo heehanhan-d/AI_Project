@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Colors, LinkStyle } from '../Common/Styles';
-import { MAIN_PATH } from '../Common/Path';
+import { BackServer, MAIN_PATH } from '../Common/Path';
 import axios from 'axios';
 
 export const SignOff = () => {
@@ -20,7 +20,7 @@ export const SignOff = () => {
     
     const fetchSignOff = async (Token: string) => {
         try {
-            const response = await axios.delete('http://localhost:3001/auth/users/sign-off', {
+            const response = await axios.delete(`${BackServer}/auth/users/sign-off`, {
                 headers: {
                     Authorization: `Bearer ${Token}`
                 }
@@ -29,9 +29,8 @@ export const SignOff = () => {
             const message = response.data.message;
             if (message === "이미 탈퇴된 회원입니다.") {
                 const signOffEmail = localStorage.getItem('email')
-            } 
-            // const response = await axios.get('http://kdt-ai6-team07.elicecoding.com:3001/auth/users/sign-off');
-            
+                console.log(signOffEmail);
+            }
         } catch (e) {
             console.error(e);
         }
@@ -46,11 +45,11 @@ export const SignOff = () => {
                 <TextContainer>
                     그동안 유입해주셔서 감사합니다!
                 </TextContainer>
-                {/* <LinkStyle to={MAIN_PATH}> */}
+                <LinkStyle to={MAIN_PATH}>
                     <Button onClick={handleSignOff}>
                         You, if 그만 하기
                     </Button>
-                {/* </LinkStyle> */}
+                </LinkStyle>
             </SignOffDiv>
         </>
     );
