@@ -10,12 +10,11 @@ import { Link } from 'react-router-dom';
 
 export default function SignUp() {
     
-    const [isModalOpen, setModalOpen] = useState(false);
-    const [responseData, setResponseData] = useState([]);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [responseData, setResponseData] = useState([]);
+  const [emailError, setEmailError] = useState(false);
 
     const handleSubmit = async (event: any) => {
-      
-        setModalOpen(true);
         event.preventDefault();
      
         // 폼 데이터 가져오기
@@ -38,10 +37,10 @@ export default function SignUp() {
           setResponseData(responseData);
           
           if (message === '이미 존재하는 이메일 입니다.') {
-            alert('이미 존재하는 이메일 입니다.');
+            setEmailError(true);
+          } else {
+            setModalOpen(true);
           }
-
-
         } catch (e) {
           // 오류 처리
           const error = e as AxiosError;
@@ -51,6 +50,7 @@ export default function SignUp() {
     
     const closeModal = () => {
       setModalOpen(false);
+      setEmailError(false);
       window.scrollTo(0, 0);
   };
   
@@ -76,16 +76,27 @@ export default function SignUp() {
                 <Input type="password" id="password" required />
             </FormGroup>
             <Button type="submit">You, if 의 회원 되기!</Button>
-                </form>
+          </form>
+          {emailError && (
+            <Modal>
+              <CenterRef>
+              <ModalContent>
+                  <h1>이미 존재하는 이메일입니다.</h1>
+                  <p>다른 이메일을 사용해주세요.</p>
+                  <ModalButton onClick={closeModal}>확인</ModalButton>
+              </ModalContent>
+              </CenterRef>
+            </Modal>
+          )}
             {isModalOpen && (
             <Modal>
                 <CenterRef>
                 <ModalContent>
                     <h1>회원가입이 완료되었습니다!</h1><br />
                   <p>로그인 후 You, if 의 서비스를 이용해보세요.</p>
-                  {/* <Link to={SIGNIN_PATH}> */}
+                  <Link to={SIGNIN_PATH}>
                     <ModalButton onClick={closeModal}>로그인 하러 가기</ModalButton>
-                  {/* </Link> */}
+                  </Link>
                 </ModalContent>
                 </CenterRef>
             </Modal>
