@@ -14,6 +14,8 @@ export const Logout = () => {
         localStorage.removeItem('nickname');
     };
 
+    window.location.href = MAIN_PATH;
+
     return (
         <>
             <LogoutDiv>
@@ -23,9 +25,7 @@ export const Logout = () => {
                 <TextContainer>
                     한번 더 유입하러 오세요!
                 </TextContainer>
-                <LinkStyle to={MAIN_PATH}>
                     <Button onClick={handleLogout}>You, if 에서 로그아웃 하기</Button>
-                </LinkStyle>
             </LogoutDiv>
         </>
     );

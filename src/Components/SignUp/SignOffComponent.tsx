@@ -5,36 +5,48 @@ import { BackServer, MAIN_PATH } from '../Common/Path';
 import axios from 'axios';
 
 export const SignOff = () => {
+    
     const nickName = localStorage.getItem('nickname');
     console.log('nickName:', nickName);
 
     const handleSignOff = async () => {
         const token = localStorage.getItem('token');
+        console.log('token:', token);
 
         if (token) {
-            await fetchSignOff(token);
-            localStorage.getItem('SignOffEmail'); 
-            console.log('SignOffEmail:', localStorage.getItem('email'));
-        }
-    };
-    
-    const fetchSignOff = async (Token: string) => {
-        try {
-            const response = await axios.delete(`${BackServer}/auth/users/sign-off`, {
-                headers: {
-                    Authorization: `Bearer ${Token}`
-                }
-            });
 
-            const message = response.data.message;
-            if (message === "이미 탈퇴된 회원입니다.") {
-                const signOffEmail = localStorage.getItem('email')
-                console.log(signOffEmail);
+            console.log('token:', token);
+
+            try {
+                const response = await axios.delete(`${BackServer}/auth/users/sign-off`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                        }
+                    });
+            
+                console.log('response:', response);
+                console.log('response.data:', response.data);
+            
+                const message = response.data.message;
+                console.log('message:', message);
+                    
+                if (message === '이미 탈퇴한 회원입니다.') {
+                    const signOffEmail = localStorage.getItem('email');
+                    localStorage.setItem('signOffEmail', String(signOffEmail));
+                    console.log('signOffEmail:', signOffEmail);
+            
+                    // // 로그아웃 처리
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('nickname');
+                    localStorage.removeItem('email');
+            
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
             }
-        } catch (e) {
-            console.error(e);
         }
-    };
+        window.location.href = MAIN_PATH;
 
     return (
         <>
@@ -45,11 +57,9 @@ export const SignOff = () => {
                 <TextContainer>
                     그동안 유입해주셔서 감사합니다!
                 </TextContainer>
-                <LinkStyle to={MAIN_PATH}>
                     <Button onClick={handleSignOff}>
                         You, if 그만 하기
                     </Button>
-                </LinkStyle>
             </SignOffDiv>
         </>
     );
