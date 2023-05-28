@@ -122,8 +122,8 @@ export default function AiSearch() {
             <SearchButton onClick={handleSearch}>
                 AI로 UNDERDOG 검색하기
             </SearchButton>
-            <ResultDiv className='react-select__placeholder'>
-                <Select
+            <ResultDiv>
+                <Select className='react-select__placeholder'
                     options={options}
                     value={selectedOption}
                     onChange={handleOptionChange}

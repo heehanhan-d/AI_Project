@@ -1,12 +1,6 @@
 .react-select__placeholder {
     font-family: 'Logo';
-    font-size: 14px;
-    color: #FED159;
-  }
-  
-  .react-select__option {
-    font-family: 'Text';
-    font-size: 14px;
+    font-size: 16px;
     color: #94B5EA;
   }
   
