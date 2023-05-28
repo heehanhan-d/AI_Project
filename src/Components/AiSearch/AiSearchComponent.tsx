@@ -7,6 +7,7 @@ import { Colors, Button, FindUnderdog, LinkStyle } from '../Common/Styles';
 import Underdog from '../../Img/Underdog.png';
 import { Dog, ResponseData } from '../Common/Interface';
 import { ImageSection } from '../Common/Ref';
+import '../AiSearch/SelectStyle.css'
 
 export default function AiSearch() {
 
@@ -121,7 +122,7 @@ export default function AiSearch() {
             <SearchButton onClick={handleSearch}>
                 AI로 UNDERDOG 검색하기
             </SearchButton>
-            <ResultDiv>
+            <ResultDiv className='react-select__placeholder'>
                 <Select
                     options={options}
                     value={selectedOption}
@@ -286,3 +287,4 @@ export default function AiSearch() {
             border: 0.5rem dashed ${Colors.sub};
         }
     `
+
