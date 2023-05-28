@@ -8,6 +8,7 @@ export const SIGNOFF_PATH = '/auth/users/sign-off';
 export const SIGNIN_PATH = '/auth/users/sign-in';
 export const LOGOUT_PATH = '/auth/users/log-out';
 export const ADMIN_PATH = '/auth/admin';
+export const ADMIN_SIGININ_PATH = '/auth/admin/sign-in';
 export const ADOPT_PATH = '/adopt';
 export const MYPAGE_PATH = '/mypage';
 export const CHECK_PATH = '/auth/admin/check';
