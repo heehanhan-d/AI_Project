@@ -57,11 +57,11 @@ export default function SignIn() {
         // 관리자 로그인 성공 시
         if (isAdmin) {
           setIsAdmin(true);
-          // window.location.href = ADMIN_PATH;
+          window.location.href = ADMIN_PATH;
         } else {
           // 유저 로그인 성공 시
           setIsLoggedIn(true);
-          // window.location.href = MYPAGE_PATH;
+          window.location.href = MYPAGE_PATH;
         }
       } else {
         alert('이메일과 비밀번호를 다시 확인해주세요.')

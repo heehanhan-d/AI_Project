@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Colors, LinkStyle } from '../Common/Styles';
 import { BackServer, MAIN_PATH } from '../Common/Path';
 import axios from 'axios';
+import { Modal, ModalContent, ModalButton } from '../Common/Styles';
 
 export const SignOff = () => {
     
     const nickName = localStorage.getItem('nickname');
     console.log('nickName:', nickName);
+
+    const [showFalseModal, setShowFalseModal] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleSignOff = async () => {
         const token = localStorage.getItem('token');
@@ -30,7 +34,10 @@ export const SignOff = () => {
                 const message = response.data.message;
                 console.log('message:', message);
                     
-                if (message === '이미 탈퇴한 회원입니다.') {
+                if (message === '이미 탈퇴된 회원입니다.') {
+
+                    setShowFalseModal(true);
+
                     const signOffEmail = localStorage.getItem('email');
                     localStorage.setItem('signOffEmail', String(signOffEmail));
                     console.log('signOffEmail:', signOffEmail);
@@ -40,14 +47,21 @@ export const SignOff = () => {
                     localStorage.removeItem('nickname');
                     localStorage.removeItem('email');
             
-                    }
+                } else if (message === '회원 탈퇴 완료')
+                    setShowSuccessModal(true);
                 } catch (e) {
                     console.error(e);
                 }
             }
         }
+    
+    const closeModal = () => {
+        setShowFalseModal(false);
+        setShowSuccessModal(false);
+
         window.location.href = MAIN_PATH;
 
+    }
     return (
         <>
             <SignOffDiv>
@@ -59,7 +73,29 @@ export const SignOff = () => {
                 </TextContainer>
                     <Button onClick={handleSignOff}>
                         You, if 그만 하기
-                    </Button>
+                </Button>
+                {showFalseModal && (
+                    <Modal>
+                        <ModalContent>
+                            <h1>회원 탈퇴 실패</h1>
+                            <p>이미 탈퇴한 회원입니다.</p>
+                            <ModalButton onClick={closeModal}>
+                                확인
+                            </ModalButton>
+                        </ModalContent>
+                    </Modal>
+                )}
+                                {showSuccessModal && (
+                    <Modal>
+                        <ModalContent>
+                            <h1>회원 탈퇴 완료</h1>
+                            <p>그동안 You, if을 이용해주셔서 감사합니다.</p>
+                            <ModalButton onClick={closeModal}>
+                                확인
+                            </ModalButton>
+                        </ModalContent>
+                    </Modal>
+                )}
             </SignOffDiv>
         </>
     );
