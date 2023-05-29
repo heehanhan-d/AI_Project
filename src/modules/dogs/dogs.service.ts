@@ -2,7 +2,7 @@ import { Model } from 'mongoose'; // 몽구스 모델 임포트
 import { Injectable, Inject } from '@nestjs/common'; // 네스트 의존성 주입 데코레이터 임포트
 import { InjectModel } from '@nestjs/mongoose'; // 몽구스 의존성 주입 데코레이터 임포트
 import { Dog } from './models/dog.schema';
-import { VisitRequest } from '../auth/models/visitRequest.schema';
+import { VisitRequest } from '../auth/models/visitrequest.schema';
 import { CreateDogDto } from './dto/create-dog.dto';
 import { SearchDogListDto } from './dto/search-doglist.dto';
 import { PagenationDogDto } from './dto/pagenation-dog.dto';

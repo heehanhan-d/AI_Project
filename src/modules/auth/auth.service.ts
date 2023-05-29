@@ -2,14 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './models/user.schema';
 import { Model } from 'mongoose';
-import { VisitRequest } from './models/visitRequest.schema';
+import { VisitRequest } from './models/visitrequest.schema';
 import { SignUpDto } from './dto/sign-up.dto';
 import { SignInDto } from './dto/sign-in.dto';
 import { PagenationVisitRequestDto } from './dto/pagenation-visitrequest.dto';
 import { UpdateVisitRequestDto } from './dto/update-visitrequest.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { ObjectId } from 'typeorm';
 
 @Injectable()
 export class AuthService {
