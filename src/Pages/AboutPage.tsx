@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Colors, LinkStyle } from '../Components/Common/Styles';
-import UnderdogGraph from '../Components/Data/UnderdogGraph';
-import DisposalRate from '../Components/Data/DisposalRate';
-import AdoptRate from '../Components/Data/AdoptRate';
+import UnderdogGraph from '../Components/About/UnderdogGraph';
+import DisposalRate from '../Components/About/DisposalRate';
+import AdoptRate from '../Components/About/AdoptRate';
 import AboutLogo from '../Img/AboutLogo.png';
 import {motion, useAnimation} from 'framer-motion'
 import LoveUnderdog from '../Img/LoveUnderdog.png';
