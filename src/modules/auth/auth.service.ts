@@ -88,25 +88,40 @@ export class AuthService {
         }
     }
 
-    // 관리자 방문 신청 목록 조회
+    // 방문 신청 목록 조회 (사용자, 관리자)
     async findVisitRequestList(
+        authInfo,
         requestInfo,
         pagenationDto: PagenationVisitRequestDto
     ): Promise<VisitRequest[]> {
         try {
+            // 토큰 확인
             const token = requestInfo.headers.authorization?.split(' ')[1];
             if (!token) {
                 throw new Error('헤더에 토큰이 없습니다.');
-            } else {
-                const { _id } = await this.jwtService.verifyAsync(token);
-                const user = await this.userModel.findById({ _id });
-                if (!user.isAdmin) {
-                    throw new Error('사용자에게 관리자 권한이 없슴');
-                }
             }
-            const { skip, limit } = pagenationDto;
+            const { _id } = await this.jwtService.verifyAsync(token);
 
-            return await this.visitRequestModel.find().skip(skip).limit(limit);
+            // 계정 확인
+            const account = await this.userModel.findById({ _id });
+            if (!account) {
+                throw new Error('계정이 존재하지 않습니다.');
+            } else if (authInfo == 'admin' && account.isAdmin !== true) {
+                throw new Error('관리자 권한이 없습니다.');
+            }
+
+            const { skip, limit } = pagenationDto;
+            if (authInfo == 'users') {
+                return await this.visitRequestModel
+                    .find({ _id })
+                    .skip(skip)
+                    .limit(limit);
+            } else {
+                return await this.visitRequestModel
+                    .find()
+                    .skip(skip)
+                    .limit(limit);
+            }
         } catch (err) {
             throw err;
         }

@@ -67,19 +67,20 @@ export class AuthController {
             });
     }
 
-    // 관리자 방문신청 목록 조회
-    @Get('/admin/visitrequest')
-    async getVisitRequest(
+    // 방문 신청 목록 조회 (사용자, 관리자)
+    @Get('/:who/visitrequest')
+    async getVisitRequestList(
         @Req() req,
         @Res() res,
+        @Param('who') authInfo,
         @Query() pagenationVisitRequestDto: PagenationVisitRequestDto
     ) {
         await this.authService
-            .findVisitRequestList(req, pagenationVisitRequestDto)
+            .findVisitRequestList(authInfo, req, pagenationVisitRequestDto)
             .then((list) => {
                 const cnt = list.length;
                 res.json({
-                    message: `관리자용 방문 신청 목록 ${cnt}개 조회 성공`,
+                    message: `${authInfo} 방문 신청 목록 ${cnt}개 조회 성공`,
                     data: list,
                 });
             })
