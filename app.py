@@ -11,7 +11,7 @@ app = Flask(__name__)
 # cors 방지
 CORS(app, resources={r'*': {'origins': ['http://kdt-ai6-team07.elicecoding.com','http://localhost:3000','http://localhost:3001']}})
 
-@app.route("/") # 파이썬 기본 서버 포트 5000
+@app.route("/")
 def test():
     return jsonify("server open")
 

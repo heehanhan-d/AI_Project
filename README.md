@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ```
 pip install gdown
-gdown https://drive.google.com/uc?id=1MGCrpJ_wXcPRzeFaxZrlG6LGmE7pf3Cm -O Cmatrix_ague_wandb_resnet50_64_0.001_30.pt
+gdown "https://drive.google.com/uc?id=1MGCrpJ_wXcPRzeFaxZrlG6LGmE7pf3Cm" -O Cmatrix_ague_wandb_resnet50_64_0.001_30.pt
 ```
 
 -   프로젝트 실행
