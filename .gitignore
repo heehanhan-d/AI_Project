@@ -1,6 +1,7 @@
 # env variable 환경변수
 .env
 /python
+Cmatrix_ague_wandb_resnet50_64_0.001_30
 
 # Logs 로그파일
 logs

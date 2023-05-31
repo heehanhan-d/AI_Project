@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 import requests
 from PIL import Image
 from io import BytesIO
-from services import createmaindata
+from services import generatedata
 from services import extractbreeds
 from flask_cors import CORS
 
@@ -17,8 +17,8 @@ def test():
 
 @app.route("/createMaindata", methods = ['GET','POST'])
 def create_mainData():
-    createmainData().createMainData()
-    return "server generating maindata"
+    generatedata.createMainData()
+    return "success generatedata"
 
 # 사용자가 이미지 검색하는 용도
 @app.route("/breedsAI/<who>", methods = ['GET','POST'])
