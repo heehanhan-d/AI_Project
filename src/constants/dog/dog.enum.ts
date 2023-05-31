@@ -1,0 +1,5 @@
+export enum State {
+    SUBMITTED = 'SUBMITTED',
+    INREVIEW = 'INREVIEW',
+    TRANSFERRED = 'TRANSFERRED',
+}

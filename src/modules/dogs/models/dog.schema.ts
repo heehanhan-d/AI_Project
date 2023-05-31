@@ -1,7 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose'; // 관계 맺으려니 이렇게 부르네?
 import { HydratedDocument } from 'mongoose';
-import { DogBreeds } from './dogbreeds.shema';
 
 export type DogDocument = HydratedDocument<Dog>;
 
@@ -27,18 +25,12 @@ export class Dog {
         place: String; // 발견장소(happenPlace)
     };
 
-    // DogBreeds 타입의 breeds 값을 여러개 가지기 위한 정의, 인공지능 모델의 반환값 저장 예정
+    // // DogBreeds 타입의 breeds 값을 여러개 가지기 위한 정의, 인공지능 모델의 반환값 저장 예정
     @Prop({
         index: true,
         required: false,
-        type: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'DogBreeds',
-            },
-        ],
     })
-    breeds?: DogBreeds[];
+    breeds?: String[];
 
     @Prop({ required: true })
     color: String; // 색상(colorCd)
@@ -64,8 +56,8 @@ export class Dog {
     })
     notice: {
         code: String; // 공고번호(noticeNo)
-        dateStart: Date; // 공고시작일(noticeSdt)
-        dateEnd: Date; // 공고종료일(noticeEdt)
+        date_start: Date; // 공고시작일(noticeSdt)
+        date_end: Date; // 공고종료일(noticeEdt)
     };
 
     @Prop({

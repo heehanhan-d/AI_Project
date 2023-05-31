@@ -3,15 +3,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { DogsService } from './dogs.service';
 import { DogsController } from './dogs.controller';
 import { Dog, DogSchema } from './models/dog.schema';
+import { HttpModule } from '@nestjs/axios';
+import { AuthModule } from '../auth/auth.module';
+import { CacheModule } from '@nestjs/cache-manager';
 
-// 구현하고 사용하는 모듈(API)들을 등록 한다. (의존성 주입)
-// 데코레이터 : 클래스를 필수 메타데이터와 연결하고, 라우팅 맵을 만들게 한다.
-
-// 모듈 데코레이터의 imports '배열'에 생성한 모듈을 등록한다.
-// 모듈 데코레이터
 @Module({
     // imports -> 구현한 모듈 등록
     imports: [
+        AuthModule,
+        HttpModule,
         MongooseModule.forFeature([
             {
                 name: Dog.name,
