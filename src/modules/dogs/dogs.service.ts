@@ -18,7 +18,7 @@ export class DogsService {
         @InjectModel(Dog.name) private dogModel: Model<Dog>,
         @InjectModel(VisitRequest.name)
         private visitRequestModel: Model<VisitRequest>,
-        @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
+        @Inject(CACHE_MANAGER) private cacheManager: Cache,
         private readonly httpservice: HttpService
     ) {}
 
@@ -29,7 +29,7 @@ export class DogsService {
             .find()
             .skip(skip)
             .limit(limit)
-            .sort({ 'notice.date_start': -1 });
+            .sort({ 'notice.date_start': 1 });
     }
 
     // 사용자 이미지 검색 유기견 목록 조회
@@ -37,21 +37,13 @@ export class DogsService {
     async searchDogList(searchDogListDto: SearchDogListDto): Promise<Dog[]> {
         const { limit, skip, breeds } = searchDogListDto;
 
-        // 캐시 확인
-        const cachedData: Dog[] = await this.cacheManager.get(
-            breeds.toString()
-        );
-        if (cachedData) {
-            return cachedData;
-        }
-
         // 캐시 없으면 데이터 조회
-        const searchedDogList = await this.dogModel
+        const searchedDogList: Dog[] = await this.dogModel
             .find({ breeds: decodeURI(breeds) })
             .skip(skip)
             .limit(limit)
-            .sort({ 'notice.date_start': -1 });
-        this.cacheManager.set(breeds.toString(), searchedDogList, 180);
+            .sort({ 'notice.date_start': 1 });
+
         return searchedDogList;
     }
 

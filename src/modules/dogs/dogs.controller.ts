@@ -8,7 +8,6 @@ import {
     Query,
     Patch,
     UseInterceptors,
-    CacheTTL,
 } from '@nestjs/common';
 import { DogsService } from './dogs.service';
 import { CreateDogDto } from './dto/create-dog.dto';
@@ -16,6 +15,7 @@ import { SearchDogListDto } from './dto/search-doglist.dto';
 import { PagenationDogDto } from './dto/pagenation-dog.dto';
 import { CreateRequestDto } from './dto/create-request.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
+import { Dog } from './models/dog.schema';
 
 // 컨트롤러 데코레이터 : 라우팅 경로 매핑
 @Controller('underdogs')
@@ -26,53 +26,50 @@ export class DogsController {
     // (CacheInterceptor) 자주 요청될 최초 유기견 데이터를 자동으로 캐싱하고, 10분간 캐싱처리
     @Get('/')
     @UseInterceptors(CacheInterceptor)
-    @CacheTTL(600)
-    async getDogList(@Query() pagenationDogDto: PagenationDogDto, @Res() res) {
+    async getDogList(@Query() pagenationDogDto: PagenationDogDto) {
         try {
             const dogList = await this.DogsService.findDogsList(
                 pagenationDogDto
             );
             const cnt = dogList.length;
-            res.json({
+            return {
                 message: `(전체 목록) 유기견 ${cnt}개 조회 성공`,
                 data: dogList,
-            });
+            };
         } catch (err) {
-            res.json({ message: err });
+            return { message: err };
         }
     }
 
     // 사용자 이미지 검색 유기견 목록 조회
-    // (serviceLayer) 사용자가 보유한 '품종키워드'의 유기견 데이터를 3분간 캐싱
     @Get('/search')
-    async searchDogList(
-        @Query() searchDogListDto: SearchDogListDto,
-        @Res() res
-    ) {
+    @UseInterceptors(CacheInterceptor)
+    async searchDogList(@Query() searchDogListDto: SearchDogListDto) {
         try {
-            const searchedDogList = await this.DogsService.searchDogList(
+            const searchedDogList: Dog[] = await this.DogsService.searchDogList(
                 searchDogListDto
             );
-            res.json({
+            return {
                 message: `(사용자 검색) 유기견 조회 성공`,
                 data: searchedDogList,
-            });
+            };
         } catch (err) {
-            res.json({ message: err });
+            return { message: err };
         }
     }
 
     // 특정 유기견 id 검색 및 조회
     @Get('/:id')
-    async getDog(@Res() res, @Param('id') dog_id: String) {
+    @UseInterceptors(CacheInterceptor)
+    async getDog(@Param('id') dog_id: String) {
         try {
             const dog = await this.DogsService.findDog(dog_id);
-            res.json({
+            return {
                 message: '특정 유기견 정보 조회 성공',
                 data: dog,
-            });
+            };
         } catch (err) {
-            res.json({ message: err });
+            return { message: err };
         }
     }
 

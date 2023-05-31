@@ -5,6 +5,7 @@ import { DogsController } from './dogs.controller';
 import { Dog, DogSchema } from './models/dog.schema';
 import { HttpModule } from '@nestjs/axios';
 import { AuthModule } from '../auth/auth.module';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
     // imports -> 구현한 모듈 등록
