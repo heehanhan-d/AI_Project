@@ -1,0 +1,33 @@
+# env variable 환경변수
+.env
+/python
+Cmatrix_ague_wandb_resnet50_64_0.001_30
+
+# Logs 로그파일
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+__pycache__
+
+# OS
+.DS_Store
+
+# IDEs and editors IDE가 생성하는 파일
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
