@@ -14,24 +14,23 @@
 ## 1. 주요 링크
 
 - 프로젝트 기획서
-    [링크](https://www.notion.so/26c2692de798491b95c2a338f9e682f9?pvs=21)
+    [링크](https://www.notion.so/jeongjong10/3a1d9414c59f4975a1905e94754d692d)
     
 - 데이터 분석 명세서
-    [링크](https://www.notion.so/5d1f86e240fb48ba9a54a305bbce88ec?pvs=21)
+    [링크](https://www.notion.so/jeongjong10/406715fb47c44f73aade9e47d9be2bbe)
     
 - 인공지능 명세서
-    [링크](https://www.notion.so/2258c377dae542838dded68c57081ede?pvs=21)
+    [링크](https://www.notion.so/jeongjong10/b67ace0b24184999b634f6f59d900cfe?pvs=4)
     
 - 프로젝트 기능 명세서
-    [링크](https://www.notion.so/19378f18a0f94d2d817964cd168d73ac?pvs=21)
+    [링크](https://www.notion.so/jeongjong10/64323b657ba0491990ac924d55ccfb99?v=ea17f812e3354242b41bfd41e298abe3&pvs=4)
     
 - 와이어 프레임
     [링크](https://www.figma.com/file/VFLN6nvDRGdMuPzKTUBsDu/You%2C-if?node-id=0-1&t=9ugRnpgNquJVFxZt-0)
         
 - API 명세서
-    [링크](https://www.notion.so/API-bd493e4a79474c22996a2cfe379ab95f?pvs=21)
+    [링크](https://www.notion.so/jeongjong10/API-55d002bbe401487792300685389ae013?pvs=4)
     
-
 ---
 
 ## 2. 서비스 소개
